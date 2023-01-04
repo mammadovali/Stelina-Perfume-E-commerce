@@ -1,0 +1,23 @@
+.backtotop {
+  display: none;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  font-weight: 600;
+  background: #333;
+  color: #fff;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 50px;
+  right: 25px;
+  text-align: center;
+  line-height: 50px;
+  z-index: 999;
+  &:hover {
+    background: #ab8e66;
+    color: #fff !important;
+  }
+}
+.backtotop.show {
+  display: block;
+}

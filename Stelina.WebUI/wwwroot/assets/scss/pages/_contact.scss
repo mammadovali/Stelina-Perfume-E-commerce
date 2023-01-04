@@ -1,0 +1,144 @@
+.stelina-google-maps {
+  min-height: 480px;
+}
+.form-contact {
+  margin-top: -200px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 12px 0 rgba(2, 2, 2, 0.16);
+  -moz-box-shadow: 0 0 12px 0 rgba(2, 2, 2, 0.16);
+  box-shadow: 0 0 12px 0 rgba(2, 2, 2, 0.16);
+  border-radius: 0;
+  overflow: hidden;
+  &::after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+  &::before {
+    display: table;
+    content: "";
+  }
+}
+.form-message {
+  padding-top: 55px;
+  padding-right: 70px;
+  padding-bottom: 55px;
+  padding-left: 70px;
+  background-color: #ffffff;
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0a0a0a;
+    text-align: left;
+    font-style: normal;
+    margin-bottom: 27px;
+    text-transform: uppercase;
+  }
+}
+.stelina-contact-fom {
+  p {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .form-label {
+    font-size: 14px;
+    line-height: 30px;
+    color: #888;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .form-control {
+    position: relative;
+    overflow: hidden;
+    &:focus {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+  .your-textarea {
+    border: 1px solid #eeeeee;
+  }
+  .button-submit {
+    min-width: 157px;
+    margin-top: 10px;
+  }
+}
+.form-contact-information {
+  padding-top: 55px;
+  padding-right: 45px;
+  padding-bottom: 45px;
+  padding-left: 45px;
+  background-color: #111111;
+}
+.stelina-contact-info {
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 55px;
+    text-transform: uppercase;
+  }
+  .item {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 32px;
+    .icon {
+      display: inline-block;
+      float: left;
+      border: 1px solid #ab8e66;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      margin-right: 20px;
+      text-align: center;
+      line-height: 40px;
+      &::before {
+        font-family: "FontAwesome";
+        font-size: 20px;
+        color: #ab8e66;
+        display: inline-block;
+        text-align: center;
+      }
+    }
+    .text {
+      display: block;
+      color: #dddddd;
+      text-transform: capitalize;
+      font-size: 14px;
+      overflow: hidden;
+    }
+  }
+  .address {
+    .icon {
+      &::before {
+        content: "\f041";
+      }
+    }
+  }
+  .phone {
+    .icon {
+      &::before {
+        content: "\f095";
+      }
+    }
+  }
+  .email {
+    .icon {
+      &::before {
+        content: "\f003";
+      }
+    }
+  }
+  .socials {
+    padding-top: 238px;
+    .social-item {
+      font-size: 23px;
+      color: #555;
+      margin-right: 20px;
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+}

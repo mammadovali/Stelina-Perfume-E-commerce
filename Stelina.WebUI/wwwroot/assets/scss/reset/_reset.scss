@@ -1,0 +1,138 @@
+$color-black: #000;
+
+body {
+	font-family: "Jost", sans-serif;
+	font-size: 16px;
+	line-height: 26px;
+	color: #666;
+	overflow-x: hidden;
+}
+label {
+	font-weight: 600;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+		outline: none;
+		color: #0a0a0a;
+	}
+	&:focus {
+		text-decoration: none;
+		outline: none;
+		color: #0a0a0a;
+	}
+	&:active {
+		text-decoration: none;
+		outline: none;
+		color: #0a0a0a;
+	}
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+ul {
+	margin: 0;
+	padding-left: 17px;
+	ul {
+		padding-left: 17px;
+	}
+	ol {
+		padding-left: 17px;
+	}
+}
+ol {
+	margin: 0;
+	padding-left: 17px;
+	ol {
+		padding-left: 17px;
+	}
+	ul {
+		padding-left: 17px;
+	}
+}
+h1 {
+	line-height: 1.428;
+	font-weight: 500;
+	color: $color-black;
+	margin-top: 0;
+	font-size: 36px;
+}
+h2 {
+	line-height: 1.428;
+	font-weight: 500;
+	color: $color-black;
+	margin-top: 0;
+	font-size: 30px;
+}
+h3 {
+	line-height: 1.428;
+	font-weight: 500;
+	color: $color-black;
+	margin-top: 0;
+	font-size: 24px;
+}
+h4 {
+	line-height: 1.428;
+	font-weight: 500;
+	color: $color-black;
+	margin-top: 0;
+	font-size: 20px;
+}
+h5 {
+	line-height: 1.428;
+	font-weight: 500;
+	color: $color-black;
+	margin-top: 0;
+	font-size: 18px;
+}
+h6 {
+	line-height: 1.428;
+	font-weight: 500;
+	color: $color-black;
+	margin-top: 0;
+	font-size: 16px;
+}
+p {
+	margin-bottom: 20px;
+}
+blockquote {
+	font-weight: 500;
+	display: inline-block;
+	border-left: none;
+	color: #333;
+	font-size: 16px;
+	line-height: 26px;
+	border-bottom: 1px solid #f2f2f2;
+	border-top: 1px solid #f2f2f2;
+	padding: 20px 0;
+	margin-top: 10px;
+	margin-bottom: 38px;
+	p {
+		font-style: italic;
+		font-size: 14px;
+	}
+	&::before {
+		content: url("../images/quote-item.png");
+		display: block;
+	}
+}
+q {
+	font-weight: 500;
+	display: inline-block;
+	border-left: none;
+	color: #333;
+	font-size: 16px;
+	line-height: 26px;
+	border-bottom: 1px solid #f2f2f2;
+	border-top: 1px solid #f2f2f2;
+	padding: 20px 0;
+	margin-top: 10px;
+	margin-bottom: 38px;
+	p {
+		font-style: italic;
+		font-size: 14px;
+	}
+}

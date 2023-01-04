@@ -1,0 +1,264 @@
+// START
+
+.footer {
+  background: #f3f3f3;
+  .container-wapper {
+    padding-top: 60px;
+  }
+  .footer-end {
+    padding: 20px 0;
+  }
+}
+
+.footer {
+	.widgettitle {
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 6px;
+		line-height: 24px;
+		position: relative;
+		margin-top: 10px;
+		text-transform: uppercase;
+		font-family: "Jost";
+	}
+	text-align: center;
+	.menu {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		.menu-item {
+			color: #191919;
+			line-height: 26px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			>a {
+				>span {
+					padding-right: 5px;
+					color: #191919;
+				}
+			}
+		}
+	}
+	.stelina-socials {
+		.socials {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+			display: inline-block;
+			font-size: 23px;
+			color: #555555;
+			&:first-child {
+				padding-left: 0;
+			}
+			a {
+				border-radius: 50%;
+				min-width: 100px;
+				height: 45px;
+				font-size: 26px;
+				line-height: 45px;
+				text-align: center;
+				display: inline-block;
+				position: relative;
+				z-index: 1;
+				margin-bottom: 10px;
+				i {
+					z-index: 1;
+					position: relative;
+				}
+			}
+		}
+	}
+}
+.stelina-newsletter.style1 {
+	margin-bottom: 10px;
+	.title {
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: uppercase;
+		margin-bottom: 15px;
+		position: relative;
+		margin-top: 11px;
+		font-family: "Jost";
+	}
+	.list {
+		margin-bottom: 20px;
+		.text {
+			font-size: 15px;
+		}
+		label {
+			color: #bbbbbb;
+			font-weight: 600;
+			margin: 0 0 0 20px;
+			position: relative;
+			padding-left: 20px;
+			cursor: pointer;
+			span {
+				&:before {
+					position: absolute;
+					content: "";
+					width: 16px;
+					height: 16px;
+					border: 1px solid #666666;
+					left: 0px;
+					top: 5px;
+					border-radius: 50%;
+				}
+			}
+		}
+		input[type="radio"] {
+			display: none;
+			&:checked {
+				+ {
+					span {
+						border-bottom: 1px solid #bbbbbb;
+						&:after {
+							content: "";
+							display: inline-block;
+							top: 9px;
+							left: 4px;
+							width: 8px;
+							height: 8px;
+							border-radius: 50%;
+							background: #bbbbbb;
+							position: absolute;
+							z-index: 11;
+							padding: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	.newsletter-form-wrap {
+		.input-text {
+			width: 100%;
+			background: #fff;
+			color: #bbbbbb;
+			font-size: 15px;
+			height: 56px;
+			line-height: 56px;
+			text-align: center;
+			margin-bottom: 10px;
+			border-radius: 30px;
+		}
+		.submit-newsletter {
+			color: #fff;
+			width: 100%;
+			background: #ab8e66;
+			height: 56px;
+			line-height: 56px;
+			padding: 0 15px;
+			border-radius: 30px;
+			letter-spacing: 0.1em;
+		}
+	}
+}
+.stelina-newsletter.style2 {
+	.title {
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: uppercase;
+		margin-bottom: 15px;
+		position: relative;
+		margin-top: 11px;
+		font-family: "Jost";
+	}
+}
+
+.footer {
+	.stelina-newsletter {
+		.newsletter-form-wrap {
+			.input-text {
+				&:focus {
+					border-color: #ab8e66 !important;
+				}
+			}
+		}
+	}
+}
+
+//END
+
+.footer-end {
+  .demos {
+    text-align: right;
+    a {
+      min-width: 139px;
+      height: 34px;
+      border: 1px solid #363636;
+      display: inline-block;
+      text-align: center;
+      line-height: 30px;
+      text-transform: capitalize;
+      color: #888888;
+      font-size: 13px;
+      &::after {
+        font-family: "FontAwesome";
+        content: "\f107";
+        margin-left: 5px;
+        font-size: 15px;
+        color: #888;
+        font-weight: normal;
+        vertical-align: top;
+      }
+    }
+    span {
+      color: #ffffff;
+    }
+  }
+}
+
+// ----------------------FOOTER MOBILE----------------------
+
+.footer-device-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  display: none;
+  .wapper {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+}
+.footer-device-mobile-item {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  > a {
+    display: inline-block;
+    padding: 5px 0;
+    color: #222;
+    line-height: normal;
+    .icon {
+      font-size: 20px;
+      display: block;
+      position: relative;
+      height: 30px;
+      line-height: 30px;
+      font-weight: 600;
+    }
+  }
+}
+.footer-device-mobile-item.device-cart {
+  .count-icon {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-weight: 600;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,41 @@
+table {
+  border: 1px solid #f3f3f3;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: auto;
+  width: 100%;
+  margin-bottom: 20px;
+  thead {
+    background-color: #f8f8f8;
+  }
+  tr {
+    th {
+      &:last-child {
+        border-right: 0;
+      }
+    }
+    td {
+      &:last-child {
+        border-right: 0;
+      }
+    }
+    &:last-child {
+      td {
+        border-bottom: none;
+      }
+      th {
+        border-bottom: none;
+      }
+    }
+  }
+}
+th {
+  border: 1px solid #f3f3f3;
+  padding: 10px;
+  font-weight: normal;
+}
+td {
+  border: 1px solid #f3f3f3;
+  padding: 10px;
+  font-weight: normal;
+}

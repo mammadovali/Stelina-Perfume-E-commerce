@@ -1,0 +1,59 @@
+.pagination {
+  display: block;
+  margin: 50px 0 0;
+  padding: 0;
+  .page-numbers {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    line-height: 39px;
+    text-align: center;
+    border: 1px solid #f1f1f1;
+    font-size: 16px;
+    color: #888;
+    font-weight: 500;
+    margin-left: 5px;
+    border-radius: 50%;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:hover {
+      color: #fff;
+      border-color: transparent;
+      background-color: #ab8e66;
+    }
+    .icon {
+      font-weight: 600;
+    }
+  }
+  .page-numbers.current {
+    color: #fff;
+    border-color: transparent;
+    background-color: #ab8e66;
+  }
+}
+.pagination.grid {
+  margin-top: 20px;
+}
+.pagination.style1 {
+  text-align: right;
+}
+.pagination.style2 {
+  text-align: center;
+}
+.shop-grid-content {
+  .pagination {
+    margin-top: 10px;
+  }
+}
+.content-inlookbook {
+  .pagination {
+    margin-top: 10px;
+    margin-bottom: 60px;
+  }
+}
+.main-content-blog.mansory {
+  .pagination {
+    margin-top: 10px;
+  }
+}

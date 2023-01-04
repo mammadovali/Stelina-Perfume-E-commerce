@@ -1,0 +1,213 @@
+﻿@model ContactPostDetailViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<div class="main-content main-content-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">Contact us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area content-contact col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <h3 class="custom_blog_title">Contact us</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-main-content">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-contact">
+                        <div class="col-lg-8 no-padding">
+                            <div class="form-message">
+                                <h2 class="title">Send us a Message!</h2>
+                                <form class="stelina-contact-fom" id="contact-form" method="post" novalidate>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>
+                                                <span class="form-label">Your Name *</span>
+                                                <span class="form-control-wrap your-name">
+                                                    <input asp-for="@Model.ContactPosts.Name"
+                                                           type="text"
+                                                           size="40"
+                                                           class="form-control form-control-name" />
+                                                    <span asp-validation-for="@Model.ContactPosts.Name" class="text-danger validation-error"></span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p>
+                                                <span class="form-label"> Your Email * </span>
+                                                <span class="form-control-wrap your-email">
+                                                    <input asp-for="@Model.ContactPosts.Email"
+                                                           type="email"
+                                                           size="40"
+                                                           class="form-control form-control-email" />
+                                                    <span asp-validation-for="@Model.ContactPosts.Email" class="text-danger validation-error"></span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p>
+                                                <span class="form-label">Subject</span>
+                                                <span class="form-control-wrap your-phone">
+                                                    <input type="text"
+                                                           asp-for="@Model.ContactPosts.Subject"
+                                                           class="form-control form-control-phone" />
+                                                    <span asp-validation-for="@Model.ContactPosts.Subject" class="text-danger validation-error"></span>
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <span class="form-label"> Content </span>
+                                        <span class="wpcf7-form-control-wrap your-message">
+                                            <textarea asp-for="@Model.ContactPosts.Content"
+                                                      cols="40"
+                                                      rows="9"
+                                                      class="form-control your-textarea"></textarea>
+                                            <span asp-validation-for="@Model.ContactPosts.Content" class="text-danger validation-error"></span>
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <input type="submit"
+                                               value="SEND MESSAGE"
+                                               class="form-control-submit button-submit" />
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 no-padding">
+                            <div class="form-contact-information">
+                                <div class="stelina-contact-info">
+                                    <h2 class="title">Contact information</h2>
+                                    <div class="info">
+                                        <div class="item address">
+                                            <span class="icon"> </span>
+                                            <span class="text">
+                                                @Model.ContactDetails.Location
+                                            </span>
+                                        </div>
+                                        <div class="item phone">
+                                            <span class="icon"> </span>
+                                            <span class="text"> @Model.ContactDetails.PhoneNumber </span>
+                                        </div>
+                                        <div class="item email">
+                                            <span class="icon"> </span>
+                                            <span class="text"> @Model.ContactDetails.SupportEmail </span>
+                                        </div>
+                                    </div>
+                                    <div class="socials">
+                                        <a href="#" class="social-item" target="_blank">
+                                            <span class="icon fa fa-facebook"> </span>
+                                        </a>
+                                        <a href="#" class="social-item" target="_blank">
+                                            <span class="icon fa fa-twitter-square"> </span>
+                                        </a>
+                                        <a href="#" class="social-item" target="_blank">
+                                            <span class="icon fa fa-instagram"> </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section addcss{
+<link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css" />
+<style>
+    input[Name].novalidated,
+    textarea[Name].novalidated {
+        border: 1px solid rgb(223, 53,69);
+    }
+</style>
+}
+
+@section addjs{
+<script src="~/lib/toastr.js/toastr.min.js"></script>
+<script src="~/lib/toastr.js/toastr.customize.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#contact-form").submit(function (ev) {
+            ev.preventDefault();
+
+            let fd = new FormData(ev.currentTarget); // form => formData
+
+            $.ajax({
+                url: '@Url.Action("Contact")',
+                type: "POST",
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+
+
+
+                    $("#contact-form span.text-danger").remove();
+                    $("#contact-form input[Name], #contact-form textarea[Name]").removeClass("novalidated");
+                    console.log(response, "SUCCESS");
+
+                    if (response.error == true) {
+
+                        toastr.error(response.message, "Xəta");
+                        showError(response.state);
+
+                        return;
+                    }
+
+                    toastr.success(response.message, "Uğur!");
+
+                    ev.currentTarget.reset();
+                },
+                error: function (errResponse) {
+                    console.log(errResponse, "ERROR");
+                }
+
+            })
+
+
+        })
+    });
+
+    function showError(state) {
+
+        state.forEach(item => {
+            console.log(item)
+
+            let errorInput = $(`#contact-form input[name='${item.fieldName}'], #contact-form textarea[name='${item.fieldName}']`);
+            let errorSpan = $("<span/>", {
+                class: 'text-danger validation-error',
+                html: item.message
+            });
+
+            $(errorInput.parent()).append(errorSpan);
+            $(errorInput).addClass("novalidated")
+        });
+    }
+</script>
+}

@@ -1,0 +1,22 @@
+
+/*tabs*/
+.tab-container {
+	position: relative;
+	.tab-panel {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		opacity: 0;
+		visibility: hidden;
+		height: 1px;
+		overflow: hidden;
+	}
+	.active {
+		opacity: 1;
+		visibility: inherit;
+		position: inherit;
+		height: auto;
+		overflow: inherit;
+	}
+}

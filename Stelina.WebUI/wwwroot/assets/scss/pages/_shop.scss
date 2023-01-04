@@ -1,0 +1,247 @@
+/*sidebar shop*/
+.list-brand {
+  border-top: none;
+}
+.woof_Widget {
+  border-radius: 0;
+  .price-slider-amount {
+    span {
+      display: inline-block;
+      font-size: 15px;
+      color: #0a0a0a;
+      border: 1px solid #eeeeee;
+      padding: 4px 10px;
+      font-weight: 600;
+      border-radius: 0;
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+.widget_filter_price {
+  .ui-widget-content {
+    background: #ddd;
+    border-radius: 2px;
+    height: 4px;
+    border: none;
+  }
+  .ui-slider {
+    .ui-slider-range {
+      background: #ab8e66;
+    }
+    .ui-slider-handle {
+      width: 0;
+      height: 0;
+      border: none;
+      top: -6px;
+      border-radius: 1em;
+      cursor: ew-resize;
+      margin-left: -0.3em;
+      outline: 0 none;
+      position: absolute;
+      z-index: 2;
+      border-color: #ab8e66 transparent;
+      &::before {
+        content: "";
+        border-style: solid;
+        border-width: 8px 6px 0 6px;
+        border-color: #ab8e66 transparent;
+      }
+    }
+  }
+  .price-slider-amount {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #666666;
+    overflow: hidden;
+  }
+}
+.widget-color {
+  .list-color {
+    a {
+      display: inline-block;
+      height: 27px;
+      margin-top: 3px;
+      margin-right: 10px;
+      position: relative;
+      text-align: center;
+      width: 26px;
+      line-height: 23px;
+      border-radius: 0;
+    }
+    .color1 {
+      border: 1px solid #eeeeee;
+    }
+    .color2 {
+      background: #0a0a0a;
+    }
+    .color3 {
+      background: #4a5365;
+    }
+    .color4 {
+      background: #84664d;
+    }
+    .color5 {
+      background: #d27d53;
+    }
+    .color6 {
+      background: #719271;
+    }
+    .color7 {
+      background: #5f8ea9;
+    }
+  }
+}
+.list-color {
+  a.active {
+    &::before {
+      color: #fff;
+      content: "\f00c";
+      display: inline-block;
+      font-family: FontAwesome;
+      font-size: 12px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      line-height: 27px;
+    }
+  }
+  a {
+    &:hover {
+      &::before {
+        color: #fff;
+        content: "\f00c";
+        display: inline-block;
+        font-family: FontAwesome;
+        font-size: 12px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        line-height: 27px;
+      }
+    }
+  }
+  .colo1.active {
+    &::before {
+      color: #0a0a0a;
+    }
+  }
+  .colo1 {
+    &:hover {
+      &::before {
+        color: #0a0a0a;
+      }
+    }
+  }
+}
+.tag-cloud-link {
+  a {
+    &:hover {
+      color: #111111;
+    }
+  }
+}
+.tag-cloud-link.active {
+  a {
+    color: #111111;
+  }
+}
+
+// --------
+
+.shop-top-control {
+	border: 1px solid #f3f3f3;
+	background-color: #f3f3f3;
+	border-radius: 0;
+	padding: 15px 0 15px;
+	margin-bottom: 40px;
+	display: table;
+	width: 100%;
+	font-weight: 500;
+	color: #888888;
+	position: relative;
+	.select-form {
+		padding: 0 13px;
+		border-right: 1px solid #f1f1f1;
+		display: table-cell;
+		vertical-align: middle;
+		position: relative;
+		z-index: 999;
+		line-height: 28px;
+		.title {
+			margin-right: 3px;
+		}
+	}
+	.grid-view-mode {
+		padding: 0 13px;
+		border-right: 1px solid #f1f1f1;
+		display: table-cell;
+		vertical-align: middle;
+		border-right: none;
+		width: 125px;
+		padding: 0;
+	}
+	.select-form.select-item {
+		z-index: 1000;
+	}
+	.chosen-container-single {
+		.chosen-single {
+			height: 28px;
+			line-height: 28px;
+			border: 1px solid #fff;
+			background: #fff !important;
+			padding: 0 10px;
+			max-width: 100%;
+			background: none;
+			box-shadow: none;
+			width: 154px;
+			color: #222;
+			border-radius: 0;
+			span {
+				font-size: 13px;
+				line-height: 26px;
+				margin-right: 0;
+			}
+		}
+	}
+	.chosen-container {
+		.chosen-results {
+			li.highlighted {
+				background-image: none;
+				background-color: #0a0a0a;
+			}
+		}
+	}
+}
+.grid-view-mode {
+	.inner {
+		display: table;
+		margin: 0 auto;
+	}
+	.modes-mode {
+		display: inline-block;
+		padding: 4px 0;
+		overflow: hidden;
+		margin: 0 5px;
+		vertical-align: top;
+	}
+	.modes-mode.active {
+		color: #ab8e66;
+	}
+	.modes-mode.mode-grid {
+		&::before {
+			content: "\f118";
+			font-family: Flaticon;
+			font-size: 17px;
+		}
+	}
+	.modes-mode.mode-list {
+		&::before {
+			content: "\f119";
+			font-family: Flaticon;
+			font-size: 23px;
+		}
+	}
+}
+

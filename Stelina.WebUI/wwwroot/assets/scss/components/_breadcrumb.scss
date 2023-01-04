@@ -1,0 +1,27 @@
+.breadcrumb {
+  padding: 34px 0 30px;
+  background: #ffffff;
+  margin: 0;
+  > li {
+    display: inline-block;
+    list-style: none;
+    font-weight: 500;
+    font-size: 14px;
+    + {
+      li {
+        &:before {
+          padding: 0 8px;
+          content: "\f101";
+          font-family: "FontAwesome";
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  a {
+    color: #888888;
+  }
+  > .active {
+    color: #222;
+  }
+}

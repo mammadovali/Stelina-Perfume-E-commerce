@@ -1,0 +1,163 @@
+$color_black: #222;
+$font-family: "FontAwesome";
+$background-color_1: #fff;
+$border-color_1: #f1f1f1;
+
+.customer_login {
+  .title-login {
+    border: 1px solid #f1f1f1;
+    margin: 0;
+    border-bottom: 0;
+    font-size: 18px;
+    padding: 25px 40px;
+    color: $color_black;
+    font-weight: 500;
+  }
+  .login {
+    border: 1px solid #f1f1f1;
+    padding: 25px 40px;
+  }
+  .register {
+    border: 1px solid #f1f1f1;
+    padding: 25px 40px;
+  }
+  .form-row-wide {
+    .text {
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: $color_black;
+      font-weight: 500;
+      text-transform: none;
+      display: block;
+    }
+  }
+  input[type="text"] {
+    margin-bottom: 0;
+    width: 100%;
+    border-color: $border-color_1;
+  }
+  input[type="email"] {
+    margin-bottom: 0;
+    width: 100%;
+    border-color: $border-color_1;
+  }
+  input[type="password"] {
+    margin-bottom: 0;
+    width: 100%;
+    border-color: $border-color_1;
+  }
+  input[type="checkbox"] {
+    display: none;
+    &:checked {
+      + {
+        label {
+          &::before {
+            font-family: $font-family;
+            content: "\f00c";
+            display: inline-block;
+            top: 5px;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: $color_black;
+            position: absolute;
+            z-index: 2;
+            padding: 0;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+    + {
+      label {
+        &::after {
+          position: absolute;
+          z-index: 1;
+          content: "";
+          left: 0;
+          top: 2px;
+          width: 20px;
+          height: 20px;
+          border: solid 1px #eeeeee;
+        }
+      }
+    }
+  }
+  .label-text {
+    cursor: pointer;
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+    padding-left: 25px;
+    position: relative;
+    font-weight: normal;
+    &:hover {
+      &::before {
+        font-family: $font-family;
+        content: "\f00c";
+        display: inline-block;
+        top: 5px;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: $color_black;
+        position: absolute;
+        z-index: 2;
+        padding: 0;
+        line-height: 14px;
+      }
+    }
+    span {
+      font-size: 14px;
+      color: $color_black;
+      font-weight: 500;
+    }
+  }
+  .lost_password {
+    .forgot-pw {
+      font-size: 14px;
+      color: $color_black;
+      font-weight: 500;
+      float: right;
+    }
+  }
+  .login-item {
+    &:hover {
+      box-shadow: 0 0 10px #ddd;
+      z-index: 2;
+      background-color: $background-color_1;
+      border-radius: 0;
+    }
+  }
+}
+.login {
+  .social-account {
+    margin-bottom: 20px;
+  }
+}
+.social-account {
+  .title-social {
+    color: #aaa;
+    margin-bottom: 20px;
+    font-family: inherit;
+    letter-spacing: 0;
+  }
+  .mxh-item {
+    font-size: 13px;
+    font-weight: 500;
+    color: $color_black;
+    margin-right: 30px;
+  }
+  .icon {
+    font-size: 23px;
+    vertical-align: middle;
+  }
+  .text {
+    vertical-align: middle;
+    padding-left: 5px;
+  }
+}
