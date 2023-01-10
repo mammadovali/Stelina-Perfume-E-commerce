@@ -46,4 +46,8 @@
     <ProjectReference Include="..\Stelina.Domain\Stelina.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\images\" />
+  </ItemGroup>
+
 </Project>

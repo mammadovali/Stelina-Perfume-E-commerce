@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="~/assets/css/lightbox.min.css" />
     <link rel="stylesheet"
           href="~/assets/js/fancybox/source/jquery.fancybox.css" />
+    <link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css" />
     <link rel="stylesheet"
           href="assets/js/fancybox/source/jquery.fancybox.css" />
     <link rel="stylesheet" href="~/assets/css/jquery.scrollbar.min.css" />
@@ -61,11 +62,38 @@
                             </ul>
                         </div>
                     </div>
-                    <ul class="header-user-links">
+
+                    @if (@User.Identity.IsAuthenticated)
+                    {
+                    <div class="header-language account">
+                        <div class="stelina-language stelina-dropdown">
+                            <i class="fa fa-user"></i>
+                            <a href="#"
+                               class="active language-toggle"
+                               data-stelina="stelina-dropdown">
+                                <span> @User.GetPrincipalName() </span>
+                            </a>
+                            <ul class="stelina-submenu">
+                                <li class="switcher-option">
+                                    <a asp-action="logout" asp-controller="account">
+                                        <span> Log out </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    }
+                    @if (@User.Identity.IsAuthenticated == false)
+                    {
+                        <ul class="header-user-links">
                         <li>
-                            <a href="login.html">Login or Register</a>
+                            <a asp-action="signin" asp-controller="account">Login</a>
+                        </li>
+                        <li>
+                            <a asp-action="register" asp-controller="account">Register</a>
                         </li>
                     </ul>
+                    }
                 </div>
             </div>
         </div>
@@ -275,6 +303,11 @@
                                                                class="input-text" />
                                                     </p>
                                                     <p class="form-row form-row-wide">
+                                                        <input type="text"
+                                                               placeholder="Username"
+                                                               class="input-text" />
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
                                                         <input type="password"
                                                                class="input-text"
                                                                placeholder="Password" />
@@ -394,18 +427,18 @@
                             <div class="newsletter-head">
                                 <h3 class="title">Newsletter</h3>
                             </div>
-                            <div class="newsletter-form-wrap">
+                            @*<form id="newsletter-subscribe" class="newsletter-form-wrap">
                                 <div class="list">
-                                    Sign up for our free video course and <br />
-                                    urban garden inspiration
+                                Sign up for our free video course and <br />
+                                urban garden inspiration
                                 </div>
                                 <input type="email"
-                                       class="input-text email email-newsletter"
-                                       placeholder="Your email letter" />
-                                <button class="button btn-submit submit-newsletter">
-                                    SUBSCRIBE
+                                class="input-text email email-newsletter"
+                                placeholder="Your email letter" />
+                                <button type="submit" class="button btn-submit submit-newsletter">
+                                SUBSCRIBE
                                 </button>
-                            </div>
+                                </form>*@
                         </div>
                     </div>
                     <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -435,18 +468,19 @@
                             <div class="newsletter-head">
                                 <h3 class="title">Newsletter</h3>
                             </div>
-                            <div class="newsletter-form-wrap">
+                            <form id="newsletter-subscribe" class="newsletter-form-wrap">
                                 <div class="list">
                                     Sign up for our free video course and <br />
                                     urban garden inspiration
                                 </div>
                                 <input type="email"
+                                       name="email"
                                        class="input-text email email-newsletter"
                                        placeholder="Your email letter" />
-                                <button class="button btn-submit submit-newsletter">
+                                <button type="submit" class="button btn-submit submit-newsletter">
                                     SUBSCRIBE
                                 </button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <div class="box-footer col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -463,7 +497,7 @@
                                     <a href="#">Delivery</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="#">Contact Us</a>
+                                    <a asp-controller="home" asp-action="contact">Contact Us</a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="#">Return</a>
@@ -560,6 +594,41 @@
     <script src="~/assets/js/owl.thumbs.min.js"></script>
     <script src="~/assets/js/jquery.scrollbar.min.js"></script>
     <script src="~/assets/js/frontend-plugin.js"></script>
+    <script src="~/lib/toastr.js/toastr.min.js"></script>
+    <script src="~/lib/toastr.js/toastr.customize.js"></script>
+
+    <script>
+        $(document).ready(function (){
+            $("#newsletter-subscribe").submit(function (e) {
+                e.preventDefault();
+
+                let formData = new FormData(e.currentTarget);
+
+
+                $.ajax({
+                    url: '@Url.Action("Subscribe","Home")',
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response){
+
+                        if(response.error == false){
+                            toastr["success"](response.message, "Uğur")
+                        }
+
+                        e.currentTarget.reset();
+                    },
+                    error: function (response){
+
+                        if(response.error == true){
+                            toastr["error"](response.message, "Xəta");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
     @RenderSection("addjs", required:false)
 </body>

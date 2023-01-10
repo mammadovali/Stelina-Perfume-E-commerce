@@ -10911,11 +10911,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina.Domain\\Stelina.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina-Perfume-E-commerce\\Stelina.Domain\\Stelina.Domain.csproj",
       "projectName": "Stelina.Domain",
-      "projectPath": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina.Domain\\Stelina.Domain.csproj",
+      "projectPath": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina-Perfume-E-commerce\\Stelina.Domain\\Stelina.Domain.csproj",
       "packagesPath": "C:\\Users\\Əli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina.Domain\\obj\\",
+      "outputPath": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina-Perfume-E-commerce\\Stelina.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BlogPost>
+
+<div class="blog-articles related-articles">
+    <h3 class="custom_blog_title">Related Articles</h3>
+    <div class="blog-slider style-1 owl-slick"
+         data-slick='{"variableWidth":true, "autoplay":false, "autoplaySpeed":400, "arrows":true, "dots":false, "infinite":true, "speed":600, "rows":1}'
+         data-responsive='[{"breakpoint":"1200","settings":{"slidesToShow":1,"variableWidth":false }}]'>
+
+        @foreach (var item in Model)
+        {
+            <div class="blog-item">
+                <div class="post-format">
+                    <a asp-controller="blog" asp-action="details" asp-route-slug="@item.Slug">
+                        <img src="~/uploads/images/@item.ImagePath" alt="blog-image" />
+                    </a>
+                </div>
+                <div class="post-info">
+                    <div class="category-blog">
+                        <a>@item.Category?.Name</a>
+                    </div>
+                    <h3 class="post-title">
+                        <a asp-controller="blog" asp-action="details" asp-route-slug="@item.Slug">@item.Title</a>
+                    </h3>
+                    <div class="main-info-post">
+                        <p class="des ellipse" style="width: auto;">
+                            @item.Body.ToPlainText()
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="main-info-post"></div>
+</div>
+
+
+

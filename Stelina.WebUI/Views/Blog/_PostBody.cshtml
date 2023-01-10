@@ -1,0 +1,48 @@
+﻿@model PagedViewModel<BlogPost>
+
+@foreach (var item in Model.Items)
+{
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+        <div class="blog-item">
+            <div class="post-format">
+                <a asp-action="details" asp-route-slug="@item.Slug">
+                    <img src="~/uploads/images/@item.ImagePath" alt="img" />
+                </a>
+            </div>
+            <div class="post-info">
+                <div class="category-blog">
+                    <span>@item.Category.Name</span>
+                </div>
+                <h3 class="post-title">
+                    <a asp-action="details" asp-route-slug="@item.Slug">
+                        @item.Title
+                    </a>
+                </h3>
+                <div class="main-info-post ellipse" style="width: 246px;">
+                    <p class="des">
+                        @Html.Raw(item.Body)
+                    </p>
+                </div>
+                <div class="author-view">
+                    <div class="review">
+                        <div class="view">
+                            <span class="icon-view">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </span>
+                            <span class="count"> 631 </span>
+                        </div>
+                        <div class="s-comments">
+                            <span class="icon-cmt">
+                                <i class="fa fa-commenting"
+                               aria-hidden="true"></i>
+                            </span>
+                            <span class="count"> 82 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+

@@ -1,20 +1,16 @@
-﻿using Stelina.Domain.AppCode.Infrastructure;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Stelina.Domain.AppCode.Infrastructure
 {
     public class PagedViewModel<T>
         where T : IPageable
     {
-
         const int maxPaginationButtonCount = 10;
-
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int TotalCount { get; set; }
@@ -23,36 +19,21 @@ namespace Stelina.Domain.AppCode.Infrastructure
             get
             {
                 double count = Math.Ceiling(this.TotalCount * 1D / this.PageSize);
-
                 return (int)count;
             }
         }
-
         public IEnumerable<T> Items { get; set; }
-
         public PagedViewModel(IQueryable<T> query, PaginateModel model)
         {
-            this.TotalCount = query.Count();
 
+            this.TotalCount = query.Count();
+            this.PageIndex = model.PageIndex;
             this.PageSize = model.PageSize;
 
-            this.PageIndex = model.PageIndex;
-
-            if (this.MaxPageSize < model.PageIndex)
-            {
-                this.PageIndex = this.MaxPageSize;
-            }
-            else
-            {
-                this.PageIndex = model.PageIndex;
-            }
-
-            this.Items = query
-                .Skip((this.PageIndex - 1) * this.PageSize)
-                .Take(this.PageSize)
-                .ToList(); ;
+            this.Items = query.Skip((this.PageIndex - 1) * this.PageSize)
+                              .Take(this.PageSize)
+                              .ToList();
         }
-
 
         public HtmlString GetPager(IUrlHelper urlHelper, string action, string area = "", string paginateFunction = "")
         {
@@ -63,7 +44,7 @@ namespace Stelina.Domain.AppCode.Infrastructure
             StringBuilder builder = new StringBuilder();
             bool hasPaginationFunction = !string.IsNullOrWhiteSpace(paginateFunction);
 
-            builder.Append("<ul class='blog-pagination ptb-20'>");
+            builder.Append("<ul class='pagination'>");
 
             if (this.PageIndex > 1)
             {
@@ -77,12 +58,12 @@ namespace Stelina.Domain.AppCode.Infrastructure
                     });
 
                 builder.Append($@"<li class='prev'>
-                                <a href='{link}'><i class='fa fa-angle-left'></i></a>
+                                <a href='{link}'>Previous</a>
                                 </li>");
             }
             else
             {
-                builder.Append("<li class='prev disabled'><a><i class='fa fa-angle-left'></i></a></li>");
+                builder.Append("<li class='prev disabled'><a>Previous</li>");
             }
 
             int min = 1, max = this.MaxPageSize;
@@ -134,12 +115,12 @@ namespace Stelina.Domain.AppCode.Infrastructure
                     });
 
                 builder.Append($@"<li class='next'>
-                                <a href='{link}'><i class='fa fa-angle-right'></i></a>
+                                <a href='{link}'>Next</a>
                                 </li>");
             }
             else
             {
-                builder.Append("<li class='next disabled'><a><i class='fa fa-angle-right'></i></a></li>");
+                builder.Append("<li class='next disabled'><a>Next</a></li>");
             }
 
 

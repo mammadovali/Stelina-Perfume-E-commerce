@@ -31,7 +31,7 @@ namespace Stelina.Domain.AppCode.Infrastructure
         {
             get
             {
-                return this.pageSize < 5 ? 5 : this.pageSize;
+                return this.pageSize < 6 ? 6 : this.pageSize;
             }
             set
             {

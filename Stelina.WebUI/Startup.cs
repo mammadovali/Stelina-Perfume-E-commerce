@@ -1,12 +1,18 @@
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
+using Stelina.Domain.Models.Entities.Membership;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +33,58 @@ namespace Stelina.WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(
+                cfg =>
+                {
+                    var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+
+                    cfg.Filters.Add(new AuthorizeFilter(policy));
+                }
+            );
 
             services.AddDbContext<StelinaDbContext>(cfg =>
             {
                 cfg.UseSqlServer(configuration["ConnectionStrings:cString"]);
             });
+
+            services.AddIdentity<StelinaUser, StelinaRole>()
+                .AddEntityFrameworkStores<StelinaDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true; //herkesin bir emaili olsun
+                cfg.Password.RequireDigit = false;
+                cfg.Password.RequireUppercase = false;
+                cfg.Password.RequireLowercase = false;
+                cfg.Password.RequireNonAlphanumeric = false;
+                cfg.Password.RequiredUniqueChars = 1; //123
+                cfg.Lockout.DefaultLockoutTimeSpan = new TimeSpan(0, 1, 0);
+                cfg.Lockout.MaxFailedAccessAttempts = 3;
+                cfg.Password.RequiredLength = 3;
+
+                cfg.User.RequireUniqueEmail = true;
+
+            });
+
+            services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/signin.html";
+                cfg.AccessDeniedPath = "/notfound.html";
+
+                cfg.Cookie.Name = "stelina";
+                cfg.Cookie.HttpOnly = true;
+                cfg.ExpireTimeSpan = new TimeSpan(0, 15, 0);
+            });
+
+            services.AddAuthentication();
+            services.AddAuthorization();
+
+            services.AddScoped<UserManager<StelinaUser>>();
+            services.AddScoped<SignInManager<StelinaUser>>();
+
 
             services.AddRouting(cfg =>    // url lerin kichik herfle gorunmesi uchun
             {
@@ -45,9 +97,17 @@ namespace Stelina.WebUI
             });
 
             services.AddSingleton<EmailService>();
+
+            services.AddSingleton<CryptyoService>();
+
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Stelina."));
+
+            services.AddMediatR(assemblies.ToArray());
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<StelinaRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -60,13 +120,36 @@ namespace Stelina.WebUI
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.SeedMembership();
+            StelinaDbSeed.SeedUserRole(roleManager);
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(cfg =>
             {
+                cfg.MapControllerRoute(
+                name: "default-signin",
+                pattern: "signin.html",
+                defaults: new
+                {
+                    area = "",
+                    controller = "account",
+                    action = "signin"
+                });
+
+
+                cfg.MapControllerRoute(
+                name: "default-accessdenied",
+                pattern: "accessdenied.html",
+                defaults: new
+                {
+                    area = "",
+                    controller = "account",
+                    action = "accessdenied"
+                });
 
                 cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=dashboard}/{action=index}/{id?}");  // for admin panel
 

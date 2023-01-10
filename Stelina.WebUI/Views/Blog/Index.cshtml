@@ -1,0 +1,42 @@
+﻿
+<div class="main-content main-content-blog grid no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">Our blog</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-area content-blog col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="site-main">
+                    <h3 class="custom_blog_title capi">Our Blog</h3>
+                    <div class="blog-list grid-style">
+                        <div class="row">
+                                <partial name="_PostBody" model="@Model">
+                        </div>
+                    </div>
+                    <div class="pagination clearfix style2 grid">
+                        <div class="nav-link">
+                            <a href="#" class="page-numbers">
+                                <i class="icon fa fa-angle-left" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" class="page-numbers">1</a>
+                            <a href="#" class="page-numbers">2</a>
+                            <a href="#" class="page-numbers current">3</a>
+                            <a href="#" class="page-numbers">
+                                <i class="icon fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

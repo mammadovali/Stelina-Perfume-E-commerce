@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Zbd5NhK1ZwWwA4y4O8Jwb2prm+a+OkQWSGIf1DHc+4Fs1DRnIoNoVJJ0VT+/x/QP9Wm0rpwJRIIkHI7q8GZE+g==",
+  "dgSpecHash": "uwPamW3HDOil1Muy6xgXFdrzirvobrQu8UlcKHNiYSCttzp3+Jof/zlOLkicYh/l6hfjbLtn63s0+ikBLkz+Dw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina.Domain\\Stelina.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina-Perfume-E-commerce\\Stelina.Domain\\Stelina.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Əli\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Əli\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",

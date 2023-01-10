@@ -25,6 +25,24 @@ namespace Stelina.Domain.Models.DataContexts
 
         public DbSet<Faq> Faqs { get; set; }
 
+        public DbSet<Subscribe> Subscribes { get; set; }
+
+        public DbSet<Brand> Brands { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
+
+        public DbSet<BlogPost> BlogPosts { get; set; }
+
+        public DbSet<BlogPostComment> BlogPostComments { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<BlogPostTagItem> BlogPostTagCloud { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
