@@ -5,6 +5,7 @@ using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.Entities.Membership;
 using Stelina.Domain.Models.FormModel;
+using Stelina.Domain.Models.ViewModels.LoginRegister;
 using System.Threading.Tasks;
 
 namespace Stelina.WebUI.Controllers
@@ -122,7 +123,7 @@ namespace Stelina.WebUI.Controllers
             {
                 return Redirect(callbackUrl);
             }
-            return RedirectToAction("Index", "Blog");
+            return RedirectToAction("Index", "Home");
 
         end:
             return View(user);

@@ -23,8 +23,6 @@
     <link rel="stylesheet"
           href="~/assets/js/fancybox/source/jquery.fancybox.css" />
     <link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css" />
-    <link rel="stylesheet"
-          href="assets/js/fancybox/source/jquery.fancybox.css" />
     <link rel="stylesheet" href="~/assets/css/jquery.scrollbar.min.css" />
     <link rel="stylesheet" href="~/assets/css/mobile-menu.css" />
     <link rel="stylesheet" href="~/assets/fonts/flaticon/flaticon.css" />
@@ -65,34 +63,34 @@
 
                     @if (@User.Identity.IsAuthenticated)
                     {
-                    <div class="header-language account">
-                        <div class="stelina-language stelina-dropdown">
-                            <i class="fa fa-user"></i>
-                            <a href="#"
+                        <div class="header-language account">
+                            <div class="stelina-language stelina-dropdown">
+                                <i class="fa fa-user"></i>
+                                <a href="#"
                                class="active language-toggle"
                                data-stelina="stelina-dropdown">
-                                <span> @User.GetPrincipalName() </span>
-                            </a>
-                            <ul class="stelina-submenu">
-                                <li class="switcher-option">
-                                    <a asp-action="logout" asp-controller="account">
-                                        <span> Log out </span>
-                                    </a>
-                                </li>
-                            </ul>
+                                    <span> @User.GetPrincipalName() </span>
+                                </a>
+                                <ul class="stelina-submenu">
+                                    <li class="switcher-option">
+                                        <a asp-action="logout" asp-controller="account">
+                                            <span> Log out </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
                     }
                     @if (@User.Identity.IsAuthenticated == false)
                     {
                         <ul class="header-user-links">
-                        <li>
-                            <a asp-action="signin" asp-controller="account">Login</a>
-                        </li>
-                        <li>
-                            <a asp-action="register" asp-controller="account">Register</a>
-                        </li>
-                    </ul>
+                            <li>
+                                <a asp-action="signin" asp-controller="account">Login</a>
+                            </li>
+                            <li>
+                                <a asp-action="register" asp-controller="account">Register</a>
+                            </li>
+                        </ul>
                     }
                 </div>
             </div>
@@ -254,6 +252,8 @@
                                 <a href="javascript:void(0);" data-stelina="stelina-dropdown">
                                     <span class="flaticon-user"></span>
                                 </a>
+
+
                                 <div class="header-account stelina-submenu">
                                     <div class="header-user-form-tabs">
                                         <ul class="tab-link">
@@ -322,6 +322,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                             <a class="menu-bar mobile-navigation menu-toggle" href="#">
                                 <span></span>
@@ -597,7 +598,7 @@
     <script src="~/lib/toastr.js/toastr.min.js"></script>
     <script src="~/lib/toastr.js/toastr.customize.js"></script>
 
-    <script>
+    <script class="removable">
         $(document).ready(function (){
             $("#newsletter-subscribe").submit(function (e) {
                 e.preventDefault();

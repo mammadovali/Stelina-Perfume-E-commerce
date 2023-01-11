@@ -54,7 +54,6 @@ namespace Stelina.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> PostComment(BlogPostCommentCommand command)
         {
-
             try
             {
                 var response = await mediator.Send(command);

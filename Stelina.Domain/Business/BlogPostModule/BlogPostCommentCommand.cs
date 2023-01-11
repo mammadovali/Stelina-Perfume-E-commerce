@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace Stelina.Domain.Business.BlogPostModule
 {
-
     public class BlogPostCommentCommand : IRequest<BlogPostComment>
     {
         public int? CommentId { get; set; }

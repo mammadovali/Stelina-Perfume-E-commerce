@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities.Membership;
@@ -80,7 +81,21 @@ namespace Stelina.WebUI
             });
 
             services.AddAuthentication();
-            services.AddAuthorization();
+            services.AddAuthorization(cfg =>
+            {
+
+                foreach (var policyName in Extension.policies)
+                {
+                    cfg.AddPolicy(policyName, p =>
+                    {
+                        p.RequireAssertion(handler =>
+                        {
+                            return handler.User.HasClaim(policyName, "1");
+                        });
+                    });
+
+                }
+            });
 
             services.AddScoped<UserManager<StelinaUser>>();
             services.AddScoped<SignInManager<StelinaUser>>();

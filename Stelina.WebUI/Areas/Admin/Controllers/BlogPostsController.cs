@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/BlogPosts
+        [Authorize(Policy = "admin.blogposts.index")]
         public async Task<IActionResult> Index(BlogPostGetAllQueryAdmin query)
         {
             var response = await mediator.Send(query);
@@ -38,7 +39,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/BlogPosts/Details/5
+        [Authorize(Policy = "admin.blogposts.details")]
         public async Task<IActionResult> Details(BlogPostSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -50,7 +51,8 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        // GET: Admin/BlogPosts/Create
+
+        [Authorize(Policy = "admin.blogposts.create")]
         public IActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "Id", "Name");
@@ -60,6 +62,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.blogposts.create")]
         public async Task<IActionResult> Create(BlogPostCreateCommand command)
         {
 
@@ -86,7 +89,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // GET: Admin/BlogPosts/Edit/5
+        [Authorize(Policy = "admin.blogposts.edit")]
         public async Task<IActionResult> Edit(int? id, BlogPostEditCommand command)
         {
             if (id == null)
@@ -120,6 +123,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.blogposts.edit")]
         public async Task<IActionResult> Edit(int id, BlogPostEditCommand command)
         {
             if (id != command.Id)
@@ -144,9 +148,9 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(command);
         }
 
-        // POST: Admin/BlogPosts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.blogposts.delete")]
         public async Task<IActionResult> DeleteConfirmed(int id, BlogPostRemoveCommand command)
         {
             if (id != command.Id)
@@ -168,6 +172,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Publish")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.blogposts.publish")]
         public async Task<IActionResult> PublishConfirmed(int id, BlogPostPublishCommand command)
         {
             if (id != command.Id)
@@ -185,14 +190,21 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+
+
+        [Authorize(Policy = "admin.blogposts.deletedposts")]
         public async Task<IActionResult> DeletedPosts(BlogPostGetAllDeletedQuery query)
         {
             var response = await mediator.Send(query);
             return View(response);
         }
 
+
+
         [HttpPost, ActionName("Back")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.blogposts.backtoposts")]
         public async Task<IActionResult> BackToPosts(int id, BlogPostRemoveBackCommand command)
         {
             if (id != command.Id)
@@ -204,6 +216,8 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
         public async Task<IActionResult> DeletedPostDetails(BlogPostGetDeletedSingleQuery query)
         {
             var response = await mediator.Send(query);
@@ -215,7 +229,10 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
+
+
         [HttpPost, ActionName("Clear")]
+        [Authorize(Policy = "admin.blogposts.cleardeletedposts")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ClearDeletedPosts(int id, BlogPostClearCommand command)
         {
@@ -228,6 +245,9 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+
+        [Authorize(Policy = "admin.blogposts.getcomments")]
         public async Task<IActionResult> GetComments(BlogPostGetCommentsQuery query)
         {
             var response = await mediator.Send(query);
@@ -240,6 +260,9 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
+
+
+        [Authorize(Policy = "admin.blogposts.commentdetails")]
         public async Task<IActionResult> CommentDetails(BlogPostGetSingleCommentQuery query)
         {
             var response = await mediator.Send(query);
@@ -252,8 +275,11 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
+
+
         [HttpPost, ActionName("CommentDelete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.blogposts.commentdelete")]
         public async Task<IActionResult> CommentDeleteConfirmed(int id, BlogPostCommentRemoveCommand command)
         {
             if (id != command.Id)

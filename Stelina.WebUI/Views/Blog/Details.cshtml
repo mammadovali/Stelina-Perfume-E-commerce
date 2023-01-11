@@ -55,7 +55,7 @@
                                     <span class="fa fa-eye"></span>533 Views
                                 </li>
                                 <li class="post-comments">
-                                    <span><i class="fa fa-comment"></i></span><span class="px-1">0</span>Comments
+                                    <span><i class="fa fa-comment"></i></span><span class="px-1"></span>Comments
                                 </li>
                             </ul>
 
@@ -152,9 +152,8 @@
 
                         </h3>
                         <div id="replyToComment"></div>
-                         <input type="hidden" name="postId" value="@Model.Id" />
                         <form class="comment-form" method="post" id="replyForm">
-
+                            <input type="hidden" name="postId" value="@Model.Id" />
                             <p class="comment-reply-content">
                                 <textarea rows="6"
                                           name="comment"
@@ -253,10 +252,11 @@
 
             let formData = new FormData(e.currentTarget);
 
-            let toCommentId = $(`#replyToComment div.comment-item`).data("comment-id");
+            let toCommentId = $(`#replyToComment .comment-item`).data("comment-id");
 
 
-           //console.log("commentId",toCommentId);
+           console.log("commentId", toCommentId);
+
 
             if(toCommentId != undefined){
                 formData.set("commentId", toCommentId);
@@ -274,6 +274,7 @@
                     //console.log(res);
                 },
                 error: function(res){
+
                     if(res.statusText == "parsererror"){
                         if(toCommentId != undefined){
                            $(res.responseText).insertAfter($(`#c-${toCommentId}`));
@@ -284,12 +285,13 @@
                         }
                         else
                         {
-                            $("div.comments ul").append($(res.responseText))
+                            $("div.comments-area ul").append($(res.responseText))
                             $("#comment-text").val("");
                         }
                     }
 
-                    //console.warn(res);
+                    console.warn(res, "error")
+
                 }
             });
         })

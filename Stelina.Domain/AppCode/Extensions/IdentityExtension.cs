@@ -7,6 +7,8 @@ namespace Stelina.Domain.AppCode.Extensions
 {
     public static partial class Extension
     {
+        public static string[] policies = null;
+
         public static string GetPrincipalName(this ClaimsPrincipal principal)
         {
             string name = principal.Claims.FirstOrDefault(c => c.Type.Equals("name"))?.Value;
@@ -30,6 +32,14 @@ namespace Stelina.Domain.AppCode.Extensions
         public static int GetCurrentUserId(this IActionContextAccessor ctx)
         {
             return ctx.ActionContext.HttpContext.User.GetCurrentUserId();
+        }
+
+        public static int GetCurrentUserId(this ClaimsIdentity identity)
+        {
+            return Convert.ToInt32(
+                    identity.Claims.FirstOrDefault(c =>
+                    c.Type.Equals(ClaimTypes.NameIdentifier)).Value
+                    );
         }
     }
 

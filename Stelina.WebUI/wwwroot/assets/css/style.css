@@ -9743,3 +9743,8 @@ blockquote .author .desc {
     overflow: hidden;
     width: 100px; /* some width */
 }
+
+
+.comment-sub {
+    margin-left: 30px !important;
+}

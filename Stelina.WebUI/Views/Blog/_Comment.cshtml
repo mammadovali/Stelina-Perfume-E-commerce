@@ -1,6 +1,6 @@
 ﻿@model BlogPostComment
 
-<div class="comment-item" id="c-@Model.Id" data-comment-id="@Model.Id">
+<div class="@(Model.ParentId != null ? "comment-sub" : "") comment-item" id="c-@Model.Id" data-comment-id="@Model.Id">
     <div class="author-view">
         <div class="author">
             <h3 class="name">@($"{Model.CreatedByUser?.Name} {Model.CreatedByUser?.Surname}")</h3>
