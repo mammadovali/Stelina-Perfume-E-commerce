@@ -28,7 +28,7 @@ namespace Stelina.Domain.AppCode.Extensions
 
             return userId;
         }
-        
+
         public static int GetCurrentUserId(this IActionContextAccessor ctx)
         {
             return ctx.ActionContext.HttpContext.User.GetCurrentUserId();
@@ -40,6 +40,11 @@ namespace Stelina.Domain.AppCode.Extensions
                     identity.Claims.FirstOrDefault(c =>
                     c.Type.Equals(ClaimTypes.NameIdentifier)).Value
                     );
+        }
+
+        public static bool HasAccess(this ClaimsPrincipal principal, string policyName)
+        {
+            return principal.IsInRole("SuperAdmin") || principal.HasClaim(c => c.Type.Equals(policyName) && c.Value.Equals("1"));
         }
     }
 

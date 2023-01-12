@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stelina.Domain.AppCode.Extensions;
+using Stelina.Domain.AppCode.Providers;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities.Membership;
@@ -68,6 +70,8 @@ namespace Stelina.WebUI
 
                 cfg.User.RequireUniqueEmail = true;
 
+                cfg.SignIn.RequireConfirmedEmail = true;
+
             });
 
             services.ConfigureApplicationCookie(cfg =>
@@ -90,7 +94,8 @@ namespace Stelina.WebUI
                     {
                         p.RequireAssertion(handler =>
                         {
-                            return handler.User.HasClaim(policyName, "1");
+                            return handler.User.IsInRole("SuperAdmin") ||
+                            handler.User.HasClaim(policyName, "1");
                         });
                     });
 
@@ -99,6 +104,7 @@ namespace Stelina.WebUI
 
             services.AddScoped<UserManager<StelinaUser>>();
             services.AddScoped<SignInManager<StelinaUser>>();
+            services.AddScoped<RoleManager<StelinaRole>>();
 
 
             services.AddRouting(cfg =>    // url lerin kichik herfle gorunmesi uchun
@@ -120,6 +126,8 @@ namespace Stelina.WebUI
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Stelina."));
 
             services.AddMediatR(assemblies.ToArray());
+
+            services.AddScoped<IClaimsTransformation, AppClaimProvider>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RoleManager<StelinaRole> roleManager)

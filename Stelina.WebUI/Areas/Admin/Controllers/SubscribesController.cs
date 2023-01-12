@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        // GET: Admin/Subscribes
+        [Authorize(Policy = "admin.subscribes.index")]
         public async Task<IActionResult> Index(SubscribeGetAllQuery query)
         {
             var response = await mediator.Send(query);
@@ -38,7 +39,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         }
 
 
-        // POST: Admin/Subscribes/Delete/5
+        [Authorize(Policy = "admin.subscribes.delete")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(SubscribeRemoveCommand command)

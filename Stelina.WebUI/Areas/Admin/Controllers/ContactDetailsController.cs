@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Stelina.Domain.Business.ContactDetailModule;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 
@@ -14,35 +16,39 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     public class ContactDetailsController : Controller
     {
-        private readonly StelinaDbContext _context;
+        private readonly StelinaDbContext db;
+        private readonly IMediator mediator;
 
-        public ContactDetailsController(StelinaDbContext context)
+        public ContactDetailsController(StelinaDbContext db, IMediator mediator)
         {
-            _context = context;
+            this.db = db;
+            this.mediator = mediator;
         }
 
         [Authorize(Policy = "admin.contactdetails.index")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(ContactDetailGetAllQuery query)
         {
-            return View(await _context.ContactDetails.ToListAsync());
+            var response = await mediator.Send(query);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return View(response);
         }
 
         [Authorize(Policy = "admin.contactdetails.details")]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(ContactDetailGetSingleQuery query)
         {
-            if (id == null)
+            var response = await mediator.Send(query);
+
+            if (response == null)
             {
                 return NotFound();
             }
 
-            var contactDetail = await _context.ContactDetails
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contactDetail == null)
-            {
-                return NotFound();
-            }
-
-            return View(contactDetail);
+            return View(response);
         }
 
         [Authorize(Policy = "admin.contactdetails.create")]
@@ -55,15 +61,16 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.contactdetails.create")]
-        public async Task<IActionResult> Create([Bind("PhoneNumber,Location,SupportEmail,Id,CreatedDate,DeletedDate")] ContactDetail contactDetail)
+        public async Task<IActionResult> Create(ContactDetailCreateCommand command)
         {
-            if (ModelState.IsValid)
+            var response = await mediator.Send(command);
+
+            if (response == null)
             {
-                _context.Add(contactDetail);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            return View(contactDetail);
+
+            return RedirectToAction(nameof(Index));
         }
 
         [Authorize(Policy = "admin.contactdetails.edit")]
@@ -74,80 +81,48 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var contactDetail = await _context.ContactDetails.FindAsync(id);
+            var contactDetail = await db.ContactDetails.FindAsync(id);
             if (contactDetail == null)
             {
                 return NotFound();
             }
             return View(contactDetail);
         }
-        
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.contactdetails.edit")]
-        public async Task<IActionResult> Edit(int id, [Bind("PhoneNumber,Location,SupportEmail,Id,CreatedDate,DeletedDate")] ContactDetail contactDetail)
+        public async Task<IActionResult> Edit(ContactDetailEditCommand command)
         {
-            if (id != contactDetail.Id)
+            var response = await mediator.Send(command);
+
+            if (response == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(contactDetail);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ContactDetailExists(contactDetail.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(contactDetail);
-        }
-
-        [Authorize(Policy = "admin.contactdetails.delete")]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var contactDetail = await _context.ContactDetails
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contactDetail == null)
-            {
-                return NotFound();
-            }
-
-            return View(contactDetail);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.contactdetails.delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(ContactDetailRemoveCommand command)
         {
-            var contactDetail = await _context.ContactDetails.FindAsync(id);
-            _context.ContactDetails.Remove(contactDetail);
-            await _context.SaveChangesAsync();
+            var response = await mediator.Send(command);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
             return RedirectToAction(nameof(Index));
         }
 
         private bool ContactDetailExists(int id)
         {
-            return _context.ContactDetails.Any(e => e.Id == id);
+            return db.ContactDetails.Any(e => e.Id == id);
         }
     }
 }

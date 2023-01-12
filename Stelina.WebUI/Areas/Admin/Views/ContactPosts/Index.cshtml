@@ -94,19 +94,32 @@
                     }
                 </td>
                 <td class="operations">
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
-                        <i class="fa fa-eye"></i>
-                    </a>
-                    @if (item.AnswerDate == null)
+
+
+                    @if (User.HasAccess("admin.contactposts.details"))
                     {
-                        <a asp-action="Reply" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
-                            <i class="fa-solid fa-reply"></i>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                            <i class="fa fa-eye"></i>
                         </a>
                     }
 
-                    <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Email')">
-                        <i class="fa fa-trash"></i>
-                    </a>
+                    @if (User.HasAccess("admin.contactposts.reply"))
+                    {
+                        @if (item.AnswerDate == null)
+                        {
+                            <a asp-action="Reply" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
+                                <i class="fa-solid fa-reply"></i>
+                            </a>
+                        }
+                    }
+
+
+                    @if (User.HasAccess("admin.contactposts.delete"))
+                    {
+                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Email')">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    }
 
                 </td>
             </tr>

@@ -48,10 +48,14 @@
                                 PublishedDate
                             </th>
                             <th class="operations">
-                                <a asp-action="Create" class="btn btn-sm btn-primary">
-                                    <i class="fa fa-pen-to-square"></i>
-                                </a>
+                                @if (User.HasAccess("admin.blogposts.create"))
+                                {
+                                    <a asp-action="Create" class="btn btn-sm btn-primary">
+                                        <i class="fa fa-pen-to-square"></i>
+                                    </a>
+                                }
                             </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -82,21 +86,37 @@
                                         </a>
                                     }
 
-                                    <a asp-action="GetComments" asp-route-blogpostid="@item.Id" class="btn btn-sm btn-success">
-                                        <i class="fa-regular fa-comment"></i>
-                                    </a>
+                                    @if (User.HasAccess("admin.blogposts.getcomments"))
+                                    {
+                                        <a asp-action="GetComments" asp-route-blogpostid="@item.Id" class="btn btn-sm btn-success">
+                                            <i class="fa-regular fa-comment"></i>
+                                        </a>
+                                    }
 
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </a>
 
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
+                                    @if (User.HasAccess("admin.blogposts.edit"))
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                    }
 
-                                    <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Title')">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+
+                                    @if (User.HasAccess("admin.blogposts.details"))
+                                    {
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    }
+
+                                    @if (User.HasAccess("admin.blogposts.delete"))
+                                    {
+                                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Title')">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    }
+
+
                                 </td>
                             </tr>
 

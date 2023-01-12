@@ -21,11 +21,13 @@
                 @Html.DisplayNameFor(model => model.CreatedDate)
             </th>
 
-
             <th class="operations">
-                <a asp-action="Create" class="btn btn-sm btn-primary">
-                    <i class="fa fa-pen-to-square"></i>
-                </a>
+                @if (User.HasAccess("admin.contactdetails.index"))
+                {
+                    <a asp-action="Create" class="btn btn-sm btn-primary">
+                        <i class="fa fa-pen-to-square"></i>
+                    </a>
+                }
             </th>
 
 
@@ -50,16 +52,27 @@
                 <td class="operations">
 
 
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
-                        <i class="fa-solid fa-pen"></i>
-                    </a>
+                    @if (User.HasAccess("admin.contactdetails.edit"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    }
 
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
-                        <i class="fa fa-eye"></i>
-                    </a>
-                    <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.PhoneNumber')">
-                        <i class="fa fa-trash"></i>
-                    </a>
+                    @if (User.HasAccess("admin.contactdetails.details"))
+                    {
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                    }
+
+                    @if (User.HasAccess("admin.contactdetails.delete"))
+                    {
+                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.PhoneNumber')">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    }
+
                 </td>
             </tr>
         }
@@ -98,23 +111,21 @@
                 formData.set("id", id);
 
                 $.ajax({
-                    url: `@Url.Action("Delete")`,
+                    url: `@Url.Action("Delete", "ContactDetails")`,
                     type: "POST",
                     data: formData,
                     contentType: false,
                     processData: false,
                     success: function(response){
-                        console.log(response);
 
                         if(response.error == true){
-                            toastr.error(response.message, "Xeta!");
+                            toastr.error(response.message, "Xəta!");
                             return;
                         }
 
                         location.reload();
                     },
                     error: function(errorResponse){
-                        console.error(errorResponse);
                     }
                 });
             }

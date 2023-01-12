@@ -18,7 +18,7 @@
                 <div class="page-header-title">
                     <div class="d-inline">
                         <h4>Deleted blog posts</h4>
-                       
+
                     </div>
                 </div>
             </div>
@@ -80,9 +80,23 @@
                                     </td>
 
                                     <td class="operations table-imaged">
-                                        <a class="btn btn-sm btn-success" onclick="removeEntityBack(@item.Id, '@item.Title')"><i class="fa-solid fa-rotate-left"></i></a>
-                                        <a asp-action="DeletedPostDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
-                                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Title')"><i class="fa-solid fa-trash-can"></i></a>
+                                        @if (User.HasAccess("admin.blogposts.backtoposts"))
+                                        {
+                                            <a class="btn btn-sm btn-success" onclick="removeEntityBack(@item.Id, '@item.Title')"><i class="fa-solid fa-rotate-left"></i></a>
+                                        }
+                                        
+                                        
+                                        @if (User.HasAccess("admin.blogposts.deletedpostdetails"))
+                                        {
+                                            <a asp-action="DeletedPostDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
+                                        }
+                                        
+                                        
+                                        @if (User.HasAccess("admin.blogposts.cleardeletedposts"))
+                                        {
+                                             <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.Title')"><i class="fa-solid fa-trash-can"></i></a>
+                                        }
+                                       
                                     </td>
                                 </tr>
                             }

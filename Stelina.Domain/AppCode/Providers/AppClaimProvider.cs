@@ -53,6 +53,7 @@ namespace Stelina.Domain.AppCode.Providers
                 var currentClaims = currentIdentity.Claims.Where(c => Extension.policies.Contains(c.Type))
                     .ToArray();
 
+
                 foreach (var claim in currentClaims)
                 {
                     currentIdentity.RemoveClaim(claim);

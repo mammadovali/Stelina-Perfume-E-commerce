@@ -66,13 +66,20 @@
                                 </td>
                                 <td class="operations">
 
-                                    <a asp-action="CommentDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
+                                    @if (User.HasAccess("admin.blogposts.commentdetails"))
+                                    {
+                                        <a asp-action="CommentDetails" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    }
 
-                                    <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.CreatedByUser?.Name')">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @if (User.HasAccess("admin.brands.commentdelete"))
+                                    {
+                                        <a class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, '@item.CreatedByUser?.Name')">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    }
+
                                 </td>
                             </tr>
 

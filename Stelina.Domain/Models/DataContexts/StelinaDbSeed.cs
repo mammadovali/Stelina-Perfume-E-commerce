@@ -22,6 +22,8 @@ namespace Stelina.Domain.Models.DataContexts
                 string superAdminEmail = configuration["defaultAccount:email"];
                 string superAdminUserName = configuration["defaultAccount:username"];
                 string superAdminPassword = configuration["defaultAccount:password"];
+                string superAdminName = configuration["defaultAccount:name"];
+                string superAdminSurname = configuration["defaultAccount:surname"];
 
                 var superAdminRole = roleManager.FindByNameAsync(superAdminRoleName).Result;
 
@@ -49,7 +51,9 @@ namespace Stelina.Domain.Models.DataContexts
                     {
                         Email = superAdminEmail,
                         UserName = superAdminUserName,
-                        EmailConfirmed = true
+                        EmailConfirmed = true,
+                        Name = superAdminName,
+                        Surname = superAdminSurname
                     };
 
                     var userResult = userManager.CreateAsync(superAdminUser, superAdminPassword).Result;
@@ -79,6 +83,16 @@ namespace Stelina.Domain.Models.DataContexts
             {
                 StelinaRole role = new StelinaRole();
                 role.Name = "User";
+
+                IdentityResult roleResult = roleManager.
+
+                CreateAsync(role).Result;
+            }
+
+            if (!roleManager.RoleExistsAsync("Moderator").Result)
+            {
+                StelinaRole role = new StelinaRole();
+                role.Name = "Moderator";
 
                 IdentityResult roleResult = roleManager.
 

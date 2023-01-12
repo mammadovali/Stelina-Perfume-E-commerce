@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
@@ -43,9 +44,9 @@ namespace Stelina.WebUI.Controllers
             return View(data);
         }
 
-        public IActionResult Contact()
+        public async Task<IActionResult> Contact()
         {
-            var contactDetail = db.ContactDetails.FirstOrDefault();
+            var contactDetail = await db.ContactDetails.FirstOrDefaultAsync();
 
             return View(new ContactPostDetailViewModel
             {

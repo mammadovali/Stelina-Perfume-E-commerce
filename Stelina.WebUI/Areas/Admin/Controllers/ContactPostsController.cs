@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -23,13 +24,16 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             this.emailService = emailService;
         }
 
-        // GET: Admin/ContactPosts
+        [Authorize(Policy = "admin.contactposts.index")]
         public async Task<IActionResult> Index()
         {
             return View(await db.ContactPosts.ToListAsync());
         }
 
-        // GET: Admin/ContactPosts/Details/5
+
+
+
+        [Authorize(Policy = "admin.contactposts.details")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,7 +52,10 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         }
 
 
-        // GET: Admin/ContactPosts/Delete/5
+
+
+
+        [Authorize(Policy = "admin.contactposts.delete")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -66,7 +73,10 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(contactPost);
         }
 
-        // POST: Admin/ContactPosts/Delete/5
+
+
+
+        [Authorize(Policy = "admin.contactposts.delete")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -79,6 +89,10 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
 
 
+
+
+
+        [Authorize(Policy = "admin.contactposts.reply")]
         public async Task<IActionResult> Reply(int? id)
         {
             if (id == null)
@@ -96,7 +110,11 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(entity);
         }
 
+
+
+
         [HttpPost]
+        [Authorize(Policy = "admin.contactposts.reply")]
         public async Task<IActionResult> Reply(int id, [FromForm][Bind("Name, Email, Content, Subject, Answer, EmailSubject")] ContactPost model)
         {
             var entity = db.ContactPosts.FirstOrDefault(bp => bp.Id == id && bp.AnswerDate == null);
@@ -123,6 +141,9 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
                 message = "Cavabınız uğurla göndərildi"
             });
         }
+
+
+
 
         private bool ContactPostExists(int id)
         {

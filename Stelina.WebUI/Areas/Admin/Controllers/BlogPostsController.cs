@@ -218,6 +218,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         }
 
 
+        [Authorize(Policy = "admin.blogposts.deletedpostdetails")]
         public async Task<IActionResult> DeletedPostDetails(BlogPostGetDeletedSingleQuery query)
         {
             var response = await mediator.Send(query);

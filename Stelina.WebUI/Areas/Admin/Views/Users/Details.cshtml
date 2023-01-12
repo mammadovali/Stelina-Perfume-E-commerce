@@ -1,0 +1,168 @@
+﻿@model StelinaUser
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<!-- Page-header start -->
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>User details</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="index">Users</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <span>Details</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page-header end -->
+<!-- Page-body start -->
+<div class="page-body">
+    <div class="card">
+        <div class="card-block">
+            <div>
+                <div class="form-group row">
+                    <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <p class="form-control">
+                            @Model.Name
+                        </p>
+                    </div>
+
+                    <label asp-for="Surname" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <p class="form-control">
+                            @Model.Surname
+                        </p>
+                    </div>
+
+                    <label asp-for="UserName" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <p class="form-control">
+                            @Model.UserName
+                        </p>
+                    </div>
+
+                    <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <p class="form-control">
+                            @Model.Email
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="tab-control" role="tabcontrol">
+                            <div class="tab-page" id="roles" aria-title="Rollar" selected>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+
+                                            <th style="max-width: 100px;">
+
+                                            </th>
+
+                                            <th>
+                                                Name
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (Tuple<int, string, bool> item in ViewBag.Roles)
+                                        {
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox"
+                                                       @(item.Item3 ? "checked" : "")
+                                                       data-role-name="@item.Item2"
+                                                       data-role-id="@item.Item1" />
+                                                </th>
+
+                                                <th>
+                                                    @item.Item2
+                                                </th>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                            <div class="tab-page" id="principals" aria-title="Səlahiyyətlər">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+
+                                            <th style="max-width: 100px;">
+
+                                            </th>
+
+                                            <th>
+                                                Name
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (Tuple<string, bool> item in ViewBag.Principals)
+                                        {
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox"
+                                                       @(item.Item2 ? "checked" : "")
+                                                       data-principal-name="@item.Item1"/>
+                                                </th>
+
+                                                <th>
+                                                    @item.Item1
+                                                </th>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12 d-flex justify-content-end">
+                        @if (User.HasAccess("admin.brands.edit"))
+                        {
+                            <a asp-action="Edit" class="btn btn-warning mr-2" asp-route-id="@Model.Id">Edit</a>
+                        }
+                        <a class="btn btn-info mr-2" asp-action="Index">Geri</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page-body end -->
+@section addcss{
+<link rel="stylesheet" href="~/lib/tab-control/tab-control.css" />
+}
+
+@section addjs{
+<script src="~/lib/tab-control/tab-control.js"></script>
+}
