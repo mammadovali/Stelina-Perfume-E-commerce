@@ -262,6 +262,20 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         }
 
 
+        [Authorize(Policy = "admin.blogposts.getlikes")]
+        public async Task<IActionResult> GetLikes(BlogPostGetLikesQuery query)
+        {
+            var response = await mediator.Send(query);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return View(response);
+        }
+
+
 
         [Authorize(Policy = "admin.blogposts.commentdetails")]
         public async Task<IActionResult> CommentDetails(BlogPostGetSingleCommentQuery query)

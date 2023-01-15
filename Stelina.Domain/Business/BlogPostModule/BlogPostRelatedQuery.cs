@@ -31,7 +31,7 @@ namespace Stelina.Domain.Business.BlogPostModule
                     .Select(bptc => bptc.TagId).ToArrayAsync(cancellationToken);
 
 
-                var posts = await (from bp in db.BlogPosts
+                var posts = await (from bp in db.BlogPosts.Where(bp => bp.DeletedDate == null)
                              join bptc in db.BlogPostTagCloud on bp.Id equals bptc.BlogPostId
                              where bp.Id != request.PostId && tagIds.Contains(bptc.TagId)
                              select bp)

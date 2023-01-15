@@ -153,15 +153,15 @@ namespace Stelina.WebUI
 
             app.UseEndpoints(cfg =>
             {
-                cfg.MapControllerRoute(
-                name: "default-signin",
-                pattern: "signin.html",
-                defaults: new
-                {
-                    area = "",
-                    controller = "account",
-                    action = "signin"
-                });
+                //cfg.MapControllerRoute(
+                //name: "default-signin",
+                //pattern: "signin.html",
+                //defaults: new
+                //{
+                //    area = "",
+                //    controller = "account",
+                //    action = "signin"
+                //});
 
 
                 cfg.MapControllerRoute(

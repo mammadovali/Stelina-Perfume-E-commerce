@@ -4,7 +4,7 @@
 }
 
 .tab-control > .tab-navs {
-    background-color: #1b1e24;
+    background-color: #ab8e66;
     padding: 0 5px;
 }
 
@@ -17,8 +17,9 @@
             border-radius: 0;
             border: 0px;
             padding: 15px 20px;
-            color: #8e9aa2;
+            color: #ffffff;
             min-width: 70px;
+            font-size: 1.5em;
         }
 
             .tab-control > .tab-navs > li > a:hover, .tab-control > .tab-navs > li > a:focus {
@@ -29,10 +30,11 @@
             .tab-control > .tab-navs > li > a.active, .tab-control > .tab-navs > li > a.active:focus, .tab-control > .tab-navs > li > a.active:hover {
                 color: #555;
                 cursor: default;
-                background-color: #fff;
+                background-color: #e0e0e0;
                 border: 1px solid #ddd;
                 border-bottom-color: transparent;
                 border-width: 0px;
+                border-radius: 25%;
             }
 
             .tab-control > .tab-navs > li > a.required {

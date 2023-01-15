@@ -4586,11 +4586,6 @@ ul.list-products {
         margin-bottom: 30px;
     }
 
-        .comments-area .comment .children {
-            padding-left: 30px;
-            padding-top: 30px;
-        }
-
         .comments-area > .custom_blog_title {
             font-size: 16px;
         }
@@ -7430,7 +7425,8 @@ a.remove-selected-comment {
 .comments-area .comment .children {
     list-style: none;
     padding-left: 60px;
-    padding-top: 50px;
+    padding-top: 27px;
+    padding-bottom: 30px;
     border-top: 1px solid #e6e6e6;
 }
 
@@ -7453,6 +7449,8 @@ a.remove-selected-comment {
     padding-top: 17px;
     padding-bottom: 20px;
     padding-right: 0px;
+    display: flex;
+    justify-content: space-around;
 }
 
     .post-item ul li {

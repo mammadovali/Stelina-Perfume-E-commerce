@@ -61,8 +61,15 @@ using Stelina.Domain.Models.ViewModels.LoginRegister;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+using Stelina.Domain.Models.ViewModels.BlogPostItems;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8fe2fde2d992358dee2e3c20c681428f6d00302b", @"/Views/Shared/_Navbar.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4affc3b48500f41c0004a89697785b8fe9a8a175", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2964e9e534c25275c6753b2e3cbf5ba029ffedc3", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__Navbar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -177,7 +184,7 @@ using Stelina.Domain.Models.ViewModels.LoginRegister;
                         id=""menu-main-menu"">
                         <li class=""menu-item menu-item-has-children"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b12024", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b12284", async() => {
                 WriteLiteral("Home");
             }
             );
@@ -205,7 +212,7 @@ using Stelina.Domain.Models.ViewModels.LoginRegister;
                         </li>
                         <li class=""menu-item menu-item-has-children"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b13978", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b14238", async() => {
                 WriteLiteral("Blogs");
             }
             );
@@ -225,7 +232,7 @@ using Stelina.Domain.Models.ViewModels.LoginRegister;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li class=\"menu-item\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b15618", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b15878", async() => {
                 WriteLiteral("About ");
             }
             );
@@ -245,7 +252,7 @@ using Stelina.Domain.Models.ViewModels.LoginRegister;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li class=\"menu-item\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b17259", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe2fde2d992358dee2e3c20c681428f6d00302b17519", async() => {
                 WriteLiteral("Contact ");
             }
             );

@@ -34,7 +34,9 @@ namespace Stelina.Domain.Business.SubscribeModule
                     return null;
                 }
 
-                data.DeletedDate = DateTime.UtcNow.AddHours(4);
+                db.Remove(data);
+
+                //data.DeletedDate = DateTime.UtcNow.AddHours(4);
                 await db.SaveChangesAsync(cancellationToken);
 
                 return data;

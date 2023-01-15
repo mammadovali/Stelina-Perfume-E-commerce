@@ -43,6 +43,8 @@ namespace Stelina.Domain.Models.DataContexts
 
         public DbSet<BlogPostTagItem> BlogPostTagCloud { get; set; }
 
+        public DbSet<BlogPostLike> BlogPostLikes { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

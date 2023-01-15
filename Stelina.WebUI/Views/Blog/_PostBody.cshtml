@@ -23,26 +23,19 @@
                         @Html.Raw(item.Body)
                     </p>
                 </div>
-                <div class="author-view">
-                    <div class="review">
-                        <div class="view">
-                            <span class="icon-view">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </span>
-                            <span class="count"> 631 </span>
-                        </div>
-                        <div class="s-comments">
-                            <span class="icon-cmt">
-                                <i class="fa fa-commenting"
-                               aria-hidden="true"></i>
-                            </span>
-                            <span class="count"> 82 </span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
 }
+
+<!-- Pagination -->
+
+<div style="text-align:center;">
+    <div class="col-12 col-xl-12 col-lg-12">
+        @Model.GetPager(Url, "Index", paginateFunction:"goPage")
+    </div>
+</div>
+
+
 

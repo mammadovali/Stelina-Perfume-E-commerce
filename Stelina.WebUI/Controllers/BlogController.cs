@@ -1,14 +1,17 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.Business.BlogPostModule;
 using Stelina.Domain.Models.DataContexts;
+using Stelina.Domain.Models.ViewModels.BlogPostItems;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Stelina.WebUI.Controllers
 {
-    
+
     public class BlogController : Controller
     {
         private readonly StelinaDbContext db;
@@ -41,17 +44,26 @@ namespace Stelina.WebUI.Controllers
         [Route("/blog/{slug}")]
         public async Task<IActionResult> Details(BlogPostSingleQuery query)
         {
-            var entity = await mediator.Send(query);
+            var blogPost = await mediator.Send(query);
 
-            if (entity == null)
+            var blogPostLikes = await db.BlogPostLikes.Where(bpl => bpl.BlogPostId == blogPost.Id).ToListAsync();
+
+            var vm = new BlogPostItemsViewModel()
+            {
+                BlogPost = blogPost,
+                BlogPostLikes = blogPostLikes
+            };
+
+            if (blogPost == null)
             {
                 return NotFound();
             }
 
-            return View(entity);
+            return View(vm);
         }
 
         [HttpPost]
+        [Route("/post-comment")]
         public async Task<IActionResult> PostComment(BlogPostCommentCommand command)
         {
             try
@@ -69,6 +81,21 @@ namespace Stelina.WebUI.Controllers
             }
 
         }
+
+        [HttpPost]
+        [Route("/like-unlike-blog-post")]
+        public async Task<IActionResult> LikeUnlikeBlogPost(BlogPostLikeUnlikeCommand command)
+        {
+            var response = await mediator.Send(command);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return Json(response);
+        }
+
 
     }
 }

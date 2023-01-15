@@ -45,6 +45,9 @@ namespace Stelina.Domain.Migrations
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("LikeCount")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("PublishedDate")
                         .HasColumnType("datetime2");
 
@@ -54,6 +57,9 @@ namespace Stelina.Domain.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isLiked")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -97,6 +103,34 @@ namespace Stelina.Domain.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("BlogPostComments");
+                });
+
+            modelBuilder.Entity("Stelina.Domain.Models.Entities.BlogPostLike", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlogPostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogPostId");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.ToTable("BlogPostLikes");
                 });
 
             modelBuilder.Entity("Stelina.Domain.Models.Entities.BlogPostTagItem", b =>
@@ -333,6 +367,9 @@ namespace Stelina.Domain.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<int?>("BlogPostId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -386,6 +423,8 @@ namespace Stelina.Domain.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BlogPostId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -565,6 +604,7 @@ namespace Stelina.Domain.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsApproved")
@@ -633,6 +673,25 @@ namespace Stelina.Domain.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("Stelina.Domain.Models.Entities.BlogPostLike", b =>
+                {
+                    b.HasOne("Stelina.Domain.Models.Entities.BlogPost", "BlogPost")
+                        .WithMany("Likes")
+                        .HasForeignKey("BlogPostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Stelina.Domain.Models.Entities.Membership.StelinaUser", "CreatedByUser")
+                        .WithMany()
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BlogPost");
+
+                    b.Navigation("CreatedByUser");
+                });
+
             modelBuilder.Entity("Stelina.Domain.Models.Entities.BlogPostTagItem", b =>
                 {
                     b.HasOne("Stelina.Domain.Models.Entities.BlogPost", "BlogPost")
@@ -668,6 +727,13 @@ namespace Stelina.Domain.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Stelina.Domain.Models.Entities.Membership.StelinaUser", b =>
+                {
+                    b.HasOne("Stelina.Domain.Models.Entities.BlogPost", null)
+                        .WithMany("LikedUsers")
+                        .HasForeignKey("BlogPostId");
                 });
 
             modelBuilder.Entity("Stelina.Domain.Models.Entities.Membership.StelinaUserClaim", b =>
@@ -745,6 +811,10 @@ namespace Stelina.Domain.Migrations
             modelBuilder.Entity("Stelina.Domain.Models.Entities.BlogPost", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("LikedUsers");
+
+                    b.Navigation("Likes");
 
                     b.Navigation("TagCloud");
                 });

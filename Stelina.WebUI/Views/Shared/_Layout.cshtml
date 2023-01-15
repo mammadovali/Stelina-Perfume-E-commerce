@@ -474,7 +474,7 @@
                                     Sign up for our free video course and <br />
                                     urban garden inspiration
                                 </div>
-                                <input type="email"
+                                <input 
                                        name="email"
                                        class="input-text email email-newsletter"
                                        placeholder="Your email letter" />
@@ -618,17 +618,17 @@
                             toastr["success"](response.message, "Uğur")
                         }
 
-                        e.currentTarget.reset();
-                    },
-                    error: function (response){
-
                         if(response.error == true){
                             toastr["error"](response.message, "Xəta");
                         }
+
+                        e.currentTarget.reset();
                     }
                 });
             });
         });
+
+    
     </script>
 
     @RenderSection("addjs", required:false)

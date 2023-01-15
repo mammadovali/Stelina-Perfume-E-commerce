@@ -1,4 +1,5 @@
 ﻿using Stelina.Domain.AppCode.Infrastructure;
+using Stelina.Domain.Models.Entities.Membership;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,6 +24,8 @@ namespace Stelina.Domain.Models.Entities
         public DateTime? PublishedDate { get; set; }
 
         public int? AuthorId { get; set; }
+
+        public ICollection<BlogPostLike> Likes { get; set; }
 
         public ICollection<BlogPostComment> Comments { get; set; }
 

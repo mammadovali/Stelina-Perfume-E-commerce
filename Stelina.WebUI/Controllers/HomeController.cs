@@ -86,6 +86,24 @@ namespace Stelina.WebUI.Controllers
         public async Task<IActionResult> Subscribe(Subscribe model)
         {
 
+            if (model.Email == null)
+            {
+                return Json(new
+                {
+                    error = true,
+                    message = "Boş göndərilə bilməz"
+                });
+            }
+
+            if (!model.Email.IsEmail())
+            {
+                return Json(new
+                {
+                    error = true,
+                    message = "Məlumat düzgün göndərilməyib"
+                });
+            }
+
             if (!ModelState.IsValid)
             {
                 string msg = ModelState.Values.First().Errors[0].ErrorMessage;
@@ -133,8 +151,6 @@ namespace Stelina.WebUI.Controllers
                 error = false,
                 message = "E-mailinizə təsdiq mesajı göndərildi"
             });
-
-
 
         }
 

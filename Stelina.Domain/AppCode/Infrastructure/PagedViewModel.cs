@@ -10,7 +10,7 @@ namespace Stelina.Domain.AppCode.Infrastructure
     public class PagedViewModel<T>
         where T : IPageable
     {
-        const int maxPaginationButtonCount = 10;
+        const int maxPaginationButtonCount = 5;
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int TotalCount { get; set; }
@@ -58,12 +58,12 @@ namespace Stelina.Domain.AppCode.Infrastructure
                     });
 
                 builder.Append($@"<li class='prev'>
-                                <a href='{link}'>Previous</a>
+                                <a href='{link}'><i class='fa fa-angle-left'></i></a>
                                 </li>");
             }
             else
             {
-                builder.Append("<li class='prev disabled'><a>Previous</li>");
+                builder.Append("<li class='prev disabled'><a><i class='fa fa-angle-left'></i></li>");
             }
 
             int min = 1, max = this.MaxPageSize;
@@ -115,12 +115,12 @@ namespace Stelina.Domain.AppCode.Infrastructure
                     });
 
                 builder.Append($@"<li class='next'>
-                                <a href='{link}'>Next</a>
+                                <a href='{link}'><i class='fa fa-angle-right'></i></a>
                                 </li>");
             }
             else
             {
-                builder.Append("<li class='next disabled'><a>Next</a></li>");
+                builder.Append("<li class='next disabled'><a><i class='fa fa-angle-right'></i></a></li>");
             }
 
 

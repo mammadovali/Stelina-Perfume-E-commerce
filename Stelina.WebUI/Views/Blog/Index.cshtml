@@ -14,15 +14,15 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" >
             <div class="content-area content-blog col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="site-main">
                     <h3 class="custom_blog_title capi">Our Blog</h3>
                     <div class="blog-list grid-style">
-                        <div class="row">
+                        <div class="row" id="dynamic-content">
                                 <partial name="_PostBody" model="@Model">
                         </div>
-                    </div>
+                    </div>@*
                     <div class="pagination clearfix style2 grid">
                         <div class="nav-link">
                             <a href="#" class="page-numbers">
@@ -35,9 +35,102 @@
                                 <i class="icon fa fa-angle-right" aria-hidden="true"></i>
                             </a>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section addjs{
+<script>
+    function goPage(pageIndex, pageSize) {
+
+        $.ajax({
+            url:`@Url.Action("Index")?pageIndex=${pageIndex}&pageSize=${pageSize}`,
+            method:'GET',
+            success: function(response) {
+                $('#dynamic-content').html(response);
+                location.hash = "#dynamic-content";
+                location.hash = "";
+            },
+            error: function(response) {
+                console.log(response);
+            }
+        });
+    }
+</script>
+}
+
+
+
+<style>
+    .pagination {
+        display: inline-block;
+        padding-left: 12px;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+
+        .pagination li {
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span {
+            border-radius: 0;
+        }
+
+        .pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span, pagination > li > a:hover {
+            color: #777;
+            cursor: not-allowed;
+            background-color: #fff;
+            border-color: #ddd;
+        }
+
+        .pagination > li a {
+            font-size: 15px;
+            font-weight: bold;
+            padding: 6px 14px;
+            transition: all 0.15s linear;
+        }
+
+        .pagination > li > a, .pagination > li > span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #337ab7;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #888;
+            border-radius: 50%;
+        }
+
+        .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+            z-index: 2;
+            color: #fff;
+            cursor: default;
+            background-color: #ab8e66;
+            border-color: #ab8e66;
+        }
+
+        .pagination a {
+            color: #fff;
+            font-size: 12px;
+            margin: 0 10px;
+        }
+
+        .pagination > li > a:hover {
+            color: #fff;
+            background-color: #ab8e66;
+            transition: all 0.15s linear;
+        }
+
+
+        .pagination a i {
+            margin: 0 5px;
+        }
+</style>
