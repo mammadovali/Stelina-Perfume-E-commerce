@@ -58,13 +58,9 @@ namespace Stelina.WebUI.Controllers
             {
                 foundedUser = await userManager.FindByEmailAsync(user.UserName);
             }
-            else if (user.UserName.IsEmail())
-            {
-                foundedUser = await userManager.FindByNameAsync(user.UserName);
-            }
             else
             {
-                goto end;
+                foundedUser = await userManager.FindByNameAsync(user.UserName);
             }
 
             if (foundedUser == null)
@@ -147,7 +143,7 @@ namespace Stelina.WebUI.Controllers
                 var user = new StelinaUser();
 
                 user.Email = model.Email;
-                user.UserName = model.Email;
+                user.UserName = model.Username;
                 user.Name = model.Name;
                 user.Surname = model.Surname;
                 //user.EmailConfirmed = true;

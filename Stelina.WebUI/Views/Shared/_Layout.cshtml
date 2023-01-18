@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
           rel="stylesheet" />
     <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
+    @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" />*@
     <link rel="stylesheet" href="~/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="~/assets/css/animate.min.css" />
@@ -39,27 +41,6 @@
                     <div class="header-message">Welcome to our online store!</div>
                 </div>
                 <div class="top-bar-right">
-                    <div class="header-language">
-                        <div class="stelina-language stelina-dropdown">
-                            <a href="#"
-                               class="active language-toggle"
-                               data-stelina="stelina-dropdown">
-                                <span> English (USD) </span>
-                            </a>
-                            <ul class="stelina-submenu">
-                                <li class="switcher-option">
-                                    <a href="#">
-                                        <span> French (EUR) </span>
-                                    </a>
-                                </li>
-                                <li class="switcher-option">
-                                    <a href="#">
-                                        <span> Japanese (JPY) </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
 
                     @if (@User.Identity.IsAuthenticated)
                     {
@@ -386,18 +367,13 @@
                         <form class="currency-form stelina-language">
                             <ul class="stelina-language-wrap">
                                 <li class="active">
-                                    <a href="#">
-                                        <span> English (USD) </span>
+                                    <a href="#ENG" data-lang="en">
+                                        <span>EN</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        <span> French (EUR) </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span> Japanese (JPY) </span>
+                                    <a href="#AZE" data-lang="az">
+                                        <span>AZ</span>
                                     </a>
                                 </li>
                             </ul>
@@ -469,13 +445,12 @@
                             <div class="newsletter-head">
                                 <h3 class="title">Newsletter</h3>
                             </div>
-                            <form id="newsletter-subscribe" class="newsletter-form-wrap">
+                            <form class="newsletter-form-wrap newsletter-subscribe">
                                 <div class="list">
                                     Sign up for our free video course and <br />
                                     urban garden inspiration
                                 </div>
-                                <input 
-                                       name="email"
+                                <input name="email"
                                        class="input-text email email-newsletter"
                                        placeholder="Your email letter" />
                                 <button type="submit" class="button btn-submit submit-newsletter">
@@ -600,7 +575,7 @@
 
     <script class="removable">
         $(document).ready(function (){
-            $("#newsletter-subscribe").submit(function (e) {
+            $(".newsletter-subscribe").submit(function (e) {
                 e.preventDefault();
 
                 let formData = new FormData(e.currentTarget);
@@ -627,9 +602,90 @@
                 });
             });
         });
-
-    
     </script>
+
+
+    <script class="removable">
+        $(document).ready(function() {
+            $.ajaxSetup({
+                statusCode: {
+                    401: function() {
+                        $('#modalLoginForm').modal({
+                            backdrop: 'static',
+                            keyboard: true
+                        }).modal('show');
+                    }
+                }
+            });
+
+              $("#postComment").click(function(){
+                   $("#modalLoginForm").addClass("in")
+                   $("#modalLoginForm").css("background", "rgba(0, 0, 0, 0.44)")
+                   $(".modal.fade .modal-dialog").css("transform", "translate(0, 10%)")
+              })
+
+              $(".like-button").click(function(e){
+                  e.preventDefault();
+                   $("#modalLoginForm").addClass("in")
+              })
+
+            $('#loginModal').submit(function(e) {
+                e.preventDefault();
+
+                var formData = new FormData(e.currentTarget);
+
+                $.ajax({
+                    url: '@Url.Action("Signin", "Account", values: new{area=""})',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        if(response.error == false){
+                             $('#modalLoginForm').modal('hide');
+                             toastr.success(response.message, "Uğur!");
+                        }
+                        else
+                        {
+                            toastr.error(response.message, "Xəta");
+                        }
+
+                    }
+                });
+            });
+
+        })
+    </script>
+
+
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Log in</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="loginModal" method="post">
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Username or E-mail</label>
+                            <input type="text" class="form-control" id="recipient-name" name="UserName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" id="message-text" name="Password" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="loginModal" class="btn btn-primary">Log in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     @RenderSection("addjs", required:false)
 </body>

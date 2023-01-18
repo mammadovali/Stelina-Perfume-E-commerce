@@ -1,0 +1,27 @@
+﻿@model IEnumerable<BlogPost>
+
+<div class="widget widget-post">
+    <h3 class="widgettitle">Recent Articles</h3>
+    <ul class="stelina-posts">
+        @foreach (var item in Model)
+        {
+            <li class="widget-post-item">
+                <div class="thumb-blog">
+                    <a asp-action="details" asp-controller="blog" asp-route-slug="@item.Slug">
+                        <img src="~/uploads/images/@item.ImagePath" alt="img" />
+                    </a>
+
+                </div>
+                <div class="post-content">
+                    <div class="cat">
+                        <a asp-action="details" asp-controller="blog" asp-route-slug="@item.Slug">@item.Category?.Name</a>
+                    </div>
+                    <h5 class="post-title">
+                        <a asp-action="details" asp-controller="blog" asp-route-slug="@item.Slug">@item.Title <span>[...]</span></a>
+                    </h5>
+                </div>
+            </li>
+        }
+
+    </ul>
+</div>

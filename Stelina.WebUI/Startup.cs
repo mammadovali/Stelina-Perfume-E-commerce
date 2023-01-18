@@ -153,17 +153,6 @@ namespace Stelina.WebUI
 
             app.UseEndpoints(cfg =>
             {
-                //cfg.MapControllerRoute(
-                //name: "default-signin",
-                //pattern: "signin.html",
-                //defaults: new
-                //{
-                //    area = "",
-                //    controller = "account",
-                //    action = "signin"
-                //});
-
-
                 cfg.MapControllerRoute(
                 name: "default-accessdenied",
                 pattern: "accessdenied.html",
@@ -175,7 +164,6 @@ namespace Stelina.WebUI
                 });
 
                 cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=dashboard}/{action=index}/{id?}");  // for admin panel
-
                 cfg.MapControllerRoute("default", "{controller=home}/{action=index}/{id?}");
 
             });

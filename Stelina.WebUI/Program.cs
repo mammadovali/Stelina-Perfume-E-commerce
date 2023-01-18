@@ -15,7 +15,6 @@ namespace Stelina.WebUI
 {
     public class Program
     {
-        public static string[] policies = null;
         public static void Main(string[] args)
         {
             ReadAllPolicies();

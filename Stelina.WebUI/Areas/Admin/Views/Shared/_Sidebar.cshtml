@@ -7,7 +7,7 @@
                     <span class="pcoded-micon">
                         <i class="feather icon-home"></i>
                     </span>
-                    <span class="pcoded-mtext">Homepage</span>
+                    <span class="pcoded-mtext">Ana səhifə</span>
                 </a>
             </li>
 
@@ -16,18 +16,18 @@
                 <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-inbox"></i></span>
-                        <span class="pcoded-mtext">Forum</span>
+                        <span class="pcoded-mtext">Paylaşımlar</span>
                         <span class="pcoded-mcaret"></span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li>
                             <a asp-controller="blogposts" asp-action="index">
-                                <span class="pcoded-mtext">Paylaşımlar</span>
+                                <span class="pcoded-mtext">Bloqlar</span>
                             </a>
                         </li>
                         <li>
                             <a asp-controller="blogposts" asp-action="deletedposts">
-                                <span class="pcoded-mtext">Silinmiş paylaşımlar</span>
+                                <span class="pcoded-mtext">Silinmiş bloqlar</span>
                             </a>
                         </li>
                     </ul>
@@ -85,7 +85,7 @@
                 </li>
             }
 
-            <div class="pcoded-navigatio-lavel">Parametrlər</div>
+            <div class="pcoded-navigatio-lavel">Tənzimləmələr</div>
 
             @if (User.HasAccess("admin.users.index"))
             {

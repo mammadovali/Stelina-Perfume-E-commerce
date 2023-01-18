@@ -708,7 +708,7 @@ td {
             margin: 0;
         }
 
-            /*.top-bar .header-language .stelina-language::after {
+        /*.top-bar .header-language .stelina-language::after {
                 content: "|";
             }*/
 
@@ -2202,6 +2202,63 @@ td {
             color: #aaaaaa;
             display: none;
         }
+
+
+.newsletter-widget {
+    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 32px;
+    border: 1px solid #F1F1F1;
+    position: relative;
+    border-radius: 0;
+}
+
+    .newsletter-widget:before {
+        font-family: 'FontAwesome';
+        content: "\f003";
+        font-size: 150px;
+        color: #f5f5f5;
+        position: absolute;
+        top: 15px;
+        left: 32px;
+        line-height: normal;
+        -ms-transform: rotate(-30deg);
+        -webkit-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+    }
+
+    .newsletter-widget .newsletter-form-wrap {
+        position: relative;
+        z-index: 2;
+    }
+
+    .newsletter-widget .title {
+        font-size: 22px;
+        color: #222;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        font-weight: 600;
+        letter-spacing: 0;
+    }
+
+    .newsletter-widget .subtitle {
+        font-size: 15px;
+        color: #555;
+        line-height: 20px;
+        margin-bottom: 60px;
+    }
+
+    .newsletter-widget .email {
+        margin-bottom: 10px;
+    }
+
+    .newsletter-widget .email, .newsletter-widget .submit-newsletter {
+        height: 42px;
+        width: 100%;
+        text-align: center;
+        border-radius: 30px;
+        border: 1px solid #eeeeee;
+    }
 
 .widget-tags .tagcloud {
     overflow: hidden;
@@ -5463,7 +5520,7 @@ input[type="submit"] {
     background-color: #ab8e66;
 }
 
-.ml-15{
+.ml-15 {
     margin-left: 15px;
 }
 

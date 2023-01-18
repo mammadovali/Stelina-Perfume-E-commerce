@@ -69,6 +69,7 @@ namespace Stelina.WebUI.Controllers
             try
             {
                 var response = await mediator.Send(command);
+
                 return PartialView("_Comment", response);
             }
             catch (System.Exception ex)

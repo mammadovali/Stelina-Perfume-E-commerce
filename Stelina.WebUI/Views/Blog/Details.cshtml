@@ -43,8 +43,6 @@
                             <img src="~/uploads/images/@Model.BlogPost.ImagePath" alt="blog-image" style="height: 511px; object-fit: contain; width: 100%" />
                         </div>
 
-                        @if (User.Identity.IsAuthenticated)
-                        {
                             <input type="hidden" data-user-id="@User.GetCurrentUserId()" data-blogpost-id="@Model.BlogPost.Id" />
                             <button class="like-button dark @(Model.BlogPostLikes.Any(bpl => bpl.BlogPostId == Model.BlogPost.Id && bpl.CreatedByUserId == User.GetCurrentUserId()) ? "liked" : " ")">
                                 <div class="hand">
@@ -52,7 +50,7 @@
                                 </div>
                                 <span>Like<span>d</span></span>
                             </button>
-                        }
+                        
 
                         <div class="post-infor">
                             <div class="category-blog">
@@ -175,7 +173,7 @@
                             </p>
                             <p class="form-submit">
                                 <span class="controll">
-                                    <button type="submit" class="submit button">POST A COMMENT</button>
+                                    <button type="submit" id="postComment" class="submit button">POST A COMMENT</button>
                                 </span>
                             </p>
                         </form>
@@ -200,55 +198,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="widget widget-post">
-                        <h3 class="widgettitle">Popular Articles</h3>
-                        <ul class="stelina-posts">
-                            <li class="widget-post-item">
-                                <div class="thumb-blog">
-                                    <img src="~/assets/images/sidebar-post1.jpg" alt="img" />
-                                </div>
-                                <div class="post-content">
-                                    <div class="cat">
-                                        <a href="#">Life Style</a>
-                                    </div>
-                                    <h5 class="post-title">
-                                        <a href="#">9 Quicks Tips That Will Change <span>[...]</span></a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li class="widget-post-item">
-                                <div class="thumb-blog">
-                                    <img src="~/assets/images/sidebar-post2.jpg" alt="img" />
-                                </div>
-                                <div class="post-content">
-                                    <div class="cat">
-                                        <a href="#">Lookbook</a>
-                                    </div>
-                                    <h5 class="post-title">
-                                        <a href="#">9 Quicks Tips That Will Change <span>[...]</span></a>
-                                    </h5>
-                                </div>
-                            </li>
-                            <li class="widget-post-item">
-                                <div class="thumb-blog">
-                                    <img src="~/assets/images/sidebar-post3.jpg" alt="img" />
-                                </div>
-                                <div class="post-content">
-                                    <div class="cat">
-                                        <a href="#">Street Style</a>
-                                    </div>
-                                    <h5 class="post-title">
-                                        <a href="#">9 Quicks Tips That Will Change <span>[...]</span></a>
-                                    </h5>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+
+                    @await Component.InvokeAsync("RecentPosts")
+
+                    <partial name="_Subscribe" />
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 
 @section addjs{
 
@@ -268,9 +229,6 @@
                 let formData = new FormData(e.currentTarget);
 
                 let toCommentId = $(`#replyToComment .comment-item`).data("comment-id");
-
-
-               console.log("commentId", toCommentId);
 
 
                 if(toCommentId != undefined){
@@ -305,11 +263,11 @@
                             }
                         }
 
-                        console.warn(res, "error")
-
                     }
                 });
             })
+
+
 
         })
 
@@ -389,8 +347,9 @@
         })
 
     });
-
 </script>
+
+
 }
 
 @section addcss{

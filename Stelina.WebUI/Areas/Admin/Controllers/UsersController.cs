@@ -32,19 +32,11 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         }
 
         [Authorize(Policy = "admin.users.details")]
-        public async Task<IActionResult> Details(int id) // int roleId = 1
+        public async Task<IActionResult> Details(int id) 
         {
             var user = await db.Users
                 .FirstOrDefaultAsync(u => u.Id == id);
 
-            //var role = await db.Roles
-            //    .FirstOrDefaultAsync(r => r.Id == roleId);
-
-            //var data = new UserRoleViewModel
-            //{
-            //   User = user,
-            //   Role = role
-            //};
 
             if (user == null)
             {
@@ -63,19 +55,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
                                   from lj in lJoin.DefaultIfEmpty()
                                   select Tuple.Create(p, lj != null)).ToList();
 
-            //ViewBag.Allprincipals = (from p in Extension.policies
-            //                         join uc in db.UserClaims on new { ClaimValue = "1", ClaimType = p, UserId = user.Id } equals new { uc.ClaimValue, uc.ClaimType, uc.UserId } into lJoin
-            //                         from lj in lJoin.DefaultIfEmpty()
-            //                         select Tuple.Create(p, lj != null))
-
-            //                         .Union(
-            //    (from p in Extension.policies
-            //     join rc in db.RoleClaims on new { ClaimValue = "1", ClaimType = p, RoleId = role.Id } equals new { rc.ClaimValue, rc.ClaimType, rc.RoleId } into lJoin
-            //     from lj in lJoin.DefaultIfEmpty()
-            //     select Tuple.Create(p, lj != null))
-            //                          )
-
-            //                         .ToList();
+           
 
             return View(user);
         }

@@ -57,8 +57,6 @@ namespace Stelina.Domain.Business.BlogPostModule
                     CreatedByUserId = ctx.GetCurrentUserId()
                 };
 
-
-
                 if (request.CommentId.HasValue && await db.BlogPostComments.AnyAsync(c => c.Id == request.CommentId))
                 {
                     commentModel.ParentId = request.CommentId;
