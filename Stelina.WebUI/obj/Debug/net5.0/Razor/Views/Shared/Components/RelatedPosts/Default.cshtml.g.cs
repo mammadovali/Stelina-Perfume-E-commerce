@@ -69,7 +69,7 @@ using Stelina.Domain.Models.ViewModels.BlogPostItems;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9c7c6fdafac4a15117035ce35a37307c27cccb47", @"/Views/Shared/Components/RelatedPosts/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"81974a669efc2ba1a9bb0aa1790aec3f6ea107d9", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2964e9e534c25275c6753b2e3cbf5ba029ffedc3", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components_RelatedPosts_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<BlogPost>>
     #nullable disable

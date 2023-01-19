@@ -163,7 +163,7 @@ namespace Stelina.WebUI
                     action = "accessdenied"
                 });
 
-                cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=dashboard}/{action=index}/{id?}");  // for admin panel
+                cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=account}/{action=signin}/{id?}");  // for admin panel
                 cfg.MapControllerRoute("default", "{controller=home}/{action=index}/{id?}");
 
             });

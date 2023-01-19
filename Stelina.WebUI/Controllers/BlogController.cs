@@ -96,7 +96,5 @@ namespace Stelina.WebUI.Controllers
 
             return Json(response);
         }
-
-
     }
 }

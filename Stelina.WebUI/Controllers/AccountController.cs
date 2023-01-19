@@ -214,6 +214,8 @@ namespace Stelina.WebUI.Controllers
             return RedirectToAction("Index", "home");
         }
 
+        
+
         public async Task CreateRole()
         {
             if (!await roleManager.RoleExistsAsync("User"))

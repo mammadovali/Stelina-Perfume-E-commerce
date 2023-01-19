@@ -54,8 +54,15 @@ using Stelina.Domain.Models.ViewModels.UserRole;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 9 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using Stelina.Domain.Models.FormModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"84218f9c55b0118e6cf8a4efdefdf0d9e4b703f6", @"/Areas/Admin/Views/Shared/_Sidebar.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a695c2ed60ab8c1ac72ea81188a715d94f105f14", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b02d513edf46e2031cd9c5ff3fe12c08172bec09", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Admin_Views_Shared__Sidebar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -94,7 +101,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<nav class=\"pcoded-navbar\">\n    <div class=\"pcoded-inner-navbar main-menu\">\n        <div class=\"pcoded-navigatio-lavel\">İdarəetmə</div>\n        <ul class=\"pcoded-item pcoded-left-item\">\n            <li>\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f67444", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f67700", async() => {
                 WriteLiteral("\n                    <span class=\"pcoded-micon\">\n                        <i class=\"feather icon-home\"></i>\n                    </span>\n                    <span class=\"pcoded-mtext\">Ana səhifə</span>\n                ");
             }
             );
@@ -129,7 +136,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
                     <ul class=""pcoded-submenu"">
                         <li>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f69879", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f610135", async() => {
                 WriteLiteral("\n                                <span class=\"pcoded-mtext\">Bloqlar</span>\n                            ");
             }
             );
@@ -147,7 +154,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                        </li>\n                        <li>\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f611428", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f611685", async() => {
                 WriteLiteral("\n                                <span class=\"pcoded-mtext\">Silinmiş bloqlar</span>\n                            ");
             }
             );
@@ -182,7 +189,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
 #line hidden
 #nullable disable
             WriteLiteral("                <li>\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f613684", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f613941", async() => {
                 WriteLiteral("\n                        <span class=\"pcoded-micon\">\n                            <i class=\"feather icon-mail\"></i>\n                        </span>\n                        <span class=\"pcoded-mtext\">Gələn mesajlar</span>\n                    ");
             }
             );
@@ -217,7 +224,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
 #line hidden
 #nullable disable
             WriteLiteral("                <li>\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f615949", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f616206", async() => {
                 WriteLiteral("\n                        <span class=\"pcoded-micon\">\n                            <i class=\"fa-regular fa-address-book\"></i>\n                        </span>\n                        <span class=\"pcoded-mtext\">Adminlə əlaqə</span>\n                    ");
             }
             );
@@ -252,7 +259,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
 #line hidden
 #nullable disable
             WriteLiteral("                <li>\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f618212", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f618469", async() => {
                 WriteLiteral("\n                        <span class=\"pcoded-micon\">\n                            <i class=\"fa-solid fa-question\"></i>\n                        </span>\n                        <span class=\"pcoded-mtext\">Tez-tez soruşulan suallar</span>\n                    ");
             }
             );
@@ -287,7 +294,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
 #line hidden
 #nullable disable
             WriteLiteral("                <li>\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f620487", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f620744", async() => {
                 WriteLiteral("\n                        <span class=\"pcoded-micon\">\n                            <i class=\"fa fa-bell\"></i>\n                        </span>\n                        <span class=\"pcoded-mtext\">Abunəliklər</span>\n                    ");
             }
             );
@@ -322,7 +329,7 @@ using Stelina.Domain.Models.ViewModels.UserRole;
 #line hidden
 #nullable disable
             WriteLiteral("                <li>\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f622806", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84218f9c55b0118e6cf8a4efdefdf0d9e4b703f623063", async() => {
                 WriteLiteral("\n                        <span class=\"pcoded-micon\">\n                            <i class=\"fa-solid fa-users\"></i>\n                        </span>\n                        <span class=\"pcoded-mtext\">İstifadəçilər</span>\n                    ");
             }
             );

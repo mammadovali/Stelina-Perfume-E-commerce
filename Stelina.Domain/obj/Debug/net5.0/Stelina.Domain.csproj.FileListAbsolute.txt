@@ -19,7 +19,6 @@ C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-comm
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.Domain\bin\Debug\net5.0\Stelina.Domain.dll
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.Domain\bin\Debug\net5.0\ref\Stelina.Domain.dll
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.Domain\bin\Debug\net5.0\Stelina.Domain.pdb
-C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.Domain\obj\Debug\net5.0\Stelina.Domain.csproj.AssemblyReference.cache
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.Domain\obj\Debug\net5.0\Stelina.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.Domain\obj\Debug\net5.0\Stelina.Domain.AssemblyInfoInputs.cache
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.Domain\obj\Debug\net5.0\Stelina.Domain.AssemblyInfo.cs
