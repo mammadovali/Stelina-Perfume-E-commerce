@@ -43,6 +43,8 @@
                             <img src="~/uploads/images/@Model.BlogPost.ImagePath" alt="blog-image" style="height: 511px; object-fit: contain; width: 100%" />
                         </div>
 
+                        @if (User.Identity.IsAuthenticated)
+                        {
                             <input type="hidden" data-user-id="@User.GetCurrentUserId()" data-blogpost-id="@Model.BlogPost.Id" />
                             <button class="like-button dark @(Model.BlogPostLikes.Any(bpl => bpl.BlogPostId == Model.BlogPost.Id && bpl.CreatedByUserId == User.GetCurrentUserId()) ? "liked" : " ")">
                                 <div class="hand">
@@ -50,6 +52,9 @@
                                 </div>
                                 <span>Like<span>d</span></span>
                             </button>
+                        }
+
+                            
                         
 
                         <div class="post-infor">

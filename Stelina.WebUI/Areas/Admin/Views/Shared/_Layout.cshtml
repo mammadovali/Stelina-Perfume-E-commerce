@@ -32,6 +32,42 @@
     <!-- Toastr library-->
     <link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css" />
 
+    <style>
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            background-color: unset;
+        }
+
+        .select2-selection__rendered {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 20px;
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            padding: unset;
+            border: unset;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: none;
+            outline: 0;
+        }
+    </style>
+
     @RenderSection("addcss", required: false)
 </head>
 
@@ -392,33 +428,33 @@
          $.ajaxSetup({
 
              statusCode:{
-             
+
                 200: function(res){
                     if(res.error == false && res.length > 0){
                         toastr.success(res.message, "Uğurlu");
                     }
                 },
-                
+
                 400: function(res){
                     toastr.warning("Xətalı sorğu", "Xəta");
                 },
-                
+
                 401: function(res){
                     toastr.warning("Əvvəlcə sistemə daxil olmalısınız", "Diqqət");
                 },
-                
+
                 403: function(res){
                     toastr.warning("Bu əməliyyata səlahiyyətiniz yoxdur", "Diqqət");
                 },
-                
+
                 404: function(res){
                     toastr.warning("Məlumat tapılmadı", "Diqqət");
                 },
-                
+
                 500: function(res){
                     toastr.warning("Server xətası", "Xəta");
                 }
-             
+
              }
 
         });

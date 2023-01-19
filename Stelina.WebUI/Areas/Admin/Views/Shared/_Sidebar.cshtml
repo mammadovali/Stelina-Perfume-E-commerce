@@ -2,14 +2,31 @@
     <div class="pcoded-inner-navbar main-menu">
         <div class="pcoded-navigatio-lavel">İdarəetmə</div>
         <ul class="pcoded-item pcoded-left-item">
-            <li>
-                <a asp-controller="dashboard" asp-action="index">
-                    <span class="pcoded-micon">
-                        <i class="feather icon-home"></i>
-                    </span>
-                    <span class="pcoded-mtext">Ana səhifə</span>
-                </a>
-            </li>
+
+            @if (User.HasAccess("admin.dashboard.index"))
+            {
+                <li>
+                    <a asp-controller="dashboard" asp-action="index">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-home"></i>
+                        </span>
+                        <span class="pcoded-mtext">Ana səhifə</span>
+                    </a>
+                </li>
+            }
+
+            @if (User.HasAccess("admin.categories.index"))
+            {
+                <li>
+                    <a asp-controller="categories" asp-action="index">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-sitemap"></i>
+                        </span>
+                        <span class="pcoded-mtext">Kateqoriyalar</span>
+                    </a>
+                </li>
+            }
+
 
             @if (User.HasAccess("admin.blogposts.index"))
             {

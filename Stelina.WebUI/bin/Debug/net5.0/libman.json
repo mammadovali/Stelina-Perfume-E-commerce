@@ -5,6 +5,10 @@
     {
       "library": "gsap@3.11.4",
       "destination": "wwwroot/lib/gsap/"
+    },
+    {
+      "library": "jquery-treegrid@0.2.0",
+      "destination": "wwwroot/lib/jquery-treegrid/"
     }
   ]
 }
