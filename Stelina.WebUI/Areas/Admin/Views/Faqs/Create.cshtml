@@ -1,4 +1,4 @@
-﻿@model Faq
+﻿@model FaqCreateCommand
 
 @{
     ViewData["Title"] = "Create";
@@ -10,11 +10,7 @@
         <div class="col-lg-8">
             <div class="page-header-title">
                 <div class="d-inline">
-                    <h4>Bootstrap Border Sizes</h4>
-                    <span>
-                        lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit
-                    </span>
+                    <h4>Create FAQ</h4>
                 </div>
             </div>
         </div>
@@ -25,7 +21,7 @@
                         <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
-                        <a asp-action="index">Markalar</a>
+                        <a asp-action="index">All FAQs</a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
                         <span>Create</span>
@@ -40,20 +36,7 @@
 <!-- Page-body start -->
 <div class="page-body">
     <div class="card">
-        <div class="card-header">
-            <h5>Basic Form Inputs</h5>
-            <span>
-                Add class of <code>.form-control</code> with
-                <code>&lt;input&gt;</code> tag
-            </span>
-
-            <div class="card-header-right">
-                <i class="icofont icofont-spinner-alt-5"></i>
-            </div>
-
-        </div>
         <div class="card-block">
-            <h4 class="sub-title">Basic Inputs</h4>
 
             <form method="post" autocomplete="off">
                 <div class="form-group row">

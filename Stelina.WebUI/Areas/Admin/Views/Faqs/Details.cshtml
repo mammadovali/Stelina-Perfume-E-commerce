@@ -10,11 +10,7 @@
         <div class="col-lg-8">
             <div class="page-header-title">
                 <div class="d-inline">
-                    <h4>Bootstrap Border Sizes</h4>
-                    <span>
-                        lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit
-                    </span>
+                    <h4>FAQ details</h4>
                 </div>
             </div>
         </div>
@@ -25,7 +21,7 @@
                         <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
-                        <a asp-action="index">Faqs</a>
+                        <a asp-action="index">All FAQs</a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
                         <span>Details</span>
@@ -40,27 +36,11 @@
 <!-- Page-body start -->
 <div class="page-body">
     <div class="card">
-        <div class="card-header">
-            <h5>Basic Form Inputs</h5>
-            <span>
-                Add class of <code>.form-control</code> with
-                <code>&lt;input&gt;</code> tag
-            </span>
-
-            <div class="card-header-right">
-                <i class="icofont icofont-spinner-alt-5"></i>
-            </div>
-
-        </div>
         <div class="card-block">
-            <h4 class="sub-title">Basic Inputs</h4>
 
             <div method="post">
                 <div class="form-group row">
                     <label asp-for="Question" class="col-sm-2 col-form-label"></label>
-
-
-
                     <div class="col-sm-10" ">
                         <p class="form-control">
                             @Model.Question
@@ -69,7 +49,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label asp-for="Answer" class="col-sm-2 col-form-label"></label>
+                    <label class="col-sm-2 col-form-label">Answer</label>
                     <div class="col-sm-10">
                         <div class="form-control" style="overflow: auto; min-height:150px">
                             @Html.Raw(Model.Answer)

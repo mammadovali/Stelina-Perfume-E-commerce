@@ -31,7 +31,7 @@ namespace Stelina.Domain.Models.Entities
 
         public virtual ICollection<BlogPostTagItem> TagCloud { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
 

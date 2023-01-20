@@ -4,6 +4,7 @@ using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,10 +16,15 @@ namespace Stelina.Domain.Business.ContactDetailModule
     public class ContactDetailEditCommand : IRequest<ContactDetail>
     {
         public int Id { get; set; }
+
+        [Required]
         public string PhoneNumber { get; set; }
 
+        [Required]
         public string Location { get; set; }
 
+
+        [Required]
         public string SupportEmail { get; set; }
 
         public class ContactDetailEditCommandHandler : IRequestHandler<ContactDetailEditCommand, ContactDetail>

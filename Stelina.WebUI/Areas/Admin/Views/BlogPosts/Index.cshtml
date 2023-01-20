@@ -77,7 +77,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.PublishedDate)
                                 </td>
-                                <td class="operations" style="max-width: 270px;">
+                                <td class="operations" style="max-width: 312px;">
 
                                     @if (item.PublishedDate == null)
                                     {
@@ -247,7 +247,7 @@
                         console.log(response);
 
                         if(response.error == true){
-                            toastr.error(response.message, "Xeta!");
+                            toastr.error(response.message, "Xəta!");
                             return;
                         }
 
@@ -263,7 +263,7 @@
 
     function publishDate(id, name) {
             swal(`${name} adlı məqaləni dərc etmək istəyirsiniz mi?`, {
-                title: "Diqqet!",
+                title: "Diqqət!",
                 text: `${name} adlı məqaləni dərc etmək istəyirsiniz mi?`,
                 icon: "warning",
                 buttons: true,

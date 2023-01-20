@@ -55,7 +55,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [Authorize(Policy = "admin.blogposts.create")]
         public IActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "Id", "Name");
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.DeletedDate == null).ToList(), "Id", "Name");
             ViewBag.Tags = new SelectList(db.Tags.Where(p => p.DeletedDate == null).ToList(), "Id", "Text");
             return View();
         }
@@ -68,23 +68,21 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
             if (command.Image == null)
             {
-                ModelState.AddModelError("ImagePath", "Blog şəkli göndərilməlidir");
+                ModelState.AddModelError("ImagePath", "Blog image should not be left empty");
             }
 
             if (ModelState.IsValid)
             {
                 var response = await mediator.Send(command);
 
-                if (response.Error == false)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-
+                ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.DeletedDate == null).ToList(), "Id", "Name", command.CategoryId);
+                ViewBag.Tags = new SelectList(db.Tags.Where(p => p.DeletedDate == null).ToList(), "Id", "Text");
+                return RedirectToAction(nameof(Index));
             }
+
 
             ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.DeletedDate == null).ToList(), "Id", "Name", command.CategoryId);
             ViewBag.Tags = new SelectList(db.Tags.Where(p => p.DeletedDate == null).ToList(), "Id", "Text");
-
 
             return View(command);
         }
@@ -98,6 +96,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             }
 
             var entity = await db.BlogPosts
+                .Include(bp => bp.Category)
                 .Include(bp => bp.TagCloud)
                 .FirstOrDefaultAsync(bp => bp.Id == id);
             if (entity == null)
@@ -105,7 +104,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "Id", "Name", entity.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.DeletedDate == null).ToList(), "Id", "Name", entity.CategoryId);
             ViewBag.Tags = new SelectList(db.Tags.Where(p => p.DeletedDate == null).ToList(), "Id", "Text");
 
 
@@ -126,24 +125,28 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [Authorize(Policy = "admin.blogposts.edit")]
         public async Task<IActionResult> Edit(int id, BlogPostEditCommand command)
         {
-            if (id != command.Id)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                if (id != command.Id)
+                {
+                    return NotFound();
+                }
+
+                var response = await mediator.Send(command);
+
+                if (response == null)
+                {
+                    return NotFound();
+                }
+
+                if (response.Error == false)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            
 
-            var response = await mediator.Send(command);
-
-            if (response == null)
-            {
-                return NotFound();
-            }
-
-            if (response.Error == false)
-            {
-                return RedirectToAction(nameof(Index));
-            }
-
-            ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "Id", "Name", command.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories.Where(c => c.DeletedDate == null).ToList(), "Id", "Name", command.CategoryId);
             ViewBag.Tags = new SelectList(db.Tags.Where(p => p.DeletedDate == null).ToList(), "Id", "Text");
             return View(command);
         }
@@ -311,6 +314,23 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
 
             return RedirectToAction(nameof(Index));
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveCategory(int categoryId, int id)
+        {
+            var blogPostt = await db.BlogPosts.FirstOrDefaultAsync(c => c.Id == id && c.CategoryId == categoryId);
+
+            blogPostt.CategoryId = null;
+
+            await db.SaveChangesAsync();
+
+            return Json(new
+            {
+                error = false,
+                message = "The selected blog post does not have any category anymore"
+            });
         }
 
         private bool BlogPostExists(int id)

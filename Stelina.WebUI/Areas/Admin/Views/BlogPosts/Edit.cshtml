@@ -60,7 +60,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Image</label>
                     <div class="col-sm-10">
-                        <label class="image-viewer" for="image" style="background-image:url(/uploads/images/@Model.ImagePath)"></label>
+                        <label class="image-viewer" for="image" style="background-image:url(/uploads/images/@Model.ImagePath)"  ></label>
                         <input id="image" name="image" type="file" hidden />
                     </div>
                 </div>
@@ -83,7 +83,14 @@
                 <div class="form-group row">
                     <div class="col-12 d-flex justify-content-end">
                         <input hidden asp-for="Id" />
+                        <input hidden data-id="@Model.Id" data-category-id="@Model.CategoryId" />
+
                         <button class="btn btn-primary mr-2">Save</button>
+                        @if (Model.CategoryId != null)
+                        {
+                            <button class="btn btn-secondary mr-2" id="removeCategory">Remove category</button>
+                        }
+                        
                         <a asp-action="index" class="btn btn-info">Cancel</a>
                     </div>
                 </div>
@@ -100,7 +107,6 @@
 <script class="removable" src="~/lib/select2/dist/js/select2.full.min.js"></script>
 
 <script>
-    console.log("salam")
     let reader = new FileReader();
     reader.addEventListener("load", function(){
         let imageViewer = document.querySelector(".image-viewer");
@@ -110,7 +116,6 @@
 
 
     document.getElementById("image").addEventListener("change", function(e){
-        console.log(e);
         const selectedFile = e.currentTarget.files[0];
         reader.readAsDataURL(selectedFile);
     });
@@ -130,6 +135,28 @@
             $(item).val(JSON.parse(values));
             $(item).trigger("change");
         })
+
+     
+
+        $(document).ready(function(){
+        $("#removeCategory").click(function(e){
+          e.preventDefault();
+
+          let data = $("input[data-category-id][data-id]").data();
+
+           $.ajax({
+                    url: `@Url.Action("RemoveCategory", "BlogPosts")`,
+                    type: "POST",
+                    data: data,
+                    dataType: "json",
+                    contentType: "application/x-www-form-urlencoded",
+                    success: function(res){
+                       location.reload();
+                    }
+                });
+
+        })
+    })
 </script>
 }
 

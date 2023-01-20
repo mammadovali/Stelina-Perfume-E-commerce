@@ -317,7 +317,6 @@
 
                 obj.isLiked = $(".like-button").hasClass("liked");
 
-                //console.log(obj);
 
                 $.ajax({
                     url: `@Url.Action("LikeUnlikeBlogPost", "Blog")`,
@@ -327,11 +326,12 @@
                     contentType: "application/x-www-form-urlencoded",
                     success: function(res){
 
-                        if(res.error == false){
-                           toastr.success(res.message, "Uğurlu");
-                           return;
-                        }
-                        //console.log(res);
+                        location.reload();
+
+                        //if(res.error == false){
+                        //   toastr.success(res.message, "Uğurlu");
+                        //}
+
                     },
                     error: function(res){
 
@@ -339,7 +339,6 @@
                            toastr.error(res.message, "Xəta");
                         }
 
-                        //console.warn(res);
                     }
                 })
 

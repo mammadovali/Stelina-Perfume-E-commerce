@@ -8,6 +8,7 @@ using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,16 @@ namespace Stelina.Domain.Business.BlogPostModule
     public class BlogPostEditCommand : IRequest<JsonResponse>
     {
         public int Id { get; set; }
+
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Body { get; set; }
 
         public string ImagePath { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         public IFormFile Image { get; set; }
 

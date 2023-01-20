@@ -10,11 +10,11 @@ namespace Stelina.Domain.Business.ContactDetailModule
 {
 
 
-    public class ContactDetailRemoveCommand : IRequest<ContactDetail>
+    public class ContactPostRemoveCommand : IRequest<ContactDetail>
     {
         public int Id { get; set; }
 
-        public class ContactDetailRemoveCommandHandler : IRequestHandler<ContactDetailRemoveCommand, ContactDetail>
+        public class ContactDetailRemoveCommandHandler : IRequestHandler<ContactPostRemoveCommand, ContactDetail>
         {
             private readonly StelinaDbContext db;
 
@@ -23,7 +23,7 @@ namespace Stelina.Domain.Business.ContactDetailModule
                 this.db = db;
             }
 
-            public async Task<ContactDetail> Handle(ContactDetailRemoveCommand request, CancellationToken cancellationToken)
+            public async Task<ContactDetail> Handle(ContactPostRemoveCommand request, CancellationToken cancellationToken)
             {
                 var data = await db.ContactDetails
                     .FirstOrDefaultAsync(m => m.Id == request.Id && m.DeletedDate == null, cancellationToken);

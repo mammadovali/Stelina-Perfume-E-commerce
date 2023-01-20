@@ -167,7 +167,7 @@ namespace Stelina.WebUI.Controllers
                     }
 
                     await userManager.AddToRoleAsync(user, "User");
-                    await signInManager.SignInAsync(user, false);
+                    //await signInManager.SignInAsync(user, false);
 
                     return RedirectToAction(nameof(Signin));
                 }

@@ -1,41 +1,80 @@
-﻿@model ContactDetail
+﻿@model ContactDetailEditCommand
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+<!-- Page-header start -->
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Edit contact details</h4>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="index">Contact details</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <span>Edit</span>
+                    </li>
+                </ul>
             </div>
-            <div class="form-group">
-                <label asp-for="SupportEmail" class="control-label"></label>
-                <input asp-for="SupportEmail" class="form-control" />
-                <span asp-validation-for="SupportEmail" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-success" />
-                <a asp-action="Index" class="btn btn-warning">Geri</a>
-            
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+
+<!-- Page-header end -->
+<!-- Page-body start -->
+<div class="page-body">
+    <div class="card">
+        <div class="card-block">
+
+            <form method="post" autocomplete="off">
+                <div class="form-group row">
+                    <label asp-for="PhoneNumber" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="Location" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="Location" class="form-control" />
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="SupportEmail" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="SupportEmail" class="form-control" />
+                        <span asp-validation-for="SupportEmail" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <input asp-for=Id type="hidden" />
+                        <button class="btn btn-primary mr-2">Save</button>
+                        <a asp-action="index" class="btn btn-info">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Page-body end -->
 
 
 

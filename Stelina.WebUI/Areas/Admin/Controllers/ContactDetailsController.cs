@@ -63,30 +63,45 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [Authorize(Policy = "admin.contactdetails.create")]
         public async Task<IActionResult> Create(ContactDetailCreateCommand command)
         {
-            var response = await mediator.Send(command);
-
-            if (response == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                var response = await mediator.Send(command);
+
+                if (response == null)
+                {
+                    return NotFound();
+                }
+
+                return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction(nameof(Index));
+            return View(command);
         }
 
         [Authorize(Policy = "admin.contactdetails.edit")]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, ContactDetailEditCommand command)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var contactDetail = await db.ContactDetails.FindAsync(id);
-            if (contactDetail == null)
+            var entity = await db.ContactDetails
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+
+            if (entity == null)
             {
                 return NotFound();
             }
-            return View(contactDetail);
+
+
+            command.Id = entity.Id;
+            command.PhoneNumber = entity.PhoneNumber;
+            command.Location = entity.Location;
+            command.SupportEmail = entity.SupportEmail;
+
+            return View(command);
         }
 
 
@@ -95,20 +110,25 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [Authorize(Policy = "admin.contactdetails.edit")]
         public async Task<IActionResult> Edit(ContactDetailEditCommand command)
         {
-            var response = await mediator.Send(command);
-
-            if (response == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                var response = await mediator.Send(command);
+
+                if (response == null)
+                {
+                    return NotFound();
+                }
+
+                return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction(nameof(Index));
+            return View(command);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.contactdetails.delete")]
-        public async Task<IActionResult> DeleteConfirmed(ContactDetailRemoveCommand command)
+        public async Task<IActionResult> DeleteConfirmed(ContactPostRemoveCommand command)
         {
             var response = await mediator.Send(command);
 

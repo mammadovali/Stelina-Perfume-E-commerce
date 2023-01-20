@@ -7,6 +7,7 @@ using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,21 +16,23 @@ using System.Threading.Tasks;
 
 namespace Stelina.Domain.Business.BlogPostModule
 {
-    public class BlogPostCreateCommand : IRequest<JsonResponse>
+    public class BlogPostCreateCommand : IRequest<BlogPost>
     {
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public string Body { get; set; }
 
         public string ImagePath { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
 
         public IFormFile Image { get; set; }
 
         public int[] TagIds { get; set; }
 
-        public class BlogPostCreateCommandHandler : IRequestHandler<BlogPostCreateCommand, JsonResponse>
+        public class BlogPostCreateCommandHandler : IRequestHandler<BlogPostCreateCommand, BlogPost>
         {
             private readonly StelinaDbContext db;
             private readonly IHostEnvironment env;
@@ -40,7 +43,7 @@ namespace Stelina.Domain.Business.BlogPostModule
                 this.env = env;
             }
 
-            public async Task<JsonResponse> Handle(BlogPostCreateCommand request, CancellationToken cancellationToken)
+            public async Task<BlogPost> Handle(BlogPostCreateCommand request, CancellationToken cancellationToken)
             {
                 var entity = new BlogPost();
                 entity.TagCloud = new List<BlogPostTagItem>();
@@ -86,11 +89,7 @@ namespace Stelina.Domain.Business.BlogPostModule
                 await db.BlogPosts.AddAsync(entity, cancellationToken);
                 await db.SaveChangesAsync(cancellationToken);
 
-                return new JsonResponse
-                {
-                    Error = false,
-                    Message = "Success"
-                };
+                return entity;
             }
 
 

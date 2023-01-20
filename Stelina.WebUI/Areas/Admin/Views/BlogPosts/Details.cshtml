@@ -45,7 +45,7 @@
                     <label asp-for="Category" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
                         <div class="form-control" style="overflow:auto; min-height:100px";>
-                            @Model.Category.Name
+                            @Model.Category?.Name
                         </div>
                     </div>
                 </div>

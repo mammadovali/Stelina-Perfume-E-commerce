@@ -27,6 +27,18 @@
                 </li>
             }
 
+             @if (User.HasAccess("admin.brands.index"))
+            {
+                <li>
+                    <a asp-controller="brands" asp-action="index">
+                        <span class="pcoded-micon">
+                            <i class="fa-sharp fa-solid fa-bookmark"></i>
+                        </span>
+                        <span class="pcoded-mtext">Brendlər</span>
+                    </a>
+                </li>
+            }
+
 
             @if (User.HasAccess("admin.blogposts.index"))
             {

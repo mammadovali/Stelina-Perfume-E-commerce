@@ -30,7 +30,7 @@ namespace Stelina.Domain.Business.BlogPostModule
                 var query = db.BlogPosts
                 .Where(bp => bp.DeletedDate == null)
                 .Include(bp=>bp.Category)
-                .OrderByDescending(bp => bp.PublishedDate)
+                .OrderByDescending(bp => bp.CreatedDate)
                 .AsQueryable();
 
                 var pagedModel = new PagedViewModel<BlogPost>(query, request);

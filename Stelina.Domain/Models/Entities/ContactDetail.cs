@@ -13,8 +13,10 @@ namespace Stelina.Domain.Models.Entities
         [Required]
         public string PhoneNumber { get; set; }
 
+        [Required]
         public string Location { get; set; }
 
+        [Required]
         public string SupportEmail { get; set; }
     }
 }

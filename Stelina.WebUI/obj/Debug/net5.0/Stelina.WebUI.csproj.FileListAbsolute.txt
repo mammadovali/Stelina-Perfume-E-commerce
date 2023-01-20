@@ -346,7 +346,6 @@ C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-comm
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\ContactPosts\Reply.cshtml.g.cs
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Faqs\Create.cshtml.g.cs
-C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Faqs\Details.cshtml.g.cs
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Faqs\Edit.cshtml.g.cs
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Faqs\Index.cshtml.g.cs
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_Layout.cshtml.g.cs
@@ -393,3 +392,8 @@ C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-comm
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Details.cshtml.g.cs
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Edit.cshtml.g.cs
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Categories\Index.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Faqs\Details.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Brands\Create.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Brands\Details.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Brands\Edit.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Brands\Index.cshtml.g.cs

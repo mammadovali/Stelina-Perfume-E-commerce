@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Stelina.Domain.AppCode.Services;
+using Stelina.Domain.Business.ContactPostModule;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 
@@ -17,79 +19,59 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
     {
         private readonly StelinaDbContext db;
         private readonly EmailService emailService;
+        private readonly IMediator mediator;
 
-        public ContactPostsController(StelinaDbContext db, EmailService emailService)
+        public ContactPostsController(StelinaDbContext db, EmailService emailService, IMediator mediator)
         {
             this.db = db;
             this.emailService = emailService;
+            this.mediator = mediator;
         }
 
         [Authorize(Policy = "admin.contactposts.index")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(ContactPostGetAllQuery query)
         {
-            return View(await db.ContactPosts.ToListAsync());
+            var response = await mediator.Send(query);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return View(response);
         }
 
 
 
 
         [Authorize(Policy = "admin.contactposts.details")]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(ContactPostGetSingleQuery query)
         {
-            if (id == null)
+            var response = await mediator.Send(query);
+
+            if (response == null)
             {
                 return NotFound();
             }
 
-            var contactPost = await db.ContactPosts
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contactPost == null)
-            {
-                return NotFound();
-            }
-
-            return View(contactPost);
+            return View(response);
         }
-
-
-
-
-
-        [Authorize(Policy = "admin.contactposts.delete")]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var contactPost = await db.ContactPosts
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (contactPost == null)
-            {
-                return NotFound();
-            }
-
-            return View(contactPost);
-        }
-
-
 
 
         [Authorize(Policy = "admin.contactposts.delete")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(ContactPostRemoveCommand command)
         {
-            var contactPost = await db.ContactPosts.FindAsync(id);
-            db.ContactPosts.Remove(contactPost);
-            await db.SaveChangesAsync();
+            var response = await mediator.Send(command);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
             return RedirectToAction(nameof(Index));
         }
-
-
-
-
 
 
         [Authorize(Policy = "admin.contactposts.reply")]

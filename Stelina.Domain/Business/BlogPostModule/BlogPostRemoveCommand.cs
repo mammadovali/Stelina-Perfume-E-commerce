@@ -14,6 +14,7 @@ namespace Stelina.Domain.Business.BlogPostModule
     public class BlogPostRemoveCommand : IRequest<BlogPost>
     {
         public int Id { get; set; }
+
         public class BlogPostRemoveCommandHandler : IRequestHandler<BlogPostRemoveCommand, BlogPost>
         {
             private readonly StelinaDbContext db;

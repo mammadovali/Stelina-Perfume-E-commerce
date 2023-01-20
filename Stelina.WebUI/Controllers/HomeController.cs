@@ -46,7 +46,7 @@ namespace Stelina.WebUI.Controllers
 
         public async Task<IActionResult> Contact()
         {
-            var contactDetail = await db.ContactDetails.FirstOrDefaultAsync();
+            var contactDetail = await db.ContactDetails.FirstOrDefaultAsync(cd => cd.DeletedDate == null);
 
             return View(new ContactPostDetailViewModel
             {
