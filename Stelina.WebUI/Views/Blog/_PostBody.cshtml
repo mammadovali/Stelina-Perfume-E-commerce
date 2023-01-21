@@ -11,7 +11,7 @@
             </div>
             <div class="post-info">
                 <div class="category-blog">
-                    <span>@item.Category.Name</span>
+                    <span>@item.Category?.Name</span>
                 </div>
                 <h3 class="post-title">
                     <a asp-action="details" asp-route-slug="@item.Slug">
