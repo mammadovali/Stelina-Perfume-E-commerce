@@ -2081,12 +2081,12 @@ td {
         list-style: none;
         line-height: 28px;
         padding: 10px 0;
-        cursor: pointer;
     }
 
 .list-category-item {
     margin-left: 25px;
     border-bottom: 1px solid #eee;
+    border: none;
 }
 
 .category-hover-item:hover .label-text, .widget li:hover .show-children {
@@ -2095,10 +2095,15 @@ td {
 }
 
 .show-children {
+    cursor: pointer;
     padding-top: 5px;
     position: absolute;
     right: 10px;
     transition: all 0.15s linear;
+}
+
+.border-none{
+    border: none;
 }
 
 .widget a {
@@ -2117,7 +2122,7 @@ td {
         position: absolute;
         z-index: 1;
         content: "";
-        left: 0;
+        left: -20px;
         top: 5px;
         width: 18px;
         height: 18px;
@@ -2130,7 +2135,7 @@ td {
         content: "\f00c";
         display: inline-block;
         top: 7px;
-        left: 2px;
+        left: -18px;
         width: 15px;
         height: 14px;
         text-align: center;
@@ -2154,13 +2159,14 @@ td {
 }
 
 .sidebar .label-text-category {
-    cursor: pointer;
     font-size: 15px;
     color: #555;
     margin: 0;
     position: relative;
     font-weight: normal;
     transition: all 0.15s linear;
+    cursor: pointer;
+    border-bottom: 1px solid #786a6a66
 }
 
 

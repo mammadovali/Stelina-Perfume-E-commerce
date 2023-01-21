@@ -20,11 +20,7 @@ namespace Stelina.Domain.AppCode.Extensions
 
             foreach (var category in categories)
             {
-
-
                 FillCategoriesRaw(category);
-                
-                
             }
 
             sb.Append("</ul>");
@@ -33,14 +29,14 @@ namespace Stelina.Domain.AppCode.Extensions
 
             void FillCategoriesRaw(Category category)
             {
-                sb.Append("<li class='list-category-item'>");
+                sb.Append($"<li class='list-category-item category-hover-item'>");
 
-                if (category.Children.Count == 0 && !category.Children.Any())
+                if (category.ParentId != null)
                 {
                     sb.Append($"<input type='checkbox' id='cb-{category.Id}' />");
                 }
 
-                sb.Append($"<label for='cb-@item.Id' class='label-text-category'>{category.Name}</label>");
+                sb.Append($"<label for='cb-{category.Id}' class='label-text-category'>{category.Name}</label>");
 
                 if (category.Children.Count != 0 && category.Children.Any())
                 {
