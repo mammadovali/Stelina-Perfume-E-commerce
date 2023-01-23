@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Category>
+
+<div class="vertical-wapper block-nav-categori">
+    <div class="block-title">
+        <span class="icon-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <span class="text">All Categories</span>
+    </div>
+    <div class="block-content verticalmenu-content">
+        <ul class="stelina-nav-vertical vertical-menu stelina-clone-mobile-menu">
+
+            @foreach (var item in Model)
+            {
+                @if (item.Children.Count == 0)
+                {
+                    <li class="menu-item">
+                        <a href="#" class="stelina-menu-item-title">@item.Name</a>
+                    </li>
+                }
+
+
+                else
+                {
+                    <li class="menu-item @(item.Children != null ? "menu-item-has-children" : " ") ">
+                        <a href="#" class="stelina-menu-item-title">@item.Name</a>
+                        <span class="toggle-submenu"></span>
+
+                        @foreach (var child in item.Children)
+                        {
+                            <ul role="menu" class="submenu">
+                                <li class="menu-item">
+                                    <a href="#" class="stelina-item-title">@child.Name</a>
+                                </li>
+                            </ul>
+                        }
+                    </li>
+                }
+
+
+            }
+
+        </ul>
+    </div>
+</div>

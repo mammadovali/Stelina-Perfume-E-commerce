@@ -24,6 +24,7 @@ namespace Stelina.WebUI.Controllers
                 .Include(c => c.Children)
                 .ThenInclude(c => c.Children)
                 .ThenInclude(c => c.Children)
+                .ThenInclude(c => c.Children)
                 .Where(c => c.DeletedDate == null && c.ParentId == null).ToListAsync();
 
             var vm = new ProductViewModel()

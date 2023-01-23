@@ -38,7 +38,7 @@ namespace Stelina.Domain.AppCode.Extensions
 
                 sb.Append($"<label for='cb-{category.Id}' class='label-text-category'>{category.Name}</label>");
 
-                if (category.Children.Count != 0 && category.Children.Any())
+                if (category.Children != null && category.Children.Any())
                 {
                     sb.Append($"<i class='fa fa-chevron-down show-children show-children-{category.Id}' data-btn-id='{category.Id}'></i>");
                     sb.Append($"<ul class='children-categories ul-{category.Id}' style='display: none;' data-id='{category.Id}'>");
@@ -54,6 +54,7 @@ namespace Stelina.Domain.AppCode.Extensions
                 sb.Append("</li>");
             }
         }
+
 
         static public IEnumerable<Category> GetAllChildren(this Category category)
         {

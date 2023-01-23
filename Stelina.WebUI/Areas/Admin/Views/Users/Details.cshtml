@@ -168,10 +168,6 @@
 
                 <div class="form-group row">
                     <div class="col-12 d-flex justify-content-end">
-                        @if (User.HasAccess("admin.brands.edit"))
-                        {
-                            <a asp-action="Edit" class="btn btn-warning mr-2" asp-route-id="@Model.Id">Edit</a>
-                        }
                         <a class="btn btn-info mr-2" asp-action="Index">Geri</a>
                     </div>
                 </div>
@@ -267,13 +263,11 @@
                         return;
                     }
 
-                    console.log(res);
                     toastr.error(res.message, "Xəta");
 
                     $(e.currentTarget).prop("checked", !obj.selected)
                 },
                 error: function(res){
-                    console.warn(res);
                 }
             })
         })

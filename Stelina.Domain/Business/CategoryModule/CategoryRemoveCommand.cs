@@ -36,7 +36,10 @@ namespace Stelina.Domain.Business.CategoryModule
                     return null;
                 }
 
-                data.DeletedDate = DateTime.UtcNow.AddHours(4);
+
+                //data.DeletedDate = DateTime.UtcNow.AddHours(4);
+
+                db.Remove(data);
 
                 var children = data.Children.Where(c => c.ParentId == data.Id);
 

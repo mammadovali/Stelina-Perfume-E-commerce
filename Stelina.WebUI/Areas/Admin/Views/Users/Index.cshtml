@@ -54,12 +54,6 @@
                             </th>
 
                             <th class="operations">
-                                @*@if (User.HasAccess("admin.users.create"))
-                                {
-                                    <a asp-action="Create" class="btn btn-sm btn-primary">
-                                        <i class="fa fa-pen-to-square"></i>
-                                    </a>
-                                }*@
                             </th>
                         </tr>
                     </thead>
@@ -109,7 +103,7 @@
 </div>
 <!-- Page-body end -->
 @section addcss{
-<link rel="stylesheet" href="~/lib/toastr.js~/lib/toastr.js/toastr.min.css" />
+<link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css" />
 <style>
     th.operations,
     td.operations {
@@ -130,51 +124,7 @@
 <script src="~/lib/sweetalert/sweetalert.min.js"></script>
 <script src="~/lib/toastr.js/toastr.min.js"></script>
 <script src="~/lib/toastr.js/toastr.customize.js"></script>
-<script>
-    function removeEntity(id, name){
-        swal(`Əminsiniz ki, '${name}' silinsin?`, {
-              title: "Diqqət!",
-              text: `Əminsiniz ki, '${name}' silinsin?`,
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-              buttons: ["Xeyr", "Bəli"]
-        })
-        .then((value) => {
 
-            if(value == true){
-
-                let vToken = $("[name=__RequestVerificationToken]").val();
-
-                let formData = new FormData();
-
-                formData.set("__RequestVerificationToken", vToken);
-                formData.set("id", id);
-
-                $.ajax({
-                    url: `@Url.Action("Delete")`,
-                    type: "POST",
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response){
-                        console.log(response);
-
-                        if(response.error == true){
-                            toastr.error(response.message, "Xeta!");
-                            return;
-                        }
-
-                        location.reload();
-                    },
-                    error: function(errorResponse){
-                        console.error(errorResponse);
-                    }
-                });
-            }
-        });
-    }
-</script>
 }
 
 

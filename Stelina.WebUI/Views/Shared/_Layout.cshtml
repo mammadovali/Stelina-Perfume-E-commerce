@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="~/assets/css/mobile-menu.css" />
     <link rel="stylesheet" href="~/assets/fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="~/assets/css/style.css" />
-    
+
 
     @RenderSection("addcss", required:false)
 
@@ -316,7 +316,18 @@
         </div>
 
 
-        <partial name="_Navbar" />
+        <div class="header-nav-container rows-space-20">
+            <div class="container">
+                <div class="header-nav-wapper main-menu-wapper">
+
+                    @await Component.InvokeAsync("Categories")
+
+                    <partial name="_Navbar" />
+                </div>
+            </div>
+        </div>
+
+
 
 
     </header>
