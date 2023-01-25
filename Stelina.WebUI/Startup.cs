@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Providers;
 using Stelina.Domain.AppCode.Services;
@@ -45,7 +46,8 @@ namespace Stelina.WebUI
 
                     cfg.Filters.Add(new AuthorizeFilter(policy));
                 }
-            );
+            ).AddNewtonsoftJson(cfg => cfg.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+           
 
             services.AddDbContext<StelinaDbContext>(cfg =>
             {

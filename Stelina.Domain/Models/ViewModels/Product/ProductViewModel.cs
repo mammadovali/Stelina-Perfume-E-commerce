@@ -12,5 +12,8 @@ namespace Stelina.Domain.Models.ViewModels.ProductViewModel
         public ICollection<Brand> Brands { get; set; }
 
         public ICollection<Category> Categories { get; set; }
+
+        public ICollection<Product> Products { get; set; }
+
     }
 }
