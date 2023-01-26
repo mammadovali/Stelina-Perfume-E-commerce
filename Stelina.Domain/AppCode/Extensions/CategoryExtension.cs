@@ -16,7 +16,7 @@ namespace Stelina.Domain.AppCode.Extensions
 
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("<ul class='list-categories'>");
+            sb.Append("<ul class='list-categories' data-entity-name='categories'>");
 
             foreach (var category in categories)
             {
@@ -36,7 +36,7 @@ namespace Stelina.Domain.AppCode.Extensions
                     sb.Append($"<input type='checkbox' id='cb-{category.Id}' />");
                 }
 
-                sb.Append($"<label for='cb-{category.Id}' class='label-text-category'>{category.Name}</label>");
+                sb.Append($"<label for='cb-{category.Id}' class='label-text-category label-text-category-{category.Id}' data-entity-id='{category.Id}' >{category.Name}</label>");
 
                 if (category.Children != null && category.Children.Any())
                 {

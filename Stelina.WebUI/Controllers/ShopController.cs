@@ -49,12 +49,18 @@ namespace Stelina.WebUI.Controllers
             var query = db.Products
                 .Include(p => p.Images.Where(i => i.IsMain == true))
                 .Include(p => p.Brand)
+                .Include(p => p.Category)
                 .Where(p => p.DeletedDate == null)
                 .AsQueryable();
 
             if (model?.Brands?.Count() > 0)
             {
                  query = query.Where(p => model.Brands.Contains(p.BrandId));
+            }
+
+            if (model?.Categories?.Count() > 0)
+            {
+                 query = query.Where(p => model.Categories.Contains(p.CategoryId));
             }
 
             return PartialView("_ProductContainer", query.ToList());

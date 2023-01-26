@@ -109,21 +109,7 @@
 
                        <partial name="_ProductContainer" model="@Model.Products" />
 
-
                     </ul>
-                    <div class="pagination clearfix style3">
-                        <div class="nav-link">
-                            <a href="#" class="page-numbers">
-                                <i class="icon fa fa-angle-left" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" class="page-numbers">1</a>
-                            <a href="#" class="page-numbers">2</a>
-                            <a href="#" class="page-numbers current">3</a>
-                            <a href="#" class="page-numbers">
-                                <i class="icon fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -154,7 +140,7 @@
 
                 if(btnId == categoryId){
                     $(`.children-categories.ul-${categoryId}`).slideToggle({duration: 250});
-                    $(`.show-children-${btnId}`).toggleClass("rotate")
+                    $(`.show-children-${btnId}`).toggleClass("rotate");
                 }
             })
 
@@ -166,10 +152,19 @@
             $(`.category-hover-item .label-text-${entityId}`).toggleClass("checked");
         })
 
+        $(".label-text-category").click(function(){
+            let entityId = $(this).data("entity-id");
+
+            $(`.category-hover-item .label-text-category-${entityId}`).toggleClass("checked");
+        })
+
         $(".category-hover-item .label-text").click(function(e){
             setFilter();
         });
 
+        $(".category-hover-item .label-text-category").click(function(e){
+            setFilter();
+        });
     })
 
     function setFilter(){
@@ -205,22 +200,22 @@
                 dataType: 'html',
                 contentType: 'application/x-www-form-urlencoded',
                 beforeSend: function(){
-                    console.log("sorgudan evvel")
+                    $("ul.list-products").html(`<div style="margin-left:20px; font-size:20px;">Loading...</div>`);
                 },
                 success: function(res){
-                    console.log(res);
-
-                    $("ul.list-products").html(res);
+                    setTimeout(function(){
+                        $("ul.list-products").html(res);
+                    },1000);
 
                 },
                 error: function(res){
-                    console.warn(res);
+                   // console.warn(res);
                 }
 
             })
 
                .always(function(){
-                  console.log("sorgudan sonra")
+                  //console.log("sorgudan sonra")
                });
 
         }, 2000);
