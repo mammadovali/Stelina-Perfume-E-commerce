@@ -8,5 +8,7 @@ namespace Stelina.Domain.Models.FormModel
 
         public ICollection<int> Categories { get; set; }
 
+        public int[] Prices { get; set; }
+
     }
 }

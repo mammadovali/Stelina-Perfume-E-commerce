@@ -57,14 +57,14 @@
                             <div class="price-slider-wrapper">
                                 <div data-label-reasult="Range:"
                                      data-min="0"
-                                     data-max="3000"
-                                     data-unit="$"
+                                     data-max="@((int)Math.Ceiling(Model.Products.Select(p => p.Price).Max()))"
+                                     data-unit="₼"
                                      class="slider-range-price"
                                      data-value-min="0"
-                                     data-value-max="1000"></div>
-                                <div class="price-slider-amount">
-                                    <span class="from">$45</span>
-                                    <span class="to">$215</span>
+                                     data-value-max="@((int)Math.Ceiling(Model.Products.Select(p => p.Price).Max()))"></div>
+                                <div class="price-slider-amount" data-entity-name="prices">
+                                    <span class="from price-number">0<b>₼</b> </span>
+                                    <span class="to price-number">@((int)Math.Ceiling(Model.Products.Select(p => p.Price).Max()))<b>₼</b> </span>
                                 </div>
                             </div>
                         </div>
@@ -97,11 +97,11 @@
                             <select title="sort-by"
                                     data-placeholder="Price: Low to High"
                                     class="chosen-select">
-                                <option value="1">Price: Low to High</option>
-                                <option value="2">Sort by popularity</option>
-                                <option value="3">Sort by average rating</option>
-                                <option value="4">Sort by newness</option>
-                                <option value="5">Sort by price: low to high</option>
+                                <option value="1">Alphabetically, A-Z</option>
+                                <option value="2">Alphabetically, Z-A</option>
+                                <option value="3">Price: low to high</option>
+                                <option value="4">Price: high to low</option>
+                                <option value="5">Average rating</option>
                             </select>
                         </form>
                     </div>
@@ -165,9 +165,38 @@
         $(".category-hover-item .label-text-category").click(function(e){
             setFilter();
         });
-    })
 
-    function setFilter(){
+        //$('.price-slider-amount').on('.price-slider-amount', function(e) {
+        //    setFilter();
+        //});
+
+         //$('.price-number').change(function(e) {
+         //     console.log("changed")
+         //});
+
+
+        $('.slider-range-price').each(function () {
+            var min = $(this).data('min');
+            var max = $(this).data('max');
+            var unit = $(this).data('unit');
+            var value_min = $(this).data('value-min');
+            var value_max = $(this).data('value-max');
+            var t = $(this);
+            $(this).slider({
+                range: true,
+                min: min,
+                max: max,
+                values: [value_min, value_max],
+                slide: function (event, ui) {
+                    var result = ' <span class="price-number">' + ui.values[0] +  '<b>' + unit + '</b>' + '</span>  <span class="price-number"> ' + ui.values[1]  + '<b>' + unit + '</b>' + '</span>';
+                    t.closest('.price-slider-wrapper').find('.price-slider-amount').html(result);
+
+                    setFilter();
+                }
+            });
+        });   
+        
+        function setFilter(){
 
         if($.setFilterProcessId != undefined){
             clearTimeout($.setFilterProcessId);
@@ -178,7 +207,7 @@
 
             const filterObj = {};
 
-            $("ul[data-entity-name]").each(function(index, item){
+            $("[data-entity-name]").each(function(index, item){
                 const entityPropertyName = $(item).data("entity-name");
 
                 filterObj[entityPropertyName] = [];
@@ -188,9 +217,15 @@
 
                     filterObj[entityPropertyName].push(entityId);
                 });
+
+                $(item).find(".price-number").each(function(indexSpan, itemSpan){
+                    const priceNumber = parseInt($(itemSpan).text());
+
+                    filterObj[entityPropertyName].push(priceNumber);
+                });
             });
 
-            console.log(filterObj);
+            //console.log(filterObj);
 
             $.ajax({
                 url: '@Url.Action("Filter")',
@@ -200,16 +235,21 @@
                 dataType: 'html',
                 contentType: 'application/x-www-form-urlencoded',
                 beforeSend: function(){
-                    $("ul.list-products").html(`<div style="margin-left:20px; font-size:20px;">Loading...</div>`);
+                    $("ul.list-products").html("<img src='/assets/images/loading.gif'/>");
                 },
                 success: function(res){
                     setTimeout(function(){
                         $("ul.list-products").html(res);
+
+                        if ( $('ul.list-products').children().length == 0 ) {
+                            $("ul.list-products").html("<img src='/assets/images/no-results-found.png'/>");
+                        }
+
                     },1000);
 
                 },
                 error: function(res){
-                   // console.warn(res);
+                   //console.warn(res.responseText);
                 }
 
             })
@@ -220,5 +260,8 @@
 
         }, 2000);
     }
+
+    });
+
 </script>
 }

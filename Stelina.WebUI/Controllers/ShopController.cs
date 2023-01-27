@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.FormModel;
 using Stelina.Domain.Models.ViewModels.ProductViewModel;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace Stelina.WebUI.Controllers
         {
             this.db = db;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
             var brands = await db.Brands.Where(b => b.DeletedDate == null).ToListAsync();
 
@@ -39,6 +40,27 @@ namespace Stelina.WebUI.Controllers
                 Categories = categories,
                 Products = products
             };
+
+            //ViewBag.NameSort = String.IsNullOrWhiteSpace(sortOrder) ? "nameDesc" : "";
+            //ViewBag.PriceSort = sortOrder == "Price" ? "sortDesc" : "price";
+
+            
+
+            //switch (sortOrder)
+            //{
+            //    case "nameDesc":
+            //        products = products.OrderByDescending(p => p.Name);
+            //        break;
+            //    case "price":
+            //        products = products.OrderBy(p => p.Price);
+            //        break;
+            //    case "priceDescending":
+            //        products = products.OrderByDescending(p => p.Price);
+            //        break;
+            //    default:
+            //        products = products.OrderBy(p => p.Name);
+            //        break;
+            //}
 
             return View(vm);
         }
@@ -61,6 +83,11 @@ namespace Stelina.WebUI.Controllers
             if (model?.Categories?.Count() > 0)
             {
                  query = query.Where(p => model.Categories.Contains(p.CategoryId));
+            }
+
+            if (model.Prices[0] >= 0 && model.Prices[0] <= model.Prices[1])
+            {
+                query = query.Where(q => q.Price >= model.Prices[0] && q.Price <= model.Prices[1]);
             }
 
             return PartialView("_ProductContainer", query.ToList());

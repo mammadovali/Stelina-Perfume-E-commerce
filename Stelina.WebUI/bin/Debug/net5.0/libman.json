@@ -9,6 +9,10 @@
     {
       "library": "jquery-treegrid@0.2.0",
       "destination": "wwwroot/lib/jquery-treegrid/"
+    },
+    {
+      "library": "jquery-cookie@1.4.1",
+      "destination": "wwwroot/lib/jquery-cookie/"
     }
   ]
 }
