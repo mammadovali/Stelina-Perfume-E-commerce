@@ -175,6 +175,7 @@ namespace Stelina.WebUI.Controllers
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(error.Code, error.Description);
+                    ViewBag.Message = error.Description;
                 }
             }
 

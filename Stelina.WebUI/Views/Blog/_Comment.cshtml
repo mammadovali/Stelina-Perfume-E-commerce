@@ -1,26 +1,27 @@
 ﻿@model BlogPostComment
-
-<div class="@(Model.ParentId != null ? "comment-sub" : "") comment-item" id="c-@Model.Id" data-comment-id="@Model.Id">
-    <div class="author-view">
-        <div class="author">
-            <h3 class="name">@($"{Model.CreatedByUser?.Name} {Model.CreatedByUser?.Surname}")</h3>
+<li class="comment">
+    <div class="comment-item @(Model.ParentId != null ? "comment-sub" : "")" id="c-@Model.Id" data-comment-id="@Model.Id">
+        <div class="author-view">
+            <div class="author">
+                <h3 class="name">@($"{Model.CreatedByUser?.Name} {Model.CreatedByUser?.Surname}")</h3>
+            </div>
+            <div class="date-reply-comment">
+                <span class="date-comment">@Model.CreatedDate.ToString("dd.MM.yyyy")</span>
+            </div>
         </div>
-        <div class="date-reply-comment">
-            <span class="date-comment">@Model.CreatedDate.ToString("dd.MM.yyyy")</span>
+        <div class="comment-body">
+            <div class="comment-content">
+                <p>
+                    @Model.Text
+                </p>
+            </div>
+            <div class="comment-reply-link">
+                <a class="Comment btn-comment-reply">
+                    <i class="icon fa fa-commenting"
+                       aria-hidden="true"></i>
+                    Reply
+                </a>
+            </div>
         </div>
     </div>
-    <div class="comment-body">
-        <div class="comment-content">
-            <p>
-                @Model.Text
-            </p>
-        </div>
-        <div class="comment-reply-link">
-            <a class="Comment btn-comment-reply">
-                <i class="icon fa fa-commenting"
-                   aria-hidden="true"></i>
-                Reply
-            </a>
-        </div>
-    </div>
-</div>
+</li>

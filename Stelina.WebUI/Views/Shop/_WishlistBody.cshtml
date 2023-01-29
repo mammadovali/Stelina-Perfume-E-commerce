@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Product>
+
+
+@foreach (var item in Model)
+{
+    string imagePath = item.Images.FirstOrDefault(i => i.IsMain == true)?.Name;
+
+    <tr class="cart_item">
+        <td class="product-remove">
+            <a onclick="removeFromFavorites(@item.Id, event)" class="remove"></a>
+        </td>
+        <td class="product-thumbnail">
+            <a asp-controller="shop"
+               asp-action="details"
+               asp-route-id="@item.Id">
+                <img src="~/assets/images/@imagePath"
+                 alt="img"
+                 class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" />
+            </a>
+        </td>
+        <td class="product-name" data-title="Product">
+            <a asp-controller="shop"
+           asp-action="details"
+           asp-route-id="@item.Id" class="title">@item.Name</a>
+        </td>
+        <td class="product-price" data-title="Price">
+            <span class="woocommerce-Price-amount amount">
+
+                @item.Price
+
+                <span class="woocommerce-Price-currencySymbol">
+                    ₼
+                </span>
+            </span>
+        </td>
+        <td class="product-quantity" data-title="Quantity">
+            <button onclick="addToBasket(event)" data-product-id="@item.Id"  type="button" class="add-to-cart">
+                <div class="default">Add to cart</div>
+                <div class="success">Added</div>
+                <div class="cart">
+                    <div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="dots"></div>
+            </button>
+        </td>
+    </tr>
+}
+
+<tr>
+    <td class="actions">
+        <div class="order-total">
+            <span class="title"> Total Price: </span>
+            <span class="total-price"> @Model.Sum(p => p.Price) ₼</span>
+        </div>
+    </td>
+</tr>
+
+<script>
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', e => {
+            button.classList.add('added');
+        });
+    });
+</script>
+
+

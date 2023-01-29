@@ -5752,6 +5752,7 @@ a:active {
 
 .cart-form .product-remove:hover a:before {
     color: #ab8e66;
+    cursor: pointer;
 }
 
 .cart-form .shop_table .product-name .attributes-select:hover {
@@ -7497,7 +7498,6 @@ a:active {
 
         .comments-area ul li {
             list-style: none;
-            border-bottom: 1px solid #e6e6e6;
             margin-bottom: 30px;
         }
 
@@ -8679,6 +8679,7 @@ blockquote .author .desc {
 .shop_table td.product-remove a {
     display: block;
     font-size: 20px;
+    padding-left: 20px;
 }
 
 .shop_table .actions .coupon {

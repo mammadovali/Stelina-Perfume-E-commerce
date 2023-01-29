@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Product>
+
+
+<div class="site-content">
+    <main class="site-main main-container no-sidebar">
+        <div class="container">
+            <div class="breadcrumb-trail breadcrumbs">
+                <ul class="trail-items breadcrumb">
+                    <li class="trail-item trail-begin">
+                        <a asp-controller="shop" asp-action="index">
+                            <span> Shop </span>
+                        </a>
+                    </li>
+                    <li class="trail-item trail-end active">
+                        <span> Shopping Cart </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="main-content-cart main-content col-sm-12">
+                    <h3 class="custom_blog_title">Shopping Cart</h3>
+                    <div class="page-main-content">
+                        <div class="shoppingcart-content">
+                            <form
+                                  class="cart-form">
+                                <table class="shop_table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove"></th>
+                                            <th class="product-thumbnail"></th>
+                                            <th class="product-name"></th>
+                                            <th class="product-price"></th>
+                                            <th class="product-quantity"></th>
+                                            <th class="product-subtotal"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dynamic-content">
+
+                                        <partial name="_WishlistBody" model="@Model" />
+
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="control-cart">
+                                <a asp-action="index" asp-controller="shop" class="button btn-continue-shopping">
+                                    Continue Shopping
+                                </a>
+                                <a asp-action="basket" asp-controller="shop" class="button btn-cart-to-checkout">
+                                    Checkout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+@section addjs{
+    <script>
+        function removeFromFavorites(productId, e){
+            e.preventDefault();
+            
+
+             $.ajax({
+                 url: '',
+                 type: 'POST',
+                 beforeSend: function(){
+                    const favorites =  ($.cookie('favorites') || '').split(',').filter(item => item.length > 0);
+                    const refreshFavorites = favorites.filter(item => item != productId)
+                    $.cookie('favorites', refreshFavorites.toString(), { path: '/'});
+
+                 },
+                 success: function(res){
+                     $('#dynamic-content').html(res);
+                 },
+                 error: function(res){
+
+                 }
+             })
+        }
+
+        function addToBasket(e){
+            e.preventDefault();
+
+            const elementData = $(e.currentTarget).data();
+
+            $.ajax({
+                url: `@Url.Action("Basket", "Shop")`,
+                type: "POST",
+                data: elementData,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function(res){
+                    console.log(res);
+
+
+                    if(res.error == false){
+                        $(e.target).closest('tr').remove();
+                        toastr.success(res.message, "Success");
+                    }
+                },
+                error: function(res, status, xhr){
+                    console.log(res, status, xhr);
+                }
+            });
+        }
+    </script>
+}
+

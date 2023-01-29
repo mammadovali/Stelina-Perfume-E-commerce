@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css" />
     <link rel="stylesheet" href="~/assets/css/jquery.scrollbar.min.css" />
     <link rel="stylesheet" href="~/assets/css/mobile-menu.css" />
+    <link rel="stylesheet" href="~/assets/css/add-to-cart.css" />
+    <link rel="stylesheet" href="~/assets/fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="~/assets/fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="~/assets/css/style.css" />
 
@@ -218,10 +220,10 @@
                                         </div>
                                         <div class="actions">
                                             <a class="button button-viewcart"
-                                               href="shoppingcart.html">
+                                               asp-action="wishlist" asp-controller="shop">
                                                 <span>View Bag</span>
                                             </a>
-                                            <a href="checkout.html" class="button button-checkout">
+                                            <a asp-controller="shop" asp-action="basket" class="button button-checkout">
                                                 <span>Checkout</span>
                                             </a>
                                         </div>
@@ -502,7 +504,7 @@
                 </a>
             </div>
             <div class="footer-device-mobile-item device-home device-wishlist">
-                <a href="#">
+                <a asp-action="wishlist" asp-controller="shop">
                     <span class="icon">
                         <i class="fa fa-heart" aria-hidden="true"></i>
                     </span>
@@ -561,6 +563,7 @@
     <script src="~/assets/js/frontend-plugin.js"></script>
     <script src="~/lib/toastr.js/toastr.min.js"></script>
     <script src="~/lib/toastr.js/toastr.customize.js"></script>
+    <script src="~/lib/jquery-cookie/jquery.cookie.min.js"></script>
     <script class="removable">
         $(document).ready(function (){
             $(".newsletter-subscribe").submit(function (e) {
@@ -638,6 +641,49 @@
             });
 
         })
+    </script>
+
+    <script class="removable">
+
+         $.ajaxSetup({
+
+             statusCode:{
+
+                200: function(res){
+                    if(res.error == false && res.length > 0){
+                        toastr.success(res.message, "Uğurlu");
+                    }
+                },
+
+                400: function(res){
+                    toastr.warning("Xətalı sorğu", "Xəta");
+                },
+
+                401: function(res){
+                    toastr.warning("Əvvəlcə sistemə daxil olmalısınız", "Diqqət");
+                },
+
+                403: function(res){
+                    toastr.warning("Bu əməliyyata səlahiyyətiniz yoxdur", "Diqqət");
+                },
+
+                404: function(res){
+                    toastr.warning("Məlumat tapılmadı", "Diqqət");
+                },
+
+                500: function(res){
+                    toastr.warning("Server xətası", "Xəta");
+                }
+
+             }
+
+        });
+    </script>
+
+    <script class="removable">
+        $(document).ready(function () {
+            $('.removable').remove();
+        });
     </script>
 
 

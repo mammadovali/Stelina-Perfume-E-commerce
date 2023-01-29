@@ -107,7 +107,7 @@
                     </div>
                     <ul class="row list-products auto-clear equal-container product-grid">
 
-                       <partial name="_ProductContainer" model="@Model.Products" />
+                        <partial name="_ProductContainer" model="@Model.Products" />
 
                     </ul>
                 </div>
@@ -166,14 +166,6 @@
             setFilter();
         });
 
-        //$('.price-slider-amount').on('.price-slider-amount', function(e) {
-        //    setFilter();
-        //});
-
-         //$('.price-number').change(function(e) {
-         //     console.log("changed")
-         //});
-
 
         $('.slider-range-price').each(function () {
             var min = $(this).data('min');
@@ -194,71 +186,79 @@
                     setFilter();
                 }
             });
-        });   
-        
+        });
+
         function setFilter(){
 
-        if($.setFilterProcessId != undefined){
-            clearTimeout($.setFilterProcessId);
-        }
+          if($.setFilterProcessId != undefined){
+              clearTimeout($.setFilterProcessId);
+          }
 
-        $.setFilterProcessId = setTimeout(function(){
+          $.setFilterProcessId = setTimeout(function(){
 
 
-            const filterObj = {};
+              const filterObj = {};
 
-            $("[data-entity-name]").each(function(index, item){
-                const entityPropertyName = $(item).data("entity-name");
+              $("[data-entity-name]").each(function(index, item){
+                  const entityPropertyName = $(item).data("entity-name");
 
-                filterObj[entityPropertyName] = [];
+                  filterObj[entityPropertyName] = [];
 
-                $(item).find("label.checked").each(function(indexLabel, itemLabel){
-                    const entityId = $(itemLabel).data("entity-id");
+                  $(item).find("label.checked").each(function(indexLabel, itemLabel){
+                      const entityId = $(itemLabel).data("entity-id");
 
-                    filterObj[entityPropertyName].push(entityId);
-                });
+                      filterObj[entityPropertyName].push(entityId);
+                  });
 
-                $(item).find(".price-number").each(function(indexSpan, itemSpan){
-                    const priceNumber = parseInt($(itemSpan).text());
+                  $(item).find(".price-number").each(function(indexSpan, itemSpan){
+                      const priceNumber = parseInt($(itemSpan).text());
 
-                    filterObj[entityPropertyName].push(priceNumber);
-                });
-            });
+                      filterObj[entityPropertyName].push(priceNumber);
+                  });
+              });
 
-            //console.log(filterObj);
+              //console.log(filterObj);
 
-            $.ajax({
-                url: '@Url.Action("Filter")',
-                type: 'POST',
-                data: filterObj,
-                //dataType: "application/json",
-                dataType: 'html',
-                contentType: 'application/x-www-form-urlencoded',
-                beforeSend: function(){
-                    $("ul.list-products").html("<img src='/assets/images/loading.gif'/>");
-                },
-                success: function(res){
-                    setTimeout(function(){
-                        $("ul.list-products").html(res);
+              $.ajax({
+                  url: '@Url.Action("Filter")',
+                  type: 'POST',
+                  data: filterObj,
+                  //dataType: "application/json",
+                  dataType: 'html',
+                  contentType: 'application/x-www-form-urlencoded',
+                  beforeSend: function(){
+                      $("ul.list-products").html("<img src='/assets/images/loading.gif'/>");
+                  },
+                  success: function(res){
+                      setTimeout(function(){
+                          $("ul.list-products").html(res);
 
-                        if ( $('ul.list-products').children().length == 0 ) {
-                            $("ul.list-products").html("<img src='/assets/images/no-results-found.png'/>");
-                        }
+                          if ( $('ul.list-products').children().length == 0 ) {
+                              $("ul.list-products").html("<img src='/assets/images/no-results-found.png'/>");
+                          }
 
-                    },1000);
+                      },1000);
 
-                },
-                error: function(res){
-                   //console.warn(res.responseText);
-                }
+                  },
+                  error: function(res){
+                     //console.warn(res.responseText);
+                  }
 
-            })
+              }).always(function(){
+                    //console.log("sorgudan sonra")
+                 });
 
-               .always(function(){
-                  //console.log("sorgudan sonra")
-               });
 
-        }, 2000);
+          }, 2000);
+
+        $(".single_add_to_cart_button").click(function(e){
+            e.preventDefault();
+
+            var id = $(".product-thumb").data("id");
+            console.log(id);
+        })
+
+        
     }
 
     });

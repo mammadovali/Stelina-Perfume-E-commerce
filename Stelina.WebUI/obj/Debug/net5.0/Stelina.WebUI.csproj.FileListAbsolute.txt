@@ -396,3 +396,6 @@ C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-comm
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\ref\Stelina.WebUI.dll
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Stelina.WebUI.pdb
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Stelina.WebUI.genruntimeconfig.cache
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Views\Shop\Wishlist.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Views\Shop\_WishlistBody.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Views\Shop\Basket.cshtml.g.cs

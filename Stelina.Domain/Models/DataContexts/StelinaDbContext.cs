@@ -33,6 +33,8 @@ namespace Stelina.Domain.Models.DataContexts
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<Basket> Basket { get; set; }
+
         public DbSet<ProductImage> ProductImages { get; set; }
 
         public DbSet<BlogPost> BlogPosts { get; set; }

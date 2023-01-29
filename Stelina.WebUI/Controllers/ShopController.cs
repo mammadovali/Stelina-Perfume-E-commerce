@@ -1,11 +1,17 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Stelina.Domain.AppCode.Extensions;
+using Stelina.Domain.Business.BasketModule;
+using Stelina.Domain.Business.ProductModule;
 using Stelina.Domain.Models.DataContexts;
+using Stelina.Domain.Models.Entities;
 using Stelina.Domain.Models.FormModel;
 using Stelina.Domain.Models.ViewModels.ProductViewModel;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Stelina.WebUI.Controllers
@@ -14,10 +20,12 @@ namespace Stelina.WebUI.Controllers
     public class ShopController : Controller
     {
         private readonly StelinaDbContext db;
+        private readonly IMediator mediator;
 
-        public ShopController(StelinaDbContext db)
+        public ShopController(StelinaDbContext db, IMediator mediator)
         {
             this.db = db;
+            this.mediator = mediator;
         }
         public async Task<IActionResult> Index(string sortOrder)
         {
@@ -111,6 +119,35 @@ namespace Stelina.WebUI.Controllers
             }
 
             return View(entity);
+        }
+
+        public async Task<IActionResult> Wishlist(WishlistQuery query)
+        {
+            var favs = await mediator.Send(query);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_WishlistBody", favs);
+            }
+
+            return View(favs);
+        }
+
+        [Route("/basket")]
+        [Authorize(Policy = "shop.basket")]
+        public IActionResult Basket()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("/basket")]
+        [Authorize(Policy = "shop.basket")]
+        public async Task<IActionResult> Basket(AddToBasketCommand command)
+        {
+            var response = await mediator.Send(command);
+
+            return Json(response);
         }
     }
 }

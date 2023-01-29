@@ -54,8 +54,8 @@
                             </button>
                         }
 
-                            
-                        
+
+
 
                         <div class="post-infor">
                             <div class="category-blog">
@@ -99,9 +99,9 @@
                     </div>
                     <div class="comments-area">
                         <ul class="comment-list">
-                            <li class="comment">
-                                @foreach (var comment in Model.BlogPost.Comments.Where(c => c.ParentId == null))
-                                {
+                            @foreach (var comment in Model.BlogPost.Comments.Where(c => c.ParentId == null))
+                            {
+                                <li class="comment">
                                     <div class="comment-item" id="c-@comment.Id" data-comment-id="@comment.Id">
                                         <div class="author-view">
                                             <div class="author">
@@ -126,40 +126,38 @@
                                             </div>
                                         </div>
                                     </div>
+                                </li>
 
-                                    @foreach (var subComment in GetComments(comment))
-                                    {
-                                        <ul class="children">
-                                            <li>
-                                                <div class="comment-item" id="c-@subComment.Id" data-comment-id="@subComment.Id">
-                                                    <div class="author-view">
-                                                        <div class="author">
-                                                            <h3 class="name">@($"{subComment.CreatedByUser?.Name} {subComment.CreatedByUser?.Surname}")</h3>
-                                                        </div>
-                                                        <div class="date-reply-comment">
-                                                            <span class="date-comment"> @subComment.CreatedDate.ToString("dd.MM.yyyy") </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="comment-body">
-                                                        <div class="comment-content">
-                                                            <p>
-                                                                @subComment.Text
-                                                            </p>
-                                                        </div>
-                                                        <div class="comment-reply-link">
-                                                            <a class="Comment btn-comment-reply">
-                                                                <i class="fa fa-commenting"
-                                                           aria-hidden="true"></i>
-                                                                Reply
-                                                            </a>
-                                                        </div>
-                                                    </div>
+                                @foreach (var subComment in GetComments(comment))
+                                {
+                                    <li class="comment">
+                                        <div class="comment-item comment-sub" id="c-@subComment.Id" data-comment-id="@subComment.Id">
+                                            <div class="author-view">
+                                                <div class="author">
+                                                    <h3 class="name">@($"{subComment.CreatedByUser?.Name} {subComment.CreatedByUser?.Surname}")</h3>
                                                 </div>
-                                            </li>
-                                        </ul>
-                                    }
+                                                <div class="date-reply-comment">
+                                                    <span class="date-comment"> @subComment.CreatedDate.ToString("dd.MM.yyyy") </span>
+                                                </div>
+                                            </div>
+                                            <div class="comment-body">
+                                                <div class="comment-content">
+                                                    <p>
+                                                        @subComment.Text
+                                                    </p>
+                                                </div>
+                                                <div class="comment-reply-link">
+                                                    <a class="Comment btn-comment-reply">
+                                                        <i class="fa fa-commenting"
+                                                   aria-hidden="true"></i>
+                                                        Reply
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                                 }
-                            </li>
+                            }
                         </ul>
 
                         <h3 class="custom_blog_title">
@@ -225,7 +223,7 @@
             $(".btn-comment-reply").click(function(e){
                 e.preventDefault();
 
-                $("#replyToComment").html("<a href='javascript:removeSelectedReply()' class='remove-selected-comment' >&times</a>").append($(e.currentTarget).closest(".comment-item").clone());
+                $("#replyToComment").html("<a href='javascript:removeSelectedReply()' class='remove-selected-comment' >&times</a>").append($(e.currentTarget).closest(".comment-item").clone().removeClass("comment-sub"));
             })
 
             $("#replyForm").submit(function(e) {

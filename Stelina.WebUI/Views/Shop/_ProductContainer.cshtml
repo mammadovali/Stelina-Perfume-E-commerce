@@ -14,7 +14,7 @@
                     </span>
                 </div>
             </div>
-            <div class="product-thumb">
+            <div class="product-thumb" data-id="@item.Id">
                 <div class="thumb-inner">
                     <a asp-action="details" asp-route-id="@item.Id">
                         <img src="~/assets/images/@imagePath"
@@ -23,7 +23,7 @@
                     <div class="thumb-group">
                         <div class="yith-wcwl-add-to-wishlist">
                             <div class="yith-wcwl-add-button">
-                                <a href="#">Add to Wishlist</a>
+                                <a href="javascript:addToFavorites(@item.Id)">Add to Wishlist</a>
                             </div>
                         </div>
                         <div class="loop-form-add-to-cart">
@@ -53,3 +53,20 @@
         </div>
     </li>
 }
+
+
+<script>
+        function addToFavorites(productId){
+           const favorites =  ($.cookie('favorites') || '').split(',').filter(item => item.length > 0);
+           
+           if(favorites.filter(item => item == productId).length == 0){
+               favorites.push(productId);
+           
+               $.cookie('favorites', favorites.toString(), { path: '/'})
+           }
+           
+           console.log(favorites)
+        }
+
+</script>
+
