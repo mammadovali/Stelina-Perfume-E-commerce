@@ -12,13 +12,13 @@
                         </a>
                     </li>
                     <li class="trail-item trail-end active">
-                        <span> Shopping Cart </span>
+                        <span> Favorites </span>
                     </li>
                 </ul>
             </div>
             <div class="row">
                 <div class="main-content-cart main-content col-sm-12">
-                    <h3 class="custom_blog_title">Shopping Cart</h3>
+                    <h3 class="custom_blog_title">Favorites</h3>
                     <div class="page-main-content">
                         <div class="shoppingcart-content">
                             <form
@@ -94,12 +94,21 @@
                 data: elementData,
                 contentType: 'application/x-www-form-urlencoded',
                 success: function(res){
-                    console.log(res);
+                    //console.log(res);
 
 
                     if(res.error == false){
-                        $(e.target).closest('tr').remove();
-                        toastr.success(res.message, "Success");
+                        //$(e.target).closest('tr').remove();
+
+                        $('.add-to-cart').click(function(e) {
+                            $(this).addClass('added');
+                        });
+
+                        toastr.success(res.message);
+                    }
+
+                    if(res.error == true){
+                        toastr.success(res.message);
                     }
                 },
                 error: function(res, status, xhr){

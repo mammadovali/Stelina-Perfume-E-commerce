@@ -49,7 +49,7 @@ namespace Stelina.Domain.Business.BasketModule
                 {
                     return new JsonResponse
                     {
-                        Error = false,
+                        Error = true,
                         Message = "Product already exist in your basket"
                     };
                 }

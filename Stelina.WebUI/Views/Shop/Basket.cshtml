@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Basket>
+@{
     ViewData["Title"] = "Checkout";
 }
 
@@ -23,8 +24,7 @@
                     <h3 class="custom_blog_title">Shopping Cart</h3>
                     <div class="page-main-content">
                         <div class="shoppingcart-content">
-                            <form
-                                  class="cart-form">
+                            <form class="cart-form">
                                 <table class="shop_table">
                                     <thead>
                                         <tr>
@@ -37,144 +37,56 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="cart_item">
-                                            <td class="product-remove">
-                                                <a href="#" class="remove"></a>
-                                            </td>
-                                            <td class="product-thumbnail">
-                                                <a href="#">
-                                                    <img src="~/assets/images/cart-item-2.jpg"
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="cart_item">
+                                                <td class="product-remove">
+                                                    <a onclick="removeFromBasket(this, '@item.Product.Name');return" class="remove" data-product-id="@item.ProductId"></a>
+                                                </td>
+                                                <td class="product-thumbnail">
+                                                    <a target="_blank" asp-action="details" asp-route-id="@item.ProductId">
+                                                        <img src="~/assets/images/@item.Product.Images.FirstOrDefault()?.Name"
                                                          alt="img"
                                                          class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" />
-                                                </a>
-                                            </td>
-                                            <td class="product-name" data-title="Product">
-                                                <a href="#" class="title">Mini swing dress</a>
-                                                <span class="attributes-select attributes-color">Black,</span>
-                                                <span class="attributes-select attributes-size">XXL</span>
-                                            </td>
-                                            <td class="product-quantity" data-title="Quantity">
-                                                <div class="quantity">
-                                                    <div class="control">
-                                                        <a class="btn-number qtyminus quantity-minus"
+                                                    </a>
+                                                </td>
+                                                <td class="product-name" data-title="Product">
+                                                    <a target="_blank" asp-action="details" asp-route-id="@item.ProductId" class="title">@item.Product.Name</a>
+                                                </td>
+                                                <td class="product-quantity" data-title="Quantity">
+                                                    <div class="quantity">
+                                                        <div class="control">
+                                                            <a class="btn-number qtyminus quantity-minus"
                                                            href="#">-</a>
-                                                        <input type="text"
+                                                            <input type="number"
+                                                               value="@item.Quantity"
+                                                               name="[0].Quantity"
                                                                data-step="1"
                                                                data-min="0"
-                                                               value="1"
                                                                title="Qty"
                                                                class="input-qty qty"
                                                                size="4" />
-                                                        <a href="#"
+                                                            <a href="#"
                                                            class="btn-number qtyplus quantity-plus">+</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="product-price" data-title="Price">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">
-                                                        $
+                                                </td>
+                                                <td class="product-price" data-title="Price">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        @item.Product.Price.ToString("0.00")
+                                                        <span class="woocommerce-Price-currencySymbol">
+                                                            ₼
+                                                        </span>
                                                     </span>
-                                                    45
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-remove">
-                                                <a href="#" class="remove"></a>
-                                            </td>
-                                            <td class="product-thumbnail">
-                                                <a href="#">
-                                                    <img src="~/assets/images/cart-item-3.jpg"
-                                                         alt="img"
-                                                         class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" />
-                                                </a>
-                                            </td>
-                                            <td class="product-name" data-title="Product">
-                                                <a href="#" class="title">Square neck top</a>
-                                                <span class="attributes-select attributes-color">White,</span>
-                                                <span class="attributes-select attributes-size">M</span>
-                                            </td>
-                                            <td class="product-quantity" data-title="Quantity">
-                                                <div class="quantity">
-                                                    <div class="control">
-                                                        <a class="btn-number qtyminus quantity-minus"
-                                                           href="#">-</a>
-                                                        <input type="text"
-                                                               data-step="1"
-                                                               data-min="0"
-                                                               value="1"
-                                                               title="Qty"
-                                                               class="input-qty qty"
-                                                               size="4" />
-                                                        <a href="#"
-                                                           class="btn-number qtyplus quantity-plus">+</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="product-price" data-title="Price">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">
-                                                        $
-                                                    </span>
-                                                    45
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-remove">
-                                                <a href="#" class="remove"></a>
-                                            </td>
-                                            <td class="product-thumbnail">
-                                                <a href="#">
-                                                    <img src="~/assets/images/cart-item-1.jpg"
-                                                         alt="img"
-                                                         class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" />
-                                                </a>
-                                            </td>
-                                            <td class="product-name" data-title="Product">
-                                                <a href="#" class="title">Melody Eau</a>
-                                                <span class="attributes-select attributes-color">Brown,</span>
-                                                <span class="attributes-select attributes-size">XS</span>
-                                            </td>
-                                            <td class="product-quantity" data-title="Quantity">
-                                                <div class="quantity">
-                                                    <div class="control">
-                                                        <a class="btn-number qtyminus quantity-minus"
-                                                           href="#">-</a>
-                                                        <input type="text"
-                                                               data-step="1"
-                                                               data-min="0"
-                                                               value="1"
-                                                               title="Qty"
-                                                               class="input-qty qty"
-                                                               size="4" />
-                                                        <a href="#"
-                                                           class="btn-number qtyplus quantity-plus">+</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="product-price" data-title="Price">
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <span class="woocommerce-Price-currencySymbol">
-                                                        $
-                                                    </span>
-                                                    45
-                                                </span>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                        }
+
                                         <tr>
                                             <td class="actions">
-                                                <div class="coupon">
-                                                    <label class="coupon_code">Coupon Code:</label>
-                                                    <input type="text"
-                                                           class="input-text"
-                                                           placeholder="Promotion code here" />
-                                                    <a href="#" class="button"></a>
-                                                </div>
                                                 <div class="order-total">
                                                     <span class="title"> Total Price: </span>
-                                                    <span class="total-price"> $95 </span>
+                                                    <span class="total-price">@Model.Sum(p => p.Product.Price) ₼</span>
                                                 </div>
                                             </td>
                                         </tr>
@@ -182,7 +94,7 @@
                                 </table>
                             </form>
                             <div class="control-cart">
-                                <button class="button btn-continue-shopping">
+                                <button class="button btn-continue-shopping" asp-action="index">
                                     Continue Shopping
                                 </button>
                                 <button class="button btn-cart-to-checkout">
@@ -196,4 +108,63 @@
         </div>
     </main>
 </div>
+
+@section addcss{
+<style>
+    input.input-qty::-webkit-outer-spin-button,
+    input.input-qty::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+}
+
+@section addjs{
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
+    <script>
+         function removeFromBasket(element, name){
+
+            swal(`Are you sure to delete '${name}' from your cart?`, {
+              title: "Delete",
+              text: `Are you sure to delete '${name}' from your cart?`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+              buttons: ["No", "Yes"]
+        })
+             .then((value) => {
+             
+                 if(value == true){
+                     const elementData = $(element).data();
+                      $.ajax({
+                         url: `@Url.Action("RemoveFromBasket", "Shop")`,
+                         type: "POST",
+                         data: elementData,
+                         contentType: "application/x-www-form-urlencoded",
+                         success: function(res){
+                             //console.log(res);
+                         
+                             if(res.error == false){
+                                 $(element).closest('tr').remove();
+                         
+                                 toastr.success(res.message);
+                             }
+                         
+                             if(res.error == true){
+                                 toastr.error(res.message);
+                             }
+                         },
+                         error: function(res, status, xhr){
+                             //console.log(res, status, xhr);
+                         }
+                      });
+                 }
+             });
+        }
+    </script>
+}
 

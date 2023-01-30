@@ -134,20 +134,30 @@ namespace Stelina.WebUI.Controllers
         }
 
         [Route("/basket")]
-        [Authorize(Policy = "shop.basket")]
-        public IActionResult Basket()
+        public async Task<IActionResult> Basket(ProductBasketQuery query)
         {
-            return View();
+            var response = await mediator.Send(query)
+
+;           return View(response);
         }
 
         [HttpPost]
         [Route("/basket")]
-        [Authorize(Policy = "shop.basket")]
         public async Task<IActionResult> Basket(AddToBasketCommand command)
         {
             var response = await mediator.Send(command);
 
             return Json(response);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromBasket(RemoveFromBasket command)
+        {
+            var response = await mediator.Send(command);
+
+            return Json(response);
+
         }
     }
 }
