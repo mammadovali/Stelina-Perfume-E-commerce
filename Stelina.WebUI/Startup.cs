@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -18,9 +17,7 @@ using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities.Membership;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Stelina.WebUI
 {

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Basket>
+
+@{
+    var info = Model.GroupBy(g => g.UserId)
+                    .Select(g => new
+                    {
+                        TotalSum = g.Sum(m => m.Quantity * m.Product.Price),
+                        TotalCount = g.Count()
+                    })
+                    .FirstOrDefault();
+}
+
+
+<div class="block-minicart stelina-mini-cart block-header stelina-dropdown">
+    <a onclick="return;" asp-action="basket" asp-controller="shop"
+       class="shopcart-icon"
+       data-stelina="stelina-dropdown">
+        Cart
+
+        @if (info?.TotalCount > 0)
+        {
+            <span class="count count-cart"> @info.TotalCount </span>
+        }
+    </a>
+    <div class="shopcart-description stelina-submenu">
+        <div class="content-wrap">
+            <h3 class="title">Shopping Cart</h3>
+           @if (User.Identity.IsAuthenticated && info?.TotalCount == null)
+            {
+                <div class="no-product stelina-submenu">
+                    <p class="text">
+                        There are
+                        <span> no products </span>
+                        in your cart
+                    </p>
+                </div>
+            }
+
+            @if (info?.TotalCount > 0)
+            {
+                <ul class="minicart-items">
+                    @foreach (var item in Model)
+                    {
+                        <li class="product-cart mini_cart_item basket-item-@item.ProductId">
+                            <a asp-controller="shop" asp-action="details" asp-route-id="@item.ProductId" class="product-media">
+                                <img src="~/assets/images/@item.Product.Images.FirstOrDefault().Name"
+                             alt="img" />
+                            </a>
+                            <div class="product-details">
+                                <h5 class="product-name">
+                                    <a asp-controller="shop" asp-action="details" asp-route-id="@item.ProductId">@item.Product.Name</a>
+                                </h5>
+                                <span class="product-price">
+                                    <span class="price">
+                                        <span>@item.Product.Price.ToString("0.00₼")</span>
+                                    </span>
+                                </span>
+                                <span class="product-quantity product-number-header-basket-@item.ProductId"> (x @item.Quantity) </span>
+                                <div class="product-remove">
+                                    <a onclick="removeFromBasket(this, '@item.Product.Name');return"
+                                       data-product-id="@item.ProductId"
+                                       aria-remove-target=".basket-item-@item.ProductId">
+
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+                <div class="subtotal">
+                    <span class="total-title">Total: </span>
+                    <span class="total-price">
+                        <span class="Price-amount"> @info.TotalSum.ToString("0.00₼") </span>
+                    </span>
+                </div>
+                <div class="actions">
+                    <a class="button button-viewcart"
+                   asp-action="basket" asp-controller="shop">
+                        <span>Cart</span>
+                    </a>
+                    <a asp-controller="shop" asp-action="checkout" class="button button-checkout">
+                        <span>Checkout</span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

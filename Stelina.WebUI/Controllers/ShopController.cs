@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Stelina.WebUI.Controllers
 {
-    [AllowAnonymous]
+    
     public class ShopController : Controller
     {
         private readonly StelinaDbContext db;
@@ -27,6 +27,7 @@ namespace Stelina.WebUI.Controllers
             this.db = db;
             this.mediator = mediator;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string sortOrder)
         {
             var brands = await db.Brands.Where(b => b.DeletedDate == null).ToListAsync();
@@ -74,6 +75,7 @@ namespace Stelina.WebUI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Filter(ShopFilterFormModel model)
         {
             var query = db.Products
@@ -99,14 +101,9 @@ namespace Stelina.WebUI.Controllers
             }
 
             return PartialView("_ProductContainer", query.ToList());
-
-            //return Json(new
-            //{
-            //    error = false,
-            //    data = query.ToList()
-            //});
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var entity = await db.Products
@@ -121,6 +118,7 @@ namespace Stelina.WebUI.Controllers
             return View(entity);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Wishlist(WishlistQuery query)
         {
             var favs = await mediator.Send(query);
@@ -132,6 +130,8 @@ namespace Stelina.WebUI.Controllers
 
             return View(favs);
         }
+
+        #region Basket operations
 
         [Route("/basket")]
         public async Task<IActionResult> Basket(ProductBasketQuery query)
@@ -152,12 +152,30 @@ namespace Stelina.WebUI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> RemoveFromBasket(RemoveFromBasket command)
         {
             var response = await mediator.Send(command);
 
             return Json(response);
 
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ChangeBasketQuantity(ChangeBasketQuantityCommand command)
+        {
+            var response = await mediator.Send(command);
+
+            return Json(response);
+        }
+
+        #endregion
+
+        [Route("/checkout")]
+        public IActionResult Checkout()
+        {
+            return View();
         }
     }
 }

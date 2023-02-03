@@ -39,9 +39,12 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr class="cart_item">
+                                            <tr class="cart_item basket-item-@item.ProductId">
                                                 <td class="product-remove">
-                                                    <a onclick="removeFromBasket(this, '@item.Product.Name');return" class="remove" data-product-id="@item.ProductId"></a>
+                                                    <a onclick="removeFromBasket(this, '@item.Product.Name');return" 
+                                                    class="remove"
+                                                    data-product-id="@item.ProductId"
+                                                    aria-remove-target=".basket-item-@item.ProductId"></a>
                                                 </td>
                                                 <td class="product-thumbnail">
                                                     <a target="_blank" asp-action="details" asp-route-id="@item.ProductId">
@@ -53,19 +56,21 @@
                                                 <td class="product-name" data-title="Product">
                                                     <a target="_blank" asp-action="details" asp-route-id="@item.ProductId" class="title">@item.Product.Name</a>
                                                 </td>
+
                                                 <td class="product-quantity" data-title="Quantity">
                                                     <div class="quantity">
                                                         <div class="control">
                                                             <a class="btn-number qtyminus quantity-minus"
                                                            href="#">-</a>
-                                                            <input type="number"
+                                                            <input
+                                                               data-product-id="@item.ProductId"
+                                                               type="number"
+                                                               min="1"
                                                                value="@item.Quantity"
-                                                               name="[0].Quantity"
-                                                               data-step="1"
-                                                               data-min="0"
                                                                title="Qty"
                                                                class="input-qty qty"
-                                                               size="4" />
+                                                               size="4"
+                                                               onchange="changeQuantity(event, this)"/>
                                                             <a href="#"
                                                            class="btn-number qtyplus quantity-plus">+</a>
                                                         </div>
@@ -73,7 +78,7 @@
                                                 </td>
                                                 <td class="product-price" data-title="Price">
                                                     <span class="woocommerce-Price-amount amount">
-                                                        @item.Product.Price.ToString("0.00")
+                                                        @((item.Product.Price * item.Quantity).ToString("0.00"))
                                                         <span class="woocommerce-Price-currencySymbol">
                                                             ₼
                                                         </span>
@@ -86,7 +91,7 @@
                                             <td class="actions">
                                                 <div class="order-total">
                                                     <span class="title"> Total Price: </span>
-                                                    <span class="total-price">@Model.Sum(p => p.Product.Price) ₼</span>
+                                                    <span id="summary" class="total-price">@Model.Sum(p => (p.Product.Price * p.Quantity)) ₼</span>
                                                 </div>
                                             </td>
                                         </tr>
@@ -94,12 +99,12 @@
                                 </table>
                             </form>
                             <div class="control-cart">
-                                <button class="button btn-continue-shopping" asp-action="index">
+                                <a type="button" class="button btn-continue-shopping" asp-controller="shop" asp-action="index">
                                     Continue Shopping
-                                </button>
-                                <button class="button btn-cart-to-checkout">
+                                </a>
+                                <a class="button btn-cart-to-checkout" asp-controller="shop" asp-action="checkout">
                                     Checkout
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -109,62 +114,4 @@
     </main>
 </div>
 
-@section addcss{
-<style>
-    input.input-qty::-webkit-outer-spin-button,
-    input.input-qty::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
-</style>
-}
-
-@section addjs{
-    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
-    <script>
-         function removeFromBasket(element, name){
-
-            swal(`Are you sure to delete '${name}' from your cart?`, {
-              title: "Delete",
-              text: `Are you sure to delete '${name}' from your cart?`,
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-              buttons: ["No", "Yes"]
-        })
-             .then((value) => {
-             
-                 if(value == true){
-                     const elementData = $(element).data();
-                      $.ajax({
-                         url: `@Url.Action("RemoveFromBasket", "Shop")`,
-                         type: "POST",
-                         data: elementData,
-                         contentType: "application/x-www-form-urlencoded",
-                         success: function(res){
-                             //console.log(res);
-                         
-                             if(res.error == false){
-                                 $(element).closest('tr').remove();
-                         
-                                 toastr.success(res.message);
-                             }
-                         
-                             if(res.error == true){
-                                 toastr.error(res.message);
-                             }
-                         },
-                         error: function(res, status, xhr){
-                             //console.log(res, status, xhr);
-                         }
-                      });
-                 }
-             });
-        }
-    </script>
-}
 

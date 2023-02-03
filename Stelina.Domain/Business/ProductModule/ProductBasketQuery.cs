@@ -13,9 +13,9 @@ using System.Threading.Tasks;
 
 namespace Stelina.Domain.Business.ProductModule
 {
-    public class ProductBasketQuery : IRequest<List<Basket>>
+    public class ProductBasketQuery : IRequest<IEnumerable<Basket>>
     {
-        public class ProductBasketQueryHandler : IRequestHandler<ProductBasketQuery, List<Basket>>
+        public class ProductBasketQueryHandler : IRequestHandler<ProductBasketQuery, IEnumerable<Basket>>
         {
             private readonly StelinaDbContext db;
             private readonly IActionContextAccessor ctx;
@@ -25,8 +25,13 @@ namespace Stelina.Domain.Business.ProductModule
                 this.db = db;
                 this.ctx = ctx;
             }
-            public async Task<List<Basket>> Handle(ProductBasketQuery request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<Basket>> Handle(ProductBasketQuery request, CancellationToken cancellationToken)
             {
+                if (!ctx.ActionContext.HttpContext.User.Identity.IsAuthenticated)
+                {
+                    return Enumerable.Empty<Basket>();
+                }
+
                 var userId = ctx.GetCurrentUserId();
 
                 var data = await db.Basket

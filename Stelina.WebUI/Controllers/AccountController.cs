@@ -109,7 +109,7 @@ namespace Stelina.WebUI.Controllers
                 return Json(new
                 {
                     error = false,
-                    message = "Daxil oldunuz"
+                    message = "You logged in to your account"
                 });
             }
 

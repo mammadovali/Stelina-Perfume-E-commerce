@@ -233,8 +233,8 @@
                       setTimeout(function(){
                           $("ul.list-products").html(res);
 
-                          if ( $('ul.list-products').children().length == 0 ) {
-                              $("ul.list-products").html("<img src='/assets/images/no-results-found.png'/>");
+                          if ($('ul.list-products').children().not('script, ::before, ::after').length === 0) {
+                               $("ul.list-products").html("<div style='display: flex; justify-content: center;'><img src='/assets/images/no-matches.png'/></div>");
                           }
 
                       },1000);

@@ -10,5 +10,7 @@ namespace Stelina.Domain.AppCode.Infrastructure
     {
         public bool Error { get; set; }
         public string Message { get; set; }
+
+        public object Value { get; set; }
     }
 }

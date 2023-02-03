@@ -107,203 +107,17 @@
                     </div>
                     <div class="col-lg-2 col-sm-12 col-md-3 col-xs-12 col-ts-12">
                         <div class="header-control">
-                            <div class="block-minicart stelina-mini-cart block-header stelina-dropdown">
-                                <a href="javascript:void(0);"
-                                   class="shopcart-icon"
-                                   data-stelina="stelina-dropdown">
-                                    Cart
-                                    <span class="count"> 0 </span>
-                                </a>
-                                <div class="shopcart-description stelina-submenu">
-                                    <div class="content-wrap">
-                                        <h3 class="title">Shopping Cart</h3>
-                                        <ul class="minicart-items">
-                                            <li class="product-cart mini_cart_item">
-                                                <a href="#" class="product-media">
-                                                    <img src="~/assets/images/item-minicart-1.jpg"
-                                                         alt="img" />
-                                                </a>
-                                                <div class="product-details">
-                                                    <h5 class="product-name">
-                                                        <a href="#">Bibliotheque</a>
-                                                    </h5>
-                                                    <div class="variations">
-                                                        <span class="attribute_color">
-                                                            <a href="#">Black</a>
-                                                        </span>
-                                                        ,
-                                                        <span class="attribute_size">
-                                                            <a href="#">300ml</a>
-                                                        </span>
-                                                    </div>
-                                                    <span class="product-price">
-                                                        <span class="price">
-                                                            <span>$45</span>
-                                                        </span>
-                                                    </span>
-                                                    <span class="product-quantity"> (x1) </span>
-                                                    <div class="product-remove">
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-cart mini_cart_item">
-                                                <a href="#" class="product-media">
-                                                    <img src="~/assets/images/item-minicart-2.jpg"
-                                                         alt="img" />
-                                                </a>
-                                                <div class="product-details">
-                                                    <h5 class="product-name">
-                                                        <a href="#">Soap Dining Solutions</a>
-                                                    </h5>
-                                                    <div class="variations">
-                                                        <span class="attribute_color">
-                                                            <a href="#">Black</a>
-                                                        </span>
-                                                        ,
-                                                        <span class="attribute_size">
-                                                            <a href="#">300ml</a>
-                                                        </span>
-                                                    </div>
-                                                    <span class="product-price">
-                                                        <span class="price">
-                                                            <span>$45</span>
-                                                        </span>
-                                                    </span>
-                                                    <span class="product-quantity"> (x1) </span>
-                                                    <div class="product-remove">
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="product-cart mini_cart_item">
-                                                <a href="#" class="product-media">
-                                                    <img src="~/assets/images/item-minicart-3.jpg"
-                                                         alt="img" />
-                                                </a>
-                                                <div class="product-details">
-                                                    <h5 class="product-name">
-                                                        <a href="#">Dining Solutions Soap</a>
-                                                    </h5>
-                                                    <div class="variations">
-                                                        <span class="attribute_color">
-                                                            <a href="#">Black</a>
-                                                        </span>
-                                                        ,
-                                                        <span class="attribute_size">
-                                                            <a href="#">300ml</a>
-                                                        </span>
-                                                    </div>
-                                                    <span class="product-price">
-                                                        <span class="price">
-                                                            <span>$45</span>
-                                                        </span>
-                                                    </span>
-                                                    <span class="product-quantity"> (x1) </span>
-                                                    <div class="product-remove">
-                                                        <a href="#">
-                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="subtotal">
-                                            <span class="total-title">Subtotal: </span>
-                                            <span class="total-price">
-                                                <span class="Price-amount"> $135 </span>
-                                            </span>
-                                        </div>
-                                        <div class="actions">
-                                            <a class="button button-viewcart"
-                                               asp-action="wishlist" asp-controller="shop">
-                                                <span>View Bag</span>
-                                            </a>
-                                            <a asp-controller="shop" asp-action="basket" class="button button-checkout">
-                                                <span>Checkout</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
+                            @await Component.InvokeAsync("BasketInfo")
+
+
                             <div class="block-account block-header stelina-dropdown">
-                                <a href="javascript:void(0);" data-stelina="stelina-dropdown">
-                                    <span class="flaticon-user"></span>
+                                <a asp-action="wishlist" asp-controller="shop" style="transition: all 0.15s linear;">
+                                    <i class="fa fa-heart"></i>
                                 </a>
 
 
-                                <div class="header-account stelina-submenu">
-                                    <div class="header-user-form-tabs">
-                                        <ul class="tab-link">
-                                            <li class="active">
-                                                <a data-toggle="tab"
-                                                   aria-expanded="true"
-                                                   href="#header-tab-login">Login</a>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="tab"
-                                                   aria-expanded="true"
-                                                   href="#header-tab-rigister">Register</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-container">
-                                            <div id="header-tab-login" class="tab-panel active">
-                                                <form method="post" class="login form-login">
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="email"
-                                                               placeholder="Email"
-                                                               class="input-text" />
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="password"
-                                                               class="input-text"
-                                                               placeholder="Password" />
-                                                    </p>
-                                                    <p class="form-row">
-                                                        <label class="form-checkbox">
-                                                            <input type="checkbox" class="input-checkbox" />
-                                                            <span> Remember me </span>
-                                                        </label>
-                                                        <input type="submit"
-                                                               class="button"
-                                                               value="Login" />
-                                                    </p>
-                                                    <p class="lost_password">
-                                                        <a href="#">Lost your password?</a>
-                                                    </p>
-                                                </form>
-                                            </div>
-                                            <div id="header-tab-rigister" class="tab-panel">
-                                                <form method="post" class="register form-register">
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="email"
-                                                               placeholder="Email"
-                                                               class="input-text" />
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="text"
-                                                               placeholder="Username"
-                                                               class="input-text" />
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="password"
-                                                               class="input-text"
-                                                               placeholder="Password" />
-                                                    </p>
-                                                    <p class="form-row">
-                                                        <input type="submit"
-                                                               class="button"
-                                                               value="Register" />
-                                                    </p>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
                             <a class="menu-bar mobile-navigation menu-toggle" href="#">
@@ -337,7 +151,7 @@
         <div class="wapper">
             <div class="item mobile-logo">
                 <div class="logo">
-                    <a href="#">
+                    <a asp-action="index" asp-controller="home">
                         <img src="~/assets/images/logo.png" alt="img" />
                     </a>
                 </div>
@@ -496,7 +310,7 @@
     <div class="footer-device-mobile">
         <div class="wapper">
             <div class="footer-device-mobile-item device-home">
-                <a href="index.html">
+                <a asp-action="index" asp-controller="home">
                     <span class="icon">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </span>
@@ -512,10 +326,10 @@
                 </a>
             </div>
             <div class="footer-device-mobile-item device-home device-cart">
-                <a href="#">
+                <a asp-action="basket" asp-controller="shop">
                     <span class="icon">
                         <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                        <span class="count-icon"> 0 </span>
+                        <span class="count-icon count count-cart"> 0 </span>
                     </span>
                     <span class="text">Cart</span>
                 </a>
@@ -541,6 +355,35 @@
     <a href="#" class="backtotop">
         <i class="fa fa-angle-double-up"></i>
     </a>
+
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Log in</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="loginModal" method="post">
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Username or E-mail</label>
+                            <input type="text" class="form-control" id="recipient-name" name="UserName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password</label>
+                            <input type="password" class="form-control" id="message-text" name="Password" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="loginModal" class="btn btn-primary">Log in</button>
+                    <a asp-action="register" asp-controller="account" class="btn btn-warning">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/js/jquery-1.12.4.min.js"></script>
     <script src="~/assets/js/jquery.plugin-countdown.min.js"></script>
@@ -609,7 +452,7 @@
                 }
             });
 
-              $("#postComment").click(function(){
+              $("#postComment").add(".add-to-cart").add(".sign-in-shopping-cart").click(function(){
                    $("#modalLoginForm").addClass("in")
                    $("#modalLoginForm").css("background", "rgba(0, 0, 0, 0.44)")
                    $(".modal.fade .modal-dialog").css("transform", "translate(0, 10%)")
@@ -629,7 +472,8 @@
                     success: function(response) {
                         if(response.error == false){
                              $('#modalLoginForm').modal('hide');
-                             toastr.success(response.message, "Uğur!");
+                             toastr.success(response.message);
+                             location.reload();
                         }
                         else
                         {
@@ -686,37 +530,9 @@
         });
     </script>
 
+    <partial name="_BasketScriptsPartial" />
 
-    <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Log in</h1>
-                </div>
-                <div class="modal-body">
-                    <form id="loginModal" method="post">
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Username or E-mail</label>
-                            <input type="text" class="form-control" id="recipient-name" name="UserName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Password</label>
-                            <input type="password" class="form-control" id="message-text" name="Password" />
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" form="loginModal" class="btn btn-primary">Log in</button>
-                    <a asp-action="register" asp-controller="account" class="btn btn-warning">Register</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
+    <partial />
     @RenderSection("addjs", required:false)
 </body>
 

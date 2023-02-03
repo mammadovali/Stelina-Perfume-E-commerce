@@ -1,0 +1,127 @@
+﻿
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<script>
+     function removeFromBasket(element, name){
+
+        swal(`Are you sure to delete '${name}' from your cart?`, {
+          title: "Delete",
+          text: `Are you sure to delete '${name}' from your cart?`,
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+          buttons: ["No", "Yes"]
+        })
+            .then((value) => {
+
+             if(value == true){
+                 const elementData = $(element).data();
+                  $.ajax({
+                     url: `@Url.Action("RemoveFromBasket", "Shop")`,
+                     type: "POST",
+                     data: elementData,
+                     contentType: "application/x-www-form-urlencoded",
+                     success: function(res){
+                          console.log(res);
+
+                         if(res.error == false){
+
+                             const removeTarget = $(element).attr('aria-remove-target');
+
+                             if(removeTarget != undefined){
+                                 $(removeTarget).remove();
+                             }
+
+                             if(res.value?.count == null){
+                                 $('.count-cart').text("");
+                             }else{
+                                 $('.count-cart').text(res.value.count);
+                             }
+
+                             if(res.value?.total == null){
+                                 $('.total-price').add(".Price-amount").text("");
+                             }else{
+                                 $('.total-price').add(".Price-amount").text(`${res.value.total}₼`);
+                             }
+
+                             $("span.count-cart").filter(function() {
+                                return !$.trim(this.innerHTML);
+                             }).hide();
+
+                             console.log(res)
+
+                             
+
+                             toastr.success(res.message);
+                             return;
+                         }
+
+                         if(res.error == true){
+                             toastr.error(res.message);
+                         }
+                     },
+                     error: function(res, status, xhr){
+                         //console.log(res, status, xhr);
+                     }
+                  });
+             }
+         });
+    }
+
+    function changeQuantity(event, element){
+        if($.processId != undefined){
+            clearTimeout($.processId);
+
+            $.processId = undefined
+        }
+        if(element.value < 1){
+            //console.log("olmadikii", element.value);
+            return false;
+        }
+
+        $.processId = setTimeout(function(){
+
+            const elementData = $(element).data();
+            elementData.Quantity = element.value;
+
+            $.ajax({
+                     url: `@Url.Action("ChangeBasketQuantity", "Shop")`,
+                     type: "POST",
+                     data: elementData,
+                     contentType: "application/x-www-form-urlencoded",
+                     success: function(res){
+                         console.log(res);
+
+                         $(element).closest('tr').find(".amount").text(`${res.value.total} ₼`);
+                         $("#summary").text(`${res.value.summary} ₼`);
+
+
+
+                         if(res.error == false){
+
+                             if(res.value?.quantity == null){
+                                 $(`.product-number-header-basket-${elementData.productId}`).text("");
+                             }else{
+                                 $(`.product-number-header-basket-${elementData.productId}`).text(` (x ${res.value.quantity}) `);
+                             }
+
+                             if(res.value?.total == null){
+                                 $('.total-price').add(".Price-amount").text("");
+                             }else{
+                                 $('.total-price').add(".Price-amount").text(`${res.value.summary}₼`);
+                             }
+
+                             toastr.success(res.message);
+                             return;
+                         }
+                             toastr.error(res.message);
+
+                     },
+                     error: function(res, status, xhr){
+                         //console.log(res, status, xhr);
+                     }
+                  });
+
+        }, 700)
+
+    }
+</script>

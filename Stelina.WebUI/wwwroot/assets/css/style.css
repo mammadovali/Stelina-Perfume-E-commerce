@@ -1045,7 +1045,7 @@ td {
         display: inline-block;
         color: #888;
         top: 0;
-        right: 30px;
+        right: 0px;
         font-weight: normal;
     }
 
@@ -6292,7 +6292,6 @@ a:active {
     }
 
 .header.style7 .block-minicart .shopcart-icon {
-    font-size: 0;
     border: none;
     border-radius: 0;
     width: auto;
@@ -9841,4 +9840,14 @@ blockquote .author .desc {
 
 .comment-sub {
     margin-left: 30px !important;
+}
+
+input.input-qty::-webkit-outer-spin-button,
+input.input-qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
 }
