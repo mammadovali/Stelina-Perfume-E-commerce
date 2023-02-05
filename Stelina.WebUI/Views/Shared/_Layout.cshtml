@@ -407,6 +407,7 @@
     <script src="~/lib/toastr.js/toastr.min.js"></script>
     <script src="~/lib/toastr.js/toastr.customize.js"></script>
     <script src="~/lib/jquery-cookie/jquery.cookie.min.js"></script>
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
     <script class="removable">
         $(document).ready(function (){
             $(".newsletter-subscribe").submit(function (e) {
@@ -530,9 +531,10 @@
         });
     </script>
 
+    
+
     <partial name="_BasketScriptsPartial" />
 
-    <partial />
     @RenderSection("addjs", required:false)
 </body>
 

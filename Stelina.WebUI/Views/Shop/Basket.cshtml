@@ -37,6 +37,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         @foreach (var item in Model)
                                         {
                                             <tr class="cart_item basket-item-@item.ProductId">
@@ -89,6 +90,12 @@
 
                                         <tr>
                                             <td class="actions">
+
+                                                  @if (Model.Count() == 0)
+                                                  {
+                                                      <div class="no-product">There is no product in your cart</div>
+                                                  }
+                                                
                                                 <div class="order-total">
                                                     <span class="title"> Total Price: </span>
                                                     <span id="summary" class="total-price">@Model.Sum(p => (p.Product.Price * p.Quantity)) ₼</span>

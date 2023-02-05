@@ -21,8 +21,7 @@
                     <h3 class="custom_blog_title">Favorites</h3>
                     <div class="page-main-content">
                         <div class="shoppingcart-content">
-                            <form
-                                  class="cart-form">
+                            <form class="cart-form">
                                 <table class="shop_table">
                                     <thead>
                                         <tr>
@@ -45,7 +44,7 @@
                                 <a asp-action="index" asp-controller="shop" class="button btn-continue-shopping">
                                     Continue Shopping
                                 </a>
-                                <a asp-action="basket" asp-controller="shop" class="button btn-cart-to-checkout">
+                                <a asp-action="checkout" asp-controller="shop" class="button btn-cart-to-checkout">
                                     Checkout
                                 </a>
                             </div>
@@ -58,64 +57,72 @@
 </div>
 
 
-
 @section addjs{
-    <script>
-        function removeFromFavorites(productId, e){
-            e.preventDefault();
-            
-
-             $.ajax({
-                 url: '',
-                 type: 'POST',
-                 beforeSend: function(){
-                    const favorites =  ($.cookie('favorites') || '').split(',').filter(item => item.length > 0);
-                    const refreshFavorites = favorites.filter(item => item != productId)
-                    $.cookie('favorites', refreshFavorites.toString(), { path: '/'});
-
-                 },
-                 success: function(res){
-                     $('#dynamic-content').html(res);
-                 },
-                 error: function(res){
-
-                 }
-             })
-        }
-
-        function addToBasket(e){
-            e.preventDefault();
-
-            const elementData = $(e.currentTarget).data();
-
-            $.ajax({
-                url: `@Url.Action("Basket", "Shop")`,
-                type: "POST",
-                data: elementData,
-                contentType: 'application/x-www-form-urlencoded',
-                success: function(res){
-                    //console.log(res);
+<script>
+    function removeFromFavorites(productId, e){
+        e.preventDefault();
 
 
-                    if(res.error == false){
-                        //$(e.target).closest('tr').remove();
+         $.ajax({
+             url: '',
+             type: 'POST',
+             beforeSend: function(){
+                const favorites =  ($.cookie('favorites') || '').split(',').filter(item => item.length > 0);
+                const refreshFavorites = favorites.filter(item => item != productId)
+                $.cookie('favorites', refreshFavorites.toString(), { path: '/'});
 
-                        $('.add-to-cart').click(function(e) {
-                            $(this).addClass('added');
-                        });
+             },
+             success: function(res){
+                 $('#dynamic-content').html(res);
+             },
+             error: function(res){
 
-                        toastr.success(res.message);
-                    }
+             }
+         })
+    }
 
-                    if(res.error == true){
-                        toastr.success(res.message);
-                    }
-                },
-                error: function(res, status, xhr){
-                    console.log(res, status, xhr);
-                }
-            });
-        }
-    </script>
+    //function addToBasket(e){
+    //    e.preventDefault();
+
+    //    const elementData = $(e.currentTarget).data();
+
+    //    $.ajax({
+    //        url: `@Url.Action("Basket", "Shop")`,
+    //        type: "POST",
+    //        data: elementData,
+    //        contentType: 'application/x-www-form-urlencoded',
+    //        success: function(res){
+    //            console.log(res);
+
+
+    //            if(res.error == false){
+    //                //$(e.target).closest('tr').remove();
+
+    //                $('.add-to-cart').click(function(e) {
+    //                    $(this).addClass('added');
+    //                });
+
+    //                $(".shopcart-icon").append(`<span class='count count-cart'>${res.value.basketInfo.count}</span>`)
+
+    //                if(res.value?.basketInfo.count == null){
+    //                    $('.count-cart').text("");
+    //                }
+    //                else{
+    //                    $('.count-cart').text(res.value.basketInfo.count);
+    //                }
+
+    //                toastr.success(res.message);
+    //            }
+
+    //            if(res.error == true){
+    //                toastr.success(res.message);
+    //            }
+    //        },
+    //        error: function(res, status, xhr){
+    //            //console.log(res, status, xhr);
+    //        }
+    //    });
+    //}
+
+</script>
 }
-

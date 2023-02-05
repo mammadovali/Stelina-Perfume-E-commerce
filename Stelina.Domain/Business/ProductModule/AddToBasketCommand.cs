@@ -33,15 +33,6 @@ namespace Stelina.Domain.Business.BasketModule
             {
                 var userId = ctx.GetCurrentUserId();
 
-                //if (userId == 0)
-                //{
-                //    return new JsonResponse
-                //    {
-                //        Error = true,
-                //        Message = "You should log in to your account first"
-                //    };
-                //}
-
                 var alreadyExits = await db.Basket.AnyAsync(b => b.ProductId == request.ProductId && b.UserId == userId, cancellationToken);
 
 
@@ -81,10 +72,37 @@ namespace Stelina.Domain.Business.BasketModule
 
                 //#endregion
 
+                var info = await (from b in db.Basket
+                                  join p in db.Products on b.ProductId equals p.Id
+                                  where b.UserId == userId
+                                  select new
+                                  {
+                                      b.UserId,
+                                      SubTotal = p.Price * b.Quantity
+                                  })
+                                  .GroupBy(g => g.UserId)
+                                  .Select(g => new
+                                  {
+                                      Total = g.Sum(m => m.SubTotal),
+                                      Count = g.Count()
+                                  })
+                                  .FirstOrDefaultAsync(cancellationToken);
+
+                var addedProduct = await db.Basket
+                    .Include(b => b.Product)
+                    .ThenInclude(p => p.Images.Where(i => i.IsMain == true))
+                    .FirstOrDefaultAsync(b => b.UserId == userId && b.ProductId == request.ProductId);
+
+                
                 return new JsonResponse
                 {
                     Error = false,
-                    Message = "Product was added to the basket"
+                    Message = "Product was added to the basket",
+                    Value = new
+                    {
+                        Product = addedProduct,
+                        BasketInfo = info
+                    }
                 };
             }
 

@@ -2,18 +2,20 @@
 
 @{
     var info = Model.GroupBy(g => g.UserId)
-                    .Select(g => new
-                    {
-                        TotalSum = g.Sum(m => m.Quantity * m.Product.Price),
-                        TotalCount = g.Count()
-                    })
-                    .FirstOrDefault();
+                                    .Select(g => new
+                                    {
+                                        TotalSum = g.Sum(m => m.Quantity * m.Product.Price),
+                                        TotalCount = g.Count()
+                                    })
+                                    .FirstOrDefault();
 }
 
 
 <div class="block-minicart stelina-mini-cart block-header stelina-dropdown">
-    <a onclick="return;" asp-action="basket" asp-controller="shop"
+    <a asp-action="basket" asp-controller="shop"
+       style=""
        class="shopcart-icon"
+       data-product-amount="@info?.TotalCount"
        data-stelina="stelina-dropdown">
         Cart
 
@@ -25,16 +27,6 @@
     <div class="shopcart-description stelina-submenu">
         <div class="content-wrap">
             <h3 class="title">Shopping Cart</h3>
-           @if (User.Identity.IsAuthenticated && info?.TotalCount == null)
-            {
-                <div class="no-product stelina-submenu">
-                    <p class="text">
-                        There are
-                        <span> no products </span>
-                        in your cart
-                    </p>
-                </div>
-            }
 
             @if (info?.TotalCount > 0)
             {
@@ -58,8 +50,9 @@
                                 <span class="product-quantity product-number-header-basket-@item.ProductId"> (x @item.Quantity) </span>
                                 <div class="product-remove">
                                     <a onclick="removeFromBasket(this, '@item.Product.Name');return"
-                                       data-product-id="@item.ProductId"
-                                       aria-remove-target=".basket-item-@item.ProductId">
+                               data-product-id="@item.ProductId"
+                               aria-remove-target=".basket-item-@item.ProductId"
+                               style="cursor: pointer;">
 
                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </a>
@@ -88,4 +81,25 @@
         </div>
     </div>
 </div>
+
+<script class="removable">
+
+    const dropdownIcon = document.querySelector('.shopcart-icon');
+
+    if (dropdownIcon.hasAttribute('data-product-amount')) {
+
+      const value = dropdownIcon.getAttribute('data-product-amount');
+
+      if (value === '') {
+          document.querySelector('.block-minicart.stelina-mini-cart.block-header.stelina-dropdown').addEventListener('click', function(e) {
+             if (e.target.tagName === 'A') {
+               e.stopPropagation();
+             }
+          });
+      }
+    }
+    
+</script>
+
+
 

@@ -9851,3 +9851,17 @@ input.input-qty::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.total-price-wishlist {
+    font-size: 20px;
+    color: #333333;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.no-product {
+    font-size: 20px;
+    font-family: 'Jost';
+    color: #333;
+    font-weight: 500;
+}
