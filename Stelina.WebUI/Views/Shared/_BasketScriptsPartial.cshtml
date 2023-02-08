@@ -51,7 +51,7 @@
 
                                  const noProductDiv = $('<div>').html('There is no product in your cart').addClass("no-product");
 
-                                 $("td.actions").append(noProductDiv);
+                                 $(".actions-basket").append(noProductDiv);
 
                                  $("#summary").html("0 ₼");
                              }
@@ -119,6 +119,7 @@
         e.preventDefault();
 
         const elementData = $(e.currentTarget).data();
+        console.log(elementData, "elementData")
 
         $.ajax({
             url: `@Url.Action("Basket", "Shop")`,
@@ -183,8 +184,41 @@
                 }
             },
             error: function(res, status, xhr){
-                //console.log(res, status, xhr);
+                console.log(res, status, xhr);
             }
         });
+    }
+
+    function addToFavorites(productId){
+           const favorites =  ($.cookie('favorites') || '').split(',').filter(item => item.length > 0);
+
+           
+           if(favorites.filter(item => item == productId).length == 0){
+               favorites.push(productId);
+
+           
+               $.cookie('favorites', favorites.toString(), { path: '/'});
+           }
+
+           
+           let isInArray = true;
+           
+           $.each(favorites, function(index, value) {
+             if (value === productId) {
+                 isInArray = true;
+             }else{
+                 isInArray = false;
+             }
+           });
+           
+           if (isInArray) {
+             $(`.product-item .thumb-group .yith-wcwl-add-to-wishlist-${productId} a`).addClass("full-heart-icon");
+             toastr.success("Added to favorites");
+           }else{
+                $(`.product-item .thumb-group .yith-wcwl-add-to-wishlist-${productId} a`).removeClass("full-heart-icon");
+                toastr.success("Product is already in your favorites");
+           }
+
+           console.log(favorites);
     }
 </script>

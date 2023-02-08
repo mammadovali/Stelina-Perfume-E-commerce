@@ -2397,9 +2397,9 @@ ul.list-products {
         content: "\f08a";
     }
 
-    .product-item .yith-wcwl-add-to-wishlist > div a:hover::before {
+    /*.product-item .yith-wcwl-add-to-wishlist > div a:hover::before {
         content: "\f004";
-    }
+    }*/
 
     .product-item .product-thumb {
         margin-bottom: 15px;
@@ -9864,4 +9864,8 @@ input[type=number] {
     font-family: 'Jost';
     color: #333;
     font-weight: 500;
+}
+
+.full-heart-icon::before {
+    content: "\f004" !important;
 }

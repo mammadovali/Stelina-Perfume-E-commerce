@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Product>
 
-
 @foreach (var item in Model)
 {
     var imagePath = item.Images.FirstOrDefault()?.Name;
@@ -21,13 +20,13 @@
                          alt="img" />
                     </a>
                     <div class="thumb-group">
-                        <div class="yith-wcwl-add-to-wishlist">
+                        <div class="yith-wcwl-add-to-wishlist yith-wcwl-add-to-wishlist-@item.Id">
                             <div class="yith-wcwl-add-button">
-                                <a href="javascript:addToFavorites(@item.Id)">Add to Wishlist</a>
+                                <a href="javascript:addToFavorites(@item.Id)"  class="@(item.Id)full-heart-icon" >Add to Wishlist</a>
                             </div>
                         </div>
                         <div class="loop-form-add-to-cart">
-                            <button class="single_add_to_cart_button button" type="button" onclick="addToBasket(event)">
+                            <button class="single_add_to_cart_button button" type="button" data-product-id="@item.Id" onclick="addToBasket(event)">
                                 Add to cart
                             </button>
                         </div>
@@ -54,19 +53,4 @@
     </li>
 }
 
-
-<script>
-        function addToFavorites(productId){
-           const favorites =  ($.cookie('favorites') || '').split(',').filter(item => item.length > 0);
-           
-           if(favorites.filter(item => item == productId).length == 0){
-               favorites.push(productId);
-           
-               $.cookie('favorites', favorites.toString(), { path: '/'})
-           }
-           
-          // console.log(favorites)
-        }
-
-</script>
 
