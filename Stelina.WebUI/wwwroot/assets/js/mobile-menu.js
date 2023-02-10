@@ -138,35 +138,35 @@
                 var thisMainPanel = $('.stelina-menu-clone-wrap .stelina-menu-panels #stelina-menu-panel-main ul');
                 thisMainPanel.append(thisClone.html());
 
-                stelina_menu_insert_children_panels_html_by_elem(thisMainPanel, i);
+                //stelina_menu_insert_children_panels_html_by_elem(thisMainPanel, i);
             }
         });
     }
 
-    // i: For next nav target
-    function stelina_menu_insert_children_panels_html_by_elem($elem, i) {
-        if ( $elem.find('.menu-item-has-children').length ) {
-            $elem.find('.menu-item-has-children').each(function () {
-                var thisChildItem = $(this);
-                stelina_menu_insert_children_panels_html_by_elem(thisChildItem, i);
-                var next_nav_target = 'stelina-menu-panel-' + i;
+    //// i: For next nav target
+    //function stelina_menu_insert_children_panels_html_by_elem($elem, i) {
+    //    if ( $elem.find('.menu-item-has-children').length ) {
+    //        $elem.find('.menu-item-has-children').each(function () {
+    //            var thisChildItem = $(this);
+    //            stelina_menu_insert_children_panels_html_by_elem(thisChildItem, i);
+    //            var next_nav_target = 'stelina-menu-panel-' + i;
 
-                // Make sure there is no duplicate panel id
-                while ( $('#' + next_nav_target).length ) {
-                    i++;
-                    next_nav_target = 'stelina-menu-panel-' + i;
-                }
-                // Insert Next Nav
-                thisChildItem.prepend('<a class="stelina-menu-next-panel" href="#' + next_nav_target + '" data-target="#' + next_nav_target + '"></a>');
+    //            // Make sure there is no duplicate panel id
+    //            while ( $('#' + next_nav_target).length ) {
+    //                i++;
+    //                next_nav_target = 'stelina-menu-panel-' + i;
+    //            }
+    //            // Insert Next Nav
+    //            thisChildItem.prepend('<a class="stelina-menu-next-panel" href="#' + next_nav_target + '" data-target="#' + next_nav_target + '"></a>');
 
-                // Get sub menu html
-                var sub_menu_html = $('<div>').append(thisChildItem.find('> .submenu').clone()).html();
-                thisChildItem.find('> .submenu').remove();
+    //            // Get sub menu html
+    //            var sub_menu_html = $('<div>').append(thisChildItem.find('> .submenu').clone()).html();
+    //            thisChildItem.find('> .submenu').remove();
 
-                $('.stelina-menu-clone-wrap .stelina-menu-panels').append('<div id="' + next_nav_target + '" class="stelina-menu-panel stelina-menu-sub-panel stelina-menu-hidden">' + sub_menu_html + '</div>');
-            });
-        }
-    }
+    //            $('.stelina-menu-clone-wrap .stelina-menu-panels').append('<div id="' + next_nav_target + '" class="stelina-menu-panel stelina-menu-sub-panel stelina-menu-hidden">' + sub_menu_html + '</div>');
+    //        });
+    //    }
+    //}
 
     function stelina_menuadd_string_prefix(str, prefix) {
         return prefix + str;

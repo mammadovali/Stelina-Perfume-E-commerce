@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Stelina.WebUI.Controllers
 {
-    
+
     public class ShopController : Controller
     {
         private readonly StelinaDbContext db;
@@ -53,7 +53,7 @@ namespace Stelina.WebUI.Controllers
             //ViewBag.NameSort = String.IsNullOrWhiteSpace(sortOrder) ? "nameDesc" : "";
             //ViewBag.PriceSort = sortOrder == "Price" ? "sortDesc" : "price";
 
-            
+
 
             //switch (sortOrder)
             //{
@@ -87,12 +87,12 @@ namespace Stelina.WebUI.Controllers
 
             if (model?.Brands?.Count() > 0)
             {
-                 query = query.Where(p => model.Brands.Contains(p.BrandId));
+                query = query.Where(p => model.Brands.Contains(p.BrandId));
             }
 
             if (model?.Categories?.Count() > 0)
             {
-                 query = query.Where(p => model.Categories.Contains(p.CategoryId));
+                query = query.Where(p => model.Categories.Contains(p.CategoryId));
             }
 
             if (model.Prices[0] >= 0 && model.Prices[0] <= model.Prices[1])
@@ -119,7 +119,7 @@ namespace Stelina.WebUI.Controllers
         //    }
 
         //    return PartialView("_ProductContainer", query.ToList());
-        }
+        //}
 
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)

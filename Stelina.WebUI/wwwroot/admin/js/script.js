@@ -376,3 +376,7 @@ function applyGlobalChanges() {
     });
   }
 }
+
+String.prototype.isHtml = function () {
+    return /[<>]+/g.test(this) == true || this.replace(/(\r|\n|\r\n|\s)/g, '').length == 0;
+}

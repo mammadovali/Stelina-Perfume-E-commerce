@@ -35,7 +35,7 @@
                     {
                         <li class="product-cart mini_cart_item basket-item-@item.ProductId">
                             <a asp-controller="shop" asp-action="details" asp-route-id="@item.ProductId" class="product-media">
-                                <img src="~/assets/images/@item.Product.Images.FirstOrDefault().Name"
+                                <img src="~/uploads/images/@item.Product.Images.FirstOrDefault()?.Name"
                              alt="img" />
                             </a>
                             <div class="product-details">

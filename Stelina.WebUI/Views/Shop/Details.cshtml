@@ -24,8 +24,8 @@
                         <div class="details-thumd">
                             <div class="image-preview-container image-thick-box image_preview_container">
                                 <img id="img_zoom"
-                                     data-zoom-image="/assets/images/@Model.Images.FirstOrDefault(i => i.IsMain == true).Name"
-                                     src="/assets/images/@Model.Images.FirstOrDefault(i => i.IsMain == true).Name"
+                                     data-zoom-image="~/uploads/images/@Model.Images.FirstOrDefault(i => i.IsMain == true).Name"
+                                     src="~/uploads/images/@Model.Images.FirstOrDefault(i => i.IsMain == true).Name"
                                      alt="img" />
                                 <a href="#" class="btn-zoom open_qv">
                                     <i class="fa fa-search" aria-hidden="true"></i>
@@ -44,11 +44,11 @@
                                     @foreach (var item in Model.Images.OrderByDescending(i => i.IsMain))
                                     {
                                         <a href="#"
-                                       data-image="/assets/images/@item.Name"
-                                       data-zoom-image="/assets/images/@item.Name"
+                                       data-image="~/uploads/images/@item.Name"
+                                       data-zoom-image="~/uploads/images/@item.Name"
                                        class="@(item.IsMain ? "active" : "")">
-                                            <img src="/assets/images/@item.Name"
-                                             data-large-image="/assets/images/@item.Name"
+                                            <img src="~/uploads/images/@item.Name"
+                                             data-large-image="~/uploads/images/@item.Name"
                                              alt="img" />
                                         </a>
                                     }
@@ -155,7 +155,7 @@
                         <div class="tab-container">
                             <div id="product-descriptions" class="tab-panel active">
                                 <p>
-                                    @Model.Description
+                                    @Html.Raw(Model.Description)
                                 </p>
                             </div>
                             <div id="information" class="tab-panel">
@@ -185,7 +185,7 @@
                                             <li class="conment">
                                                 <div class="conment-container">
                                                     <a href="#" class="avatar">
-                                                        <img src="~/assets/images/avartar.png"
+                                                        <img src="~/uploads//images/avartar.png"
                                                              alt="img" />
                                                     </a>
                                                     <div class="comment-text">

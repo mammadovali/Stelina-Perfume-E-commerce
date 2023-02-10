@@ -1233,9 +1233,11 @@ td {
 }
 
 .main-menu {
-    display: table;
+    display: flex;
     padding: 0;
+    justify-content: center;
 }
+
 
     .main-menu .submenu {
         position: absolute;

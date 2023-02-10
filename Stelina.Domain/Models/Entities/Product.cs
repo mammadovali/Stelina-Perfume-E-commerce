@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Stelina.Domain.Models.Entities
 {
-    public class Product : BaseEntity
+    public class Product : BaseEntity, IPageable
     {
         public string Name { get; set; }
 
@@ -28,7 +28,5 @@ namespace Stelina.Domain.Models.Entities
         public virtual Category Category { get; set; }
 
         public virtual ICollection<ProductImage> Images { get; set; }
-
-        //public virtual ICollection<ProductCatalogItem> ProductCatalog { get; set; }
     }
 }

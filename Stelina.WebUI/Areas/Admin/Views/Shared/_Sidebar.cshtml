@@ -15,6 +15,18 @@
                 </li>
             }
 
+             @if (User.HasAccess("admin.products.index"))
+            {
+                <li>
+                    <a asp-controller="products" asp-action="index">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-basket-shopping"></i>
+                        </span>
+                        <span class="pcoded-mtext">Məhsullar</span>
+                    </a>
+                </li>
+            }
+
             @if (User.HasAccess("admin.categories.index"))
             {
                 <li>

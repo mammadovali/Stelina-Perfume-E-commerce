@@ -33,15 +33,13 @@
                             @foreach (var child in item.Children)
                             {
                                 <li class="menu-item">
-                                    <a asp-controller="Shop" asp-action="FilterByCategory" asp-route-id="@child.Id" class="stelina-item-title">@child.Name</a>
+                                    <a class="stelina-item-title">@child.Name</a>
                                 </li>
                             }
                         </ul>
 
                     </li>
                 }
-
-
             }
 
         </ul>
