@@ -23,6 +23,8 @@ namespace Stelina.Domain.Business.ProductModule
             public async Task<Product> Handle(ProductSingleQuery request, CancellationToken cancellationToken)
             {
                 var data = await db.Products
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
                     .Include(p=>p.Images.Where(i=>i.DeletedDate == null))
                     .FirstOrDefaultAsync(m => m.Id == request.Id && m.DeletedDate == null,cancellationToken);
 

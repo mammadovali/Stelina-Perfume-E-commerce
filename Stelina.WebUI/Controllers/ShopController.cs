@@ -40,7 +40,7 @@ namespace Stelina.WebUI.Controllers
                 .Where(c => c.DeletedDate == null && c.ParentId == null).ToListAsync();
 
             var products = await db.Products
-                .Include(p => p.Images.Where(i => i.IsMain == true))
+                .Include(p => p.Images.Where(i => i.IsMain == true && i.DeletedDate == null))
                 .Where(p => p.DeletedDate == null).ToListAsync();
 
             var vm = new ProductViewModel()
@@ -125,7 +125,9 @@ namespace Stelina.WebUI.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var entity = await db.Products
-                .Include(p => p.Images)
+                .Include(p => p.Category)
+                .Include(p => p.Brand)
+                .Include(p => p.Images.Where(i => i.DeletedDate == null))
                 .FirstOrDefaultAsync(p => p.Id == id);
 
             if (entity == null)

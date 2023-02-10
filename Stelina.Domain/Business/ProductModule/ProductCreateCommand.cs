@@ -5,6 +5,7 @@ using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -14,18 +15,22 @@ namespace Stelina.Domain.Business.ProductModule
 {
     public class ProductCreateCommand : IRequest<Product>
     {
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string StockKeepingUnit { get; set; }
 
         public decimal Price { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
         public int BrandId { get; set; }
 
         public int CategoryId { get; set; }
 
+        [Required]
         public ImageItem[] Images { get; set; }
 
 

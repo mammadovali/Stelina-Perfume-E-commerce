@@ -10,7 +10,7 @@
                             <a asp-action="index" asp-controller="home">Home</a>
                         </li>
                         <li class="trail-item">
-                            <a href="#">Accents</a>
+                            <a asp-action="index" asp-controller="shop">Shop</a>
                         </li>
                         <li class="trail-item trail-end active">@Model.Name</li>
                     </ul>
@@ -24,8 +24,8 @@
                         <div class="details-thumd">
                             <div class="image-preview-container image-thick-box image_preview_container">
                                 <img id="img_zoom"
-                                     data-zoom-image="~/uploads/images/@Model.Images.FirstOrDefault(i => i.IsMain == true).Name"
-                                     src="~/uploads/images/@Model.Images.FirstOrDefault(i => i.IsMain == true).Name"
+                                     data-zoom-image="/uploads/images/@Model.Images.FirstOrDefault(i => i.IsMain == true)?.Name"
+                                     src="/uploads/images/@Model.Images.FirstOrDefault(i => i.IsMain == true)?.Name"
                                      alt="img" />
                                 <a href="#" class="btn-zoom open_qv">
                                     <i class="fa fa-search" aria-hidden="true"></i>
@@ -44,37 +44,37 @@
                                     @foreach (var item in Model.Images.OrderByDescending(i => i.IsMain))
                                     {
                                         <a href="#"
-                                       data-image="~/uploads/images/@item.Name"
-                                       data-zoom-image="~/uploads/images/@item.Name"
+                                       data-image="/uploads/images/@item.Name"
+                                       data-zoom-image="/uploads/images/@item.Name"
                                        class="@(item.IsMain ? "active" : "")">
-                                            <img src="~/uploads/images/@item.Name"
-                                             data-large-image="~/uploads/images/@item.Name"
+                                            <img src="/uploads/images/@item.Name"
+                                             data-large-image="/uploads/images/@item.Name"
                                              alt="img" />
                                         </a>
                                     }
 
 
                                     @*<a href="#"
-                                       data-image="assets/images/details-item-3.jpg"
-                                       data-zoom-image="assets/images/details-item-2.jpg">
+                                        data-image="assets/images/details-item-3.jpg"
+                                        data-zoom-image="assets/images/details-item-2.jpg">
                                         <img src="~/assets/images/details-item-2.jpg"
-                                             data-large-image="assets/images/details-item-2.jpg"
-                                             alt="img" />
-                                    </a>
-                                    <a href="#"
-                                       data-image="assets/images/details-item-3.jpg"
-                                       data-zoom-image="assets/images/details-item-3.jpg">
+                                        data-large-image="assets/images/details-item-2.jpg"
+                                        alt="img" />
+                                        </a>
+                                        <a href="#"
+                                        data-image="assets/images/details-item-3.jpg"
+                                        data-zoom-image="assets/images/details-item-3.jpg">
                                         <img src="~/assets/images/details-item-3.jpg"
-                                             data-large-image="assets/images/details-item-3.jpg"
-                                             alt="img" />
-                                    </a>
-                                    <a href="#"
-                                       data-image="assets/images/details-item-3.jpg"
-                                       data-zoom-image="assets/images/details-item-4.jpg">
+                                        data-large-image="assets/images/details-item-3.jpg"
+                                        alt="img" />
+                                        </a>
+                                        <a href="#"
+                                        data-image="assets/images/details-item-3.jpg"
+                                        data-zoom-image="assets/images/details-item-4.jpg">
                                         <img src="~/assets/images/details-item-4.jpg"
-                                             data-large-image="assets/images/details-item-4.jpg"
-                                             alt="img" />
-                                    </a>*@
+                                        data-large-image="assets/images/details-item-4.jpg"
+                                        alt="img" />
+                                        </a>*@
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                             <div class="group-button">
                                 <div class="yith-wcwl-add-to-wishlist">
                                     <div class="yith-wcwl-add-button">
-                                        <a href="#">Add to Wishlist</a>
+                                        <a href="javascript:addToFavorites(@Model.Id)" class="@(Model.Id)full-heart-icon">Add to Wishlist</a>
                                     </div>
                                 </div>
                                 <div class="size-chart-wrapp">
@@ -112,21 +112,34 @@
                                     </div>
                                 </div>
                                 <div class="quantity-add-to-cart">
-                                    <div class="quantity">
+                                    @*
+                                        <div class="quantity">
                                         <div class="control">
-                                            <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                            <input type="text"
-                                                   data-step="1"
-                                                   data-min="0"
-                                                   value="1"
-                                                   title="Qty"
-                                                   class="input-qty qty"
-                                                   size="4" />
-                                            <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                        <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                        <input type="number"
+                                        data-product-id="@Model.Id"
+                                        data-step="1"
+                                        data-min="0"
+                                        value="1"
+                                        title="Qty"
+                                        class="input-qty qty"
+                                        size="4" />
+                                        <a href="#" class="btn-number qtyplus quantity-plus">+</a>
                                         </div>
-                                    </div>
-                                    <button class="single_add_to_cart_button button">
+                                        </div>*@
+                                   @* <button type="button" data-product-id="@Model.Id" onclick="addToBasket(event)" class="single_add_to_cart_button button">
                                         Add to cart
+                                    </button>*@
+                                    <button onclick="addToBasket(event)" data-product-id="@Model.Id" type="button" class="add-to-cart">
+                                        <div class="default">Add to cart</div>
+                                        <div class="success">Added</div>
+                                        <div class="cart">
+                                            <div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div class="dots"></div>
                                     </button>
                                 </div>
                             </div>
@@ -161,335 +174,128 @@
                             <div id="information" class="tab-panel">
                                 <table class="table table-bordered">
                                     <tr>
-                                        <td>Size</td>
-                                        <td>XS / S / M / L</td>
+                                        <td>Brand</td>
+                                        <td>@Model.Brand?.Name</td>
                                     </tr>
                                     <tr>
-                                        <td>Color</td>
-                                        <td>White/ Black/ Teal/ Brown</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Properties</td>
-                                        <td>Colorful Dress</td>
+                                        <td>Category</td>
+                                        <td>@Model.Category?.Name</td>
                                     </tr>
                                 </table>
-                            </div>
-                            <div id="reviews" class="tab-panel">
+                            </div>@*
+                                <div id="reviews" class="tab-panel">
                                 <div class="reviews-tab">
-                                    <div class="comments">
-                                        <h2 class="reviews-title">
-                                            1 review for
-                                            <span>Glorious Eau</span>
-                                        </h2>
-                                        <ol class="commentlist">
-                                            <li class="conment">
-                                                <div class="conment-container">
-                                                    <a href="#" class="avatar">
-                                                        <img src="~/uploads//images/avartar.png"
-                                                             alt="img" />
-                                                    </a>
-                                                    <div class="comment-text">
-                                                        <div class="stars-rating">
-                                                            <div class="star-rating">
-                                                                <span class="star-5"></span>
-                                                            </div>
-                                                            <div class="count-star">(1)</div>
-                                                        </div>
-                                                        <p class="meta">
-                                                            <strong class="author">Cobus Bester</strong>
-                                                            <span>-</span>
-                                                            <span class="time">June 7, 2013</span>
-                                                        </p>
-                                                        <div class="description">
-                                                            <p>
-                                                                Simple and effective design. One of my
-                                                                favorites.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                    <div class="review_form_wrapper">
-                                        <div class="review_form">
-                                            <div class="comment-respond">
-                                                <span class="comment-reply-title">
-                                                    Add a review
-                                                </span>
-                                                <form class="comment-form-review">
-                                                    <p class="comment-notes">
-                                                        <span class="email-notes">
-                                                            Your email address will not be
-                                                            published.
-                                                        </span>
-                                                        Required fields are marked
-                                                        <span class="required">*</span>
-                                                    </p>
-                                                    <div class="comment-form-rating">
-                                                        <label>Your rating</label>
-                                                        <p class="stars">
-                                                            <span>
-                                                                <a class="star-1" href="#"></a>
-                                                                <a class="star-2" href="#"></a>
-                                                                <a class="star-3" href="#"></a>
-                                                                <a class="star-4" href="#"></a>
-                                                                <a class="star-5" href="#"></a>
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                    <p class="comment-form-comment">
-                                                        <label>
-                                                            Your review
-                                                            <span class="required">*</span>
-                                                        </label>
-                                                        <textarea title="review"
-                                                                  id="comment"
-                                                                  name="comment"
-                                                                  cols="45"
-                                                                  rows="8"></textarea>
-                                                    </p>
-                                                    <p class="comment-form-author">
-                                                        <label>
-                                                            Name
-                                                            <span class="">*</span>
-                                                        </label>
-                                                        <input title="author"
-                                                               id="author"
-                                                               name="author"
-                                                               type="text"
-                                                               value="" />
-                                                    </p>
-                                                    <p class="comment-form-email">
-                                                        <label>
-                                                            Email
-                                                            <span class="">*</span>
-                                                        </label>
-                                                        <input title="email"
-                                                               id="email"
-                                                               name="email"
-                                                               type="email"
-                                                               value="" />
-                                                    </p>
-                                                    <p class="form-submit">
-                                                        <input name="submit"
-                                                               type="submit"
-                                                               id="submit"
-                                                               class="submit"
-                                                               value="Submit" />
-                                                    </p>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="comments">
+                                <h2 class="reviews-title">
+                                1 review for
+                                <span>Glorious Eau</span>
+                                </h2>
+                                <ol class="commentlist">
+                                <li class="conment">
+                                <div class="conment-container">
+                                <a href="#" class="avatar">
+                                <img src="~/uploads//images/avartar.png"
+                                alt="img" />
+                                </a>
+                                <div class="comment-text">
+                                <div class="stars-rating">
+                                <div class="star-rating">
+                                <span class="star-5"></span>
                                 </div>
-                            </div>
+                                <div class="count-star">(1)</div>
+                                </div>
+                                <p class="meta">
+                                <strong class="author">Cobus Bester</strong>
+                                <span>-</span>
+                                <span class="time">June 7, 2013</span>
+                                </p>
+                                <div class="description">
+                                <p>
+                                Simple and effective design. One of my
+                                favorites.
+                                </p>
+                                </div>
+                                </div>
+                                </div>
+                                </li>
+                                </ol>
+                                </div>
+                                <div class="review_form_wrapper">
+                                <div class="review_form">
+                                <div class="comment-respond">
+                                <span class="comment-reply-title">
+                                Add a review
+                                </span>
+                                <form class="comment-form-review">
+                                <p class="comment-notes">
+                                <span class="email-notes">
+                                Your email address will not be
+                                published.
+                                </span>
+                                Required fields are marked
+                                <span class="required">*</span>
+                                </p>
+                                <div class="comment-form-rating">
+                                <label>Your rating</label>
+                                <p class="stars">
+                                <span>
+                                <a class="star-1" href="#"></a>
+                                <a class="star-2" href="#"></a>
+                                <a class="star-3" href="#"></a>
+                                <a class="star-4" href="#"></a>
+                                <a class="star-5" href="#"></a>
+                                </span>
+                                </p>
+                                </div>
+                                <p class="comment-form-comment">
+                                <label>
+                                Your review
+                                <span class="required">*</span>
+                                </label>
+                                <textarea title="review"
+                                id="comment"
+                                name="comment"
+                                cols="45"
+                                rows="8"></textarea>
+                                </p>
+                                <p class="comment-form-author">
+                                <label>
+                                Name
+                                <span class="">*</span>
+                                </label>
+                                <input title="author"
+                                id="author"
+                                name="author"
+                                type="text"
+                                value="" />
+                                </p>
+                                <p class="comment-form-email">
+                                <label>
+                                Email
+                                <span class="">*</span>
+                                </label>
+                                <input title="email"
+                                id="email"
+                                name="email"
+                                type="email"
+                                value="" />
+                                </p>
+                                <p class="form-submit">
+                                <input name="submit"
+                                type="submit"
+                                id="submit"
+                                class="submit"
+                                value="Submit" />
+                                </p>
+                                </form>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>*@
                         </div>
                     </div>
                     <div style="clear: left"></div>
-                    <div class="related products product-grid">
-                        <h2 class="product-grid-title">You may also like</h2>
-                        <div class="owl-products owl-slick equal-container nav-center"
-                             data-slick='{"autoplay":false, "autoplaySpeed":1000, "arrows":true, "dots":false, "infinite":true, "speed":800, "rows":1}'
-                             data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":3}},{"breakpoint":"1200","settings":{"slidesToShow":2}},{"breakpoint":"992","settings":{"slidesToShow":2}},{"breakpoint":"480","settings":{"slidesToShow":1}}]'>
-                            <div class="product-item style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                            <span class="onnew">
-                                                <span class="text"> new </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                <img src="~/assets/images/product-item-1.jpg"
-                                                     alt="img" />
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">
-                                                        Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Aluminum Plant</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">(3)</div>
-                                            </div>
-                                            <div class="price">
-                                                <del> $65 </del>
-                                                <ins> $45 </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                            <span class="onnew">
-                                                <span class="text"> new </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                <img src="~/assets/images/product-item-2.jpg"
-                                                     alt="img" />
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">
-                                                        Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Glorious Eau</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">(3)</div>
-                                            </div>
-                                            <div class="price">
-                                                <del> $65 </del>
-                                                <ins> $45 </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                            <span class="onnew">
-                                                <span class="text"> new </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                <img src="~/assets/images/product-item-3.jpg"
-                                                     alt="img" />
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">
-                                                        Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">Cuerpo Eau</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">(3)</div>
-                                            </div>
-                                            <div class="price">
-                                                <del> $65 </del>
-                                                <ins> $45 </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                        <div class="flash">
-                                            <span class="onnew">
-                                                <span class="text"> new </span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="#">
-                                                <img src="~/assets/images/product-item-4.jpg"
-                                                     alt="img" />
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">
-                                                        Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#">The Alchemist</a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
-                                                </div>
-                                                <div class="count-star">(3)</div>
-                                            </div>
-                                            <div class="price">
-                                                <del> $65 </del>
-                                                <ins> $45 </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

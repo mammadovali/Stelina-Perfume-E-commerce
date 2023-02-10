@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Stelina.Domain.Business.ProductModule
 {
@@ -17,20 +18,23 @@ namespace Stelina.Domain.Business.ProductModule
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string StockKeepingUnit { get; set; }
 
+        [Required]
         public decimal Price { get; set; }
 
-        public string ShortDescription { get; set; }
-
+        [Required]
         public string Description { get; set; }
 
         public int BrandId { get; set; }
 
         public int CategoryId { get; set; }
 
+        [Required]
         public ImageItem[] Images { get; set; }
 
 
@@ -53,10 +57,7 @@ namespace Stelina.Domain.Business.ProductModule
                 {
                     var model = await db.Products
                      .Include(p => p.Images.Where(i => i.DeletedDate == null))   
-                     .FirstOrDefaultAsync(p =>
-                     p.Id == request.Id
-                     && p.DeletedDate == null
-                    , cancellationToken);
+                     .FirstOrDefaultAsync(p => p.Id == request.Id && p.DeletedDate == null, cancellationToken);
 
                     if (model == null)
                     {
@@ -78,8 +79,6 @@ namespace Stelina.Domain.Business.ProductModule
 
                     if (request.Images != null && request.Images.Count() > 0)
                     {
-
-
                         #region 2.Teze fayllar var
                         foreach (var imageItem in request.Images.Where(i => i.File != null && i.Id == null))
                         {

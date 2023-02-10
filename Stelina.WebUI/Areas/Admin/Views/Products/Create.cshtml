@@ -68,6 +68,7 @@
                         <div style="width: 100%;" class="imager-container" id="viewer1" name="images">
                            
                         </div>
+                         <span asp-validation-for="Images" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -111,7 +112,7 @@
             plusBtnClass: undefined
         });
 
-        
+        $(".select2").select2();
 
     </script>
 }

@@ -23,7 +23,7 @@ namespace Stelina.Domain.Business.ProductModule
             public async Task<PagedViewModel<Product>> Handle(ProductsPagedQuery request, CancellationToken cancellationToken)
             {
                 var query = db.Products
-                    .Include(p => p.Images)
+                    .Include(p => p.Images.Where(i => i.DeletedDate == null))
                     .Include(p => p.Brand)
                     .Include(p => p.Category)
 

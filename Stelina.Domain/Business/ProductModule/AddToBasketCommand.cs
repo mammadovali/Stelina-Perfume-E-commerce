@@ -45,6 +45,7 @@ namespace Stelina.Domain.Business.BasketModule
                     };
                 }
 
+
                 var basketItem = new Basket
                 {
                     UserId = userId,

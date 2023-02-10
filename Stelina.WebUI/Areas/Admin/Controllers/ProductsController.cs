@@ -35,23 +35,11 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
 
 
         [Authorize(Policy = "admin.products.details")]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(ProductSingleQuery query)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var response = await mediator.Send(query);
 
-            var product = await db.Products
-                .Include(p => p.Brand)
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
+            return View(response);
         }
 
 
@@ -70,18 +58,22 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [Authorize(Policy = "admin.products.create")]
         public async Task<IActionResult> Create(ProductCreateCommand command)
         {
-
-            var response = await mediator.Send(command);
-
-            if (response == null)
+            if (command.Images == null)
             {
-
-                ViewBag.BrandId = new SelectList(db.Brands, "Id", "Name", command.BrandId);
-                ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", command.CategoryId);
-                return View(command);
+                ModelState.AddModelError("ImagePath", "Product image should not be left empty");
             }
 
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                var response = await mediator.Send(command);
+
+                return RedirectToAction(nameof(Index));
+            }
+
+
+            ViewBag.BrandId = new SelectList(db.Brands, "Id", "Name", command.BrandId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", command.CategoryId);
+            return View(command);
 
         }
 
@@ -121,27 +113,22 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.products.edit")]
-        public async Task<IActionResult> Edit(int id, ProductEditCommand command)
+        public async Task<IActionResult> Edit(ProductEditCommand command)
         {
-
-
-            if (id != command.Id)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
-
-            var response = await mediator.Send(command);
-
-            if (response == null)
-            {
+                var response = await mediator.Send(command);
 
                 ViewData["BrandId"] = new SelectList(db.Brands, "Id", "Name", command.BrandId);
                 ViewData["CategoryId"] = new SelectList(db.Categories, "Id", "Name", command.CategoryId);
-                return View(command);
 
+                return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction(nameof(Index));
+            ViewData["BrandId"] = new SelectList(db.Brands, "Id", "Name", command.BrandId);
+            ViewData["CategoryId"] = new SelectList(db.Categories, "Id", "Name", command.CategoryId);
+            return View(command);
+            
         }
 
 
