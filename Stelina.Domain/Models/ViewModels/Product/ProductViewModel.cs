@@ -15,5 +15,7 @@ namespace Stelina.Domain.Models.ViewModels.ProductViewModel
 
         public ICollection<Product> Products { get; set; }
 
+        public decimal MaxPrice { get; set; }
+
     }
 }

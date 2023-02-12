@@ -103,32 +103,10 @@ namespace Stelina.WebUI.Controllers
             return PartialView("_ProductContainer", query.ToList());
         }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //public IActionResult FilterByCategory(ShopFilterFormModel model)
-        //{
-        //    var query = db.Products
-        //        .Include(p => p.Images.Where(i => i.IsMain == true))
-        //        .Include(p => p.Category)
-        //        .Where(p => p.DeletedDate == null)
-        //        .AsQueryable();
-
-        //    if (model?.Categories?.Count() > 0)
-        //    {
-        //        query = query.Where(p => model.Categories.Contains(p.CategoryId));
-        //    }
-
-        //    return PartialView("_ProductContainer", query.ToList());
-        //}
-
         [AllowAnonymous]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(ProductSingleQuery query)
         {
-            var entity = await db.Products
-                .Include(p => p.Category)
-                .Include(p => p.Brand)
-                .Include(p => p.Images.Where(i => i.DeletedDate == null))
-                .FirstOrDefaultAsync(p => p.Id == id);
+            var entity = await mediator.Send(query);
 
             if (entity == null)
             {
@@ -149,6 +127,39 @@ namespace Stelina.WebUI.Controllers
             }
 
             return View(favs);
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> SearchProducts(string searchTerm)
+        {
+            var products = await mediator.Send(new SearchProductQuery { SearchTerm = searchTerm });
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_SearchResults", products);
+            }
+
+
+            var brands = await db.Brands.Where(b => b.DeletedDate == null).ToListAsync();
+
+            var categories = await db.Categories
+                .Include(c => c.Children)
+                .ThenInclude(c => c.Children)
+                .ThenInclude(c => c.Children)
+                .ThenInclude(c => c.Children)
+                .Where(c => c.DeletedDate == null && c.ParentId == null).ToListAsync();
+
+            var maxPrice = Math.Ceiling(db.Products.Where(p => p.DeletedDate == null).Select(p => p.Price).Max());
+
+            var vm = new ProductViewModel()
+            {
+                Brands = brands,
+                Categories = categories,
+                Products = products.ToList(),
+                MaxPrice = maxPrice
+            };
+
+            return View("Index", vm);
         }
 
         #region Basket operations
@@ -189,7 +200,6 @@ namespace Stelina.WebUI.Controllers
 
             return Json(response);
         }
-
         #endregion
 
         [Route("/checkout")]

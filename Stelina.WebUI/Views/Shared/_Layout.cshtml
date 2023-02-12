@@ -88,26 +88,12 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-sm-8 col-md-6 col-xs-5 col-ts-12">
-                        <div class="block-search-block">
-                            <form class="form-search form-search-width-category">
-                                <div class="form-content">
-                                    <div class="inner">
-                                        <input type="text"
-                                               class="input"
-                                               name="s"
-                                               value=""
-                                               placeholder="Search here" />
-                                    </div>
-                                    <button class="btn-search" type="submit">
-                                        <span class="icon-search"></span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+
+                        <partial name="_SearchProducts" />
+
                     </div>
                     <div class="col-lg-2 col-sm-12 col-md-3 col-xs-12 col-ts-12">
                         <div class="header-control">
-
 
                             @await Component.InvokeAsync("BasketInfo")
 
@@ -116,10 +102,8 @@
                                 <a asp-action="wishlist" asp-controller="shop" style="transition: all 0.15s linear;">
                                     <i class="fa fa-heart"></i>
                                 </a>
-
-
-
                             </div>
+
                             <a class="menu-bar mobile-navigation menu-toggle" href="#">
                                 <span></span>
                                 <span></span>
@@ -167,13 +151,15 @@
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                     <div class="header-searchform-box">
-                        <form class="header-searchform">
+                        <form class="header-searchform" asp-action="SearchProducts" asp-controller="Shop">
                             <div class="searchform-wrap">
                                 <input type="text"
-                                       class="search-input"
+                                       class="search-input input-search"
+                                       name="SearchTerm"
                                        placeholder="Enter keywords to search..." />
                                 <input type="submit" class="submit button" value="Search" />
                             </div>
+                            <ul class="search-results home-two" style="position: absolute; left: 0px; top: 49px; display: none;"></ul>
                         </form>
                     </div>
                 </div>
@@ -226,10 +212,10 @@
                                     <a asp-controller="shop" asp-action="index">Shop</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a asp-controller="blog" asp-action="index" >Blog</a>
+                                    <a asp-controller="blog" asp-action="index">Blog</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a asp-action="about"  asp-controller="home">About</a>
+                                    <a asp-action="about" asp-controller="home">About</a>
                                 </li>
                             </ul>
                         </div>
@@ -528,7 +514,7 @@
         });
     </script>
 
-    
+
 
     <partial name="_BasketScriptsPartial" />
 

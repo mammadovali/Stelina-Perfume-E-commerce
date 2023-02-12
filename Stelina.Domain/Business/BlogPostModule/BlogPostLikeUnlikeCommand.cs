@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Stelina.Domain.AppCode.Infrastructure;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -75,12 +76,16 @@ namespace Stelina.Domain.Business.BlogPostModule
                         });
                     }
 
+
                     await db.SaveChangesAsync();
+
+                    var likeCount = await db.BlogPostLikes.Where(bpl => bpl.BlogPostId == request.BlogPostId).CountAsync();
 
                     return new JsonResponse
                     {
                         Error = false,
-                        Message = "Postu bəyəndiniz"
+                        Message = "Postu bəyəndiniz",
+                        Value = likeCount
                     };
                 }
                 else
@@ -101,10 +106,15 @@ namespace Stelina.Domain.Business.BlogPostModule
 
                         await db.SaveChangesAsync();
 
+
+
+                        var likeCount = await db.BlogPostLikes.Where(bpl => bpl.BlogPostId == request.BlogPostId).CountAsync();
+
                         return new JsonResponse
                         {
                             Error = false,
-                            Message = "Postu bəyənməkdən vazkeçdiniz"
+                            Message = "Postu bəyənməkdən vazkeçdiniz",
+                            Value = likeCount
                         };
                     }
                     

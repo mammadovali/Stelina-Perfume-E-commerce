@@ -67,7 +67,9 @@
                                     Post date:<a>@Model.BlogPost.PublishedDate?.ToString("dd MMM, yyyy")</a>
                                 </li>
                                 <li class="post-view">
-                                    <span class="fa fa-heart" style="padding-right: 5px;"></span>@Model.BlogPost.Likes.Count Likes
+                                    <span class="fa fa-heart" style="padding-right: 5px;"></span>
+
+                                    @Model.BlogPost.Likes.Count Likes
                                 </li>
                                 <li class="post-comments">
                                     <span><i class="fa fa-comment"></i></span><span class="px-1"></span> @Model.BlogPost.Comments.Count Comments
@@ -280,30 +282,31 @@
 
         document.querySelectorAll('.like-button').forEach(button => {
 
-        button.addEventListener('click', e => {
-            button.classList.toggle('liked');
-            if (button.classList.contains('liked')) {
-                gsap.fromTo(button, {
-                    '--hand-rotate': 8
-                }, {
-                    ease: 'none',
-                    keyframes: [{
-                        '--hand-rotate': -45,
-                        duration: .16,
-                        ease: 'none'
-                    }, {
-                        '--hand-rotate': 15,
-                        duration: .12,
-                        ease: 'none'
-                    }, {
-                        '--hand-rotate': 0,
-                        duration: .2,
-                        ease: 'none',
-                        clearProps: true
-                    }]
-                });
-            }
-        })
+          button.addEventListener('click', e => {
+              button.classList.toggle('liked');
+              if (button.classList.contains('liked')) {
+                  gsap.fromTo(button, {
+                      '--hand-rotate': 8
+                  }, {
+                      ease: 'none',
+                      keyframes: [{
+                          '--hand-rotate': -45,
+                          duration: .16,
+                          ease: 'none'
+                      }, {
+                          '--hand-rotate': 15,
+                          duration: .12,
+                          ease: 'none'
+                      }, {
+                          '--hand-rotate': 0,
+                          duration: .2,
+                          ease: 'none',
+                          clearProps: true
+                      }]
+                  });
+              }
+          })
+        
 
 
         $(document).ready(function(){
@@ -323,12 +326,10 @@
                     dataType: "json",
                     contentType: "application/x-www-form-urlencoded",
                     success: function(res){
-
-                        location.reload();
-
-                        //if(res.error == false){
-                        //   toastr.success(res.message, "Uğurlu");
-                        //}
+                        console.log(res)
+                        if(res.error == false){
+                            $(".post-view").html(`<span class="fa fa-heart" style="padding-right: 5px;"></span> ${res.value} Likes`)
+                        }
 
                     },
                     error: function(res){
@@ -340,12 +341,7 @@
                     }
                 })
 
-
-
             })
-
-
-
         })
 
     });
