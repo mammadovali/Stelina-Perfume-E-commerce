@@ -82,8 +82,15 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+using Stelina.Domain.Models.ViewModels.OrderViewModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b9", @"/Views/Shop/Wishlist.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13a25d1003d7ff6aa998f0b20336fd3dd7764559", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ee8cfd134b3d87a906f6544481fcb1d4d362e34c", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shop_Wishlist : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Product>>
     #nullable disable
@@ -131,7 +138,7 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
                 <ul class=""trail-items breadcrumb"">
                     <li class=""trail-item trail-begin"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b98351", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b98612", async() => {
                 WriteLiteral("\r\n                            <span> Shop </span>\r\n                        ");
             }
             );
@@ -161,7 +168,7 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
                     <div class=""page-main-content"">
                         <div class=""shoppingcart-content"">
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b910315", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b910576", async() => {
                 WriteLiteral(@"
                                 <table class=""shop_table"">
                                     <thead>
@@ -177,7 +184,7 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
                                     <tbody id=""dynamic-content"">
 
                                         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b911413", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b911674", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
@@ -215,7 +222,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = Model;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            <div class=\"control-cart\">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b914362", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b914623", async() => {
                 WriteLiteral("\r\n                                    Continue Shopping\r\n                                ");
             }
             );
@@ -234,7 +241,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper.Model = Model;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b915926", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6fa6211b99f94aab443ea11ec82d0a8eeaf0e8b916187", async() => {
                 WriteLiteral("\r\n                                    Checkout\r\n                                ");
             }
             );

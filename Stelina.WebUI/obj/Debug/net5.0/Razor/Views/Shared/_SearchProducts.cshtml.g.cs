@@ -82,8 +82,15 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+using Stelina.Domain.Models.ViewModels.OrderViewModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7fe7e90fc1b374b15501885f1ff3f2d00f56fa10", @"/Views/Shared/_SearchProducts.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13a25d1003d7ff6aa998f0b20336fd3dd7764559", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ee8cfd134b3d87a906f6544481fcb1d4d362e34c", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared__SearchProducts : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -117,7 +124,7 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<div class=\"block-search-block\">\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7fe7e90fc1b374b15501885f1ff3f2d00f56fa106533", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7fe7e90fc1b374b15501885f1ff3f2d00f56fa106794", async() => {
                 WriteLiteral("\r\n        <div class=\"form-content\">\r\n            <div class=\"inner\">\r\n                <input type=\"text\"\r\n                       class=\"input input-search\"\r\n                       name=\"SearchTerm\"");
                 BeginWriteAttribute("value", "\r\n                       value=\"", 339, "\"", 371, 0);
                 EndWriteAttribute();

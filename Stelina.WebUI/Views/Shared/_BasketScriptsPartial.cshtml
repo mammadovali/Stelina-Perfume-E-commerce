@@ -18,23 +18,27 @@
                      data: elementData,
                      contentType: "application/x-www-form-urlencoded",
                      success: function(res){
-                          console.log(res);
+                          //console.log(res);
 
                          if(res.error == false){
                              const removeTarget = $(element).attr('aria-remove-target');
                              if(removeTarget != undefined){
-                                 $(removeTarget).remove();
+                                 $(removeTarget).add(`.list-product-order .product-item-order-${elementData.productId}`).remove();
                              }
+
                              if(res.value?.count == null){
                                  $('.count-cart').text("");
                              }else{
                                  $('.count-cart').text(res.value.count);
                              }
+
                              if(res.value?.total == null){
                                  $('.total-price').add(".Price-amount").text("");
                              }else{
-                                 $('.total-price').add(".Price-amount").text(`${res.value.total}₼`);
+                                 $('.total-price').add(".Price-amount").text(`${res.value.total} ₼`);
                              }
+
+
                              $("span.count-cart").filter(function() {
                                 return !$.trim(this.innerHTML);
                              }).hide();
@@ -89,7 +93,7 @@
                      data: elementData,
                      contentType: "application/x-www-form-urlencoded",
                      success: function(res){
-                         console.log(res);
+                         //console.log(res);
                          $(element).closest('tr').find(".amount").text(`${res.value.total} ₼`);
                          $("#summary").text(`${res.value.summary} ₼`);
                          if(res.error == false){
@@ -119,7 +123,7 @@
         e.preventDefault();
 
         const elementData = $(e.currentTarget).data();
-        console.log(elementData, "elementData")
+        //console.log(elementData, "elementData")
 
         $.ajax({
             url: `@Url.Action("Basket", "Shop")`,
@@ -127,7 +131,7 @@
             data: elementData,
             contentType: 'application/x-www-form-urlencoded',
             success: function(res){
-                console.log(res);
+                //console.log(res);
 
 
                 if(res.error == false){
@@ -184,7 +188,7 @@
                 }
             },
             error: function(res, status, xhr){
-                console.log(res, status, xhr);
+                //console.log(res, status, xhr);
             }
         });
     }
@@ -219,7 +223,7 @@
                 toastr.success("Product is already in your favorites");
            }
 
-           console.log(favorites);
+           //console.log(favorites);
     }
 
     $(document).ready(function(){
@@ -236,7 +240,7 @@
 
                var obj = {"searchTerm" : searchTerm}
                
-               console.log(obj)
+               //console.log(obj)
 
                $.ajax({
                   url: '@Url.Action("SearchProducts", "Shop")',
@@ -251,13 +255,11 @@
                           $("ul.search-results").html(res).css("display", "block");
 
                            if($(".input-search").val = ''){
-                               console.log("bosh input")
                                $("ul.search-results").css("display", "none");
                                return;
                            }
 
                           if($("ul.search-results").children().length == 0){
-
                               var noProduct = "<div class='searched-item'><span>No product found</span></div>"
                               $("ul.search-results").html(noProduct);
 
@@ -271,7 +273,7 @@
 
                   },
                   error: function(res){
-                    console.warn(res);
+                    //console.warn(res);
                   }
                
                })

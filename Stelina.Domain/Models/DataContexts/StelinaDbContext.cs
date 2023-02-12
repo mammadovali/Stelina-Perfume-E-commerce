@@ -47,6 +47,12 @@ namespace Stelina.Domain.Models.DataContexts
 
         public DbSet<BlogPostLike> BlogPostLikes { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderProduct> OrderProducts { get; set; }
+
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

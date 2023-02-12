@@ -8,6 +8,7 @@ using Stelina.Domain.Business.ProductModule;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 using Stelina.Domain.Models.FormModel;
+using Stelina.Domain.Models.ViewModels.OrderViewModel;
 using Stelina.Domain.Models.ViewModels.ProductViewModel;
 using System;
 using System.Linq;
@@ -203,9 +204,42 @@ namespace Stelina.WebUI.Controllers
         #endregion
 
         [Route("/checkout")]
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout(ProductBasketQuery query)
         {
-            return View();
+            var response = await mediator.Send(query);
+
+            return View(new OrderViewModel
+            {
+                BasketProducts = response
+            });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Checkout(OrderViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Orders.Add(vm.OrderDetails);
+
+                await db.SaveChangesAsync();
+
+                var response = new
+                {
+                    error = false,
+                    message = "Your order was completed"
+                };
+
+                return Json(response);
+            }
+
+            var responseError = new
+            {
+                error = true,
+                message = "The error was occurred while completing your order",
+                state = ModelState.GetError()
+            };
+            return Json(responseError);
+        }
+
     }
 }

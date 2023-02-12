@@ -170,7 +170,7 @@
 
                     $("#contact-form span.text-danger").remove();
                     $("#contact-form input[Name], #contact-form textarea[Name]").removeClass("novalidated");
-                    console.log(response, "SUCCESS");
+                    //console.log(response, "SUCCESS");
 
                     if (response.error == true) {
 
@@ -185,7 +185,7 @@
                     ev.currentTarget.reset();
                 },
                 error: function (errResponse) {
-                    console.log(errResponse, "ERROR");
+                   // console.log(errResponse, "ERROR");
                 }
 
             })

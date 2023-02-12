@@ -82,8 +82,15 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+using Stelina.Domain.Models.ViewModels.OrderViewModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a34b9e40c5737104a7a759bd35655d6952222a8d", @"/Views/Shared/Components/BasketInfo/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"13a25d1003d7ff6aa998f0b20336fd3dd7764559", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ee8cfd134b3d87a906f6544481fcb1d4d362e34c", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components_BasketInfo_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Basket>>
     #nullable disable
@@ -140,7 +147,7 @@ using Stelina.Domain.Models.ViewModels.Wishlist;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n<div class=\"block-minicart stelina-mini-cart block-header stelina-dropdown\">\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d10028", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d10289", async() => {
                 WriteLiteral("\r\n        Cart\r\n\r\n");
 #nullable restore
 #line 22 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\Shared\Components\BasketInfo\Default.cshtml"
@@ -227,9 +234,9 @@ WriteAttributeValue("", 1243, item.ProductId, 1243, 15, false);
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d14819", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d15080", async() => {
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a34b9e40c5737104a7a759bd35655d6952222a8d15107", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a34b9e40c5737104a7a759bd35655d6952222a8d15368", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -285,7 +292,7 @@ AddHtmlAttributeValue("", 1450, item.Product.Images.FirstOrDefault()?.Name, 1450
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                            <div class=\"product-details\">\r\n                                <h5 class=\"product-name\">\r\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d19330", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d19591", async() => {
 #nullable restore
 #line 43 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\Shared\Components\BasketInfo\Default.cshtml"
                                                                                                             Write(item.Product.Name);
@@ -408,7 +415,7 @@ WriteAttributeValue("", 2596, item.ProductId, 2596, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral(" </span>\r\n                    </span>\r\n                </div>\r\n                <div class=\"actions\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d26890", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d27151", async() => {
                 WriteLiteral("\r\n                        <span>Cart</span>\r\n                    ");
             }
             );
@@ -427,7 +434,7 @@ WriteAttributeValue("", 2596, item.ProductId, 2596, 15, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d28418", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a34b9e40c5737104a7a759bd35655d6952222a8d28679", async() => {
                 WriteLiteral("\r\n                        <span>Checkout</span>\r\n                    ");
             }
             );

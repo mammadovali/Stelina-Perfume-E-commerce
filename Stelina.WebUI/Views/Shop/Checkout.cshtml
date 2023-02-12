@@ -1,7 +1,92 @@
-﻿
+﻿@model OrderViewModel
+
 @{
     ViewData["Title"] = "Checkout";
 }
 
-<h1>Checkout</h1>
+
+<div class="main-content main-content-checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-trail breadcrumbs">
+                    <ul class="trail-items breadcrumb">
+                        <li class="trail-item trail-begin">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="trail-item trail-end active">Checkout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <h3 class="custom_blog_title">Checkout</h3>
+        <div class="checkout-wrapp">
+            <div class="shipping-address-form-wrapp">
+                <div class="shipping-address-form checkout-form">
+                    <div class="row-col-1 row-col">
+                        <div class="shipping-address">
+                            <h3 class="title-form">Order details</h3>
+
+                            <p class="form-row form-row-first">
+                                <label class="text">First name</label>
+                                <input asp-for="@Model.OrderDetails.Firstname" title="first" type="text" class="input-text" />
+                                <span asp-validation-for="@Model.OrderDetails.Firstname" class="text-danger validation-error"></span>
+                            </p>
+
+                            <p class="form-row form-row-last">
+                                <label class="text">Last name</label>
+                                <input asp-for="@Model.OrderDetails.Lastname" title="last" type="text" class="input-text" />
+                                <span asp-validation-for="@Model.OrderDetails.Lastname" class="text-danger validation-error"></span>
+                            </p>
+
+                            <p class="form-row form-row-first">
+                                <label class="text">Phone number</label>
+                                <input asp-for="@Model.OrderDetails.PhoneNumber" title="phoneNumber" type="text" class="input-text" />
+                                <span asp-validation-for="@Model.OrderDetails.PhoneNumber" class="text-danger validation-error"></span>
+                            </p>
+
+                            <p class="form-row form-row-last">
+                                <label class="text">Address</label>
+                                <input asp-for="@Model.OrderDetails.Address" title="address" type="text" class="input-text" />
+                                <span asp-validation-for="@Model.OrderDetails.Address" class="text-danger validation-error"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row-col-2 row-col">
+                        <div class="your-order">
+                            <h3 class="title-form">Your Order</h3>
+                            <ul class="list-product-order">
+                                @foreach (var item in Model.BasketProducts)
+                                {
+                                    <li class="product-item-order product-item-order-@item.ProductId">
+                                        <div class="product-thumb">
+                                            <a target="_blank" asp-action="details" asp-controller="shop" asp-route-id="@item.ProductId">
+                                                <img src="~/uploads/images/@item.Product.Images.FirstOrDefault()?.Name" alt="img" />
+                                            </a>
+                                        </div>
+                                        <div class="product-order-inner">
+                                            <h5 class="product-name">
+                                                <a  target="_blank" asp-action="details" asp-controller="shop" asp-route-id="@item.ProductId">@item.Product.Name</a>
+                                            </h5>
+                                            <div class="price">
+                                                @item.Product.Price.ToString("0.00₼")
+                                                <span class="count">x @item.Quantity</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+
+                            </ul>
+                            <div class="order-total">
+                                <span class="title"> Total Price: </span>
+                                <span class="total-price"> @Model.BasketProducts.Sum(p => (p.Product.Price * p.Quantity)) ₼ </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="button button-payment">Complete order</a>
+            </div>
+        </div>
+    </div>
+</div>
 
