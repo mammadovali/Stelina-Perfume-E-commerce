@@ -11,16 +11,16 @@ namespace Stelina.Domain.Models.Entities
 {
     public class ContactPost : BaseEntity
     {
-        [Required(ErrorMessage = "{0} boş buraxıla bilməz")]
+        [Required(ErrorMessage = "{0} Cannot be left empty")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "{0} boş buraxıla bilməz")]
+        [Required(ErrorMessage = "{0} Cannot be left empty")]
         [EmailAddress]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Boş buraxıla bilməz")]
+        [Required(ErrorMessage = "Cannot be left empty")]
 
         public string Subject { get; set; }
-        [Required(ErrorMessage = "Boş buraxıla bilməz")]
+        [Required(ErrorMessage = "Cannot be left empty")]
 
         public string Content { get; set; }
 

@@ -23,7 +23,7 @@
         <div class="checkout-wrapp">
             <div class="shipping-address-form-wrapp">
                 <div class="shipping-address-form checkout-form">
-                    <div class="row-col-1 row-col">
+                    <form class="row-col-1 row-col" id="checkout-form" novalidate>
                         <div class="shipping-address">
                             <h3 class="title-form">Order details</h3>
 
@@ -51,7 +51,17 @@
                                 <span asp-validation-for="@Model.OrderDetails.Address" class="text-danger validation-error"></span>
                             </p>
                         </div>
-                    </div>
+                        <button type="submit" class="button button-payment">Complete order</button>
+                        <input asp-for="OrderDetails.TotalAmount" value="@Model.BasketProducts.Sum(p => (p.Product.Price * p.Quantity))" hidden />
+                        <input asp-for="OrderDetails.UserId" value="@User.GetCurrentUserId()" hidden />
+
+                        @for (int i = 0; i < Model.BasketProducts.Count(); i++)
+                        {
+                            <input type="hidden" name="productIds" value="@Model.BasketProducts.ElementAt(i).ProductId">
+                            <input type="hidden" name="quantities" value="@Model.BasketProducts.ElementAt(i).Quantity">
+                        }
+
+                    </form>
                     <div class="row-col-2 row-col">
                         <div class="your-order">
                             <h3 class="title-form">Your Order</h3>
@@ -66,7 +76,7 @@
                                         </div>
                                         <div class="product-order-inner">
                                             <h5 class="product-name">
-                                                <a  target="_blank" asp-action="details" asp-controller="shop" asp-route-id="@item.ProductId">@item.Product.Name</a>
+                                                <a target="_blank" asp-action="details" asp-controller="shop" asp-route-id="@item.ProductId">@item.Product.Name</a>
                                             </h5>
                                             <div class="price">
                                                 @item.Product.Price.ToString("0.00₼")
@@ -79,14 +89,109 @@
                             </ul>
                             <div class="order-total">
                                 <span class="title"> Total Price: </span>
-                                <span class="total-price"> @Model.BasketProducts.Sum(p => (p.Product.Price * p.Quantity)) ₼ </span>
+                                <span class="total-price total-price-checkout"> @Model.BasketProducts.Sum(p => (p.Product.Price * p.Quantity)) ₼ </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="button button-payment">Complete order</a>
             </div>
         </div>
     </div>
 </div>
+
+@*
+ <script>
+    Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Your order has been completed, you will receive message in few days',
+    showConfirmButton: false,
+    timer: 1500
+    })
+
+</script>*@
+
+
+@section addcss{
+<link rel="stylesheet" href="~/lib/toastr.js/toastr.min.css" />
+<style>
+    input[Name].novalidated,
+    textarea[Name].novalidated {
+        border: 1px solid rgb(223, 53,69);
+    }
+</style>
+}
+
+@section addjs{
+<script src="~/lib/sweetalert/sweetalert.min.js"></script>
+<script src="~/lib/toastr.js/toastr.min.js"></script>
+<script src="~/lib/toastr.js/toastr.customize.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $("#checkout-form").submit(function (ev) {
+            ev.preventDefault();
+
+            let fd = new FormData(ev.currentTarget); // form => formData
+
+            $.ajax({
+                url: '@Url.Action("Checkout")',
+                type: "POST",
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+
+                    $("#checkout-form span.text-danger").remove();
+                    $("#checkout-form input[Name]").removeClass("novalidated");
+                    //console.log(response, "SUCCESS");
+
+                    if (response.error == true) {
+
+                        toastr.error(response.message);
+                        showError(response.state);
+
+                        return;
+                    }
+
+                    swal({
+                       title: "Success!",
+                       text: "Your order has been completed, you will receive message in few days",
+                       icon: "success",
+                       button: "Ok",
+                    });
+
+                    ev.currentTarget.reset();
+                },
+                error: function (errResponse) {
+                   console.log(errResponse, "ERROR");
+                }
+
+            })
+
+
+        })
+    });
+
+    function showError(state) {
+
+        state.forEach(item => {
+            //console.log(item)
+
+            let errorInput = $(`#checkout-form input[name='${item.fieldName}']`);
+            let errorSpan = $("<span/>", {
+                class: 'text-danger validation-error',
+                html: item.message
+            });
+
+            $(errorInput.parent()).append(errorSpan);
+            $(errorInput).addClass("novalidated")
+        });
+    }
+</script>
+}
+
+
+
 

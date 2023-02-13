@@ -57,7 +57,7 @@
 
                                  $(".actions-basket").append(noProductDiv);
 
-                                 $("#summary").html("0 ₼");
+                                 $("#summary").add(".total-price-checkout").html("0 ₼");
                              }
                              
                              toastr.success(res.message);

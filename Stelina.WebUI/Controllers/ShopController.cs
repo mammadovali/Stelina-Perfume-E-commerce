@@ -11,6 +11,7 @@ using Stelina.Domain.Models.FormModel;
 using Stelina.Domain.Models.ViewModels.OrderViewModel;
 using Stelina.Domain.Models.ViewModels.ProductViewModel;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace Stelina.WebUI.Controllers
             this.db = db;
             this.mediator = mediator;
         }
+
         [AllowAnonymous]
         public async Task<IActionResult> Index(string sortOrder)
         {
@@ -215,12 +217,27 @@ namespace Stelina.WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Checkout(OrderViewModel vm)
+        [Route("/checkout")]
+        public async Task<IActionResult> Checkout(OrderViewModel vm, int[] productIds, int[] quantities)
         {
             if (ModelState.IsValid)
             {
                 db.Orders.Add(vm.OrderDetails);
 
+                await db.SaveChangesAsync();
+
+                vm.OrderDetails.OrderProducts = new List<OrderProduct>();
+
+                for (int i = 0; i < productIds.Length; i++)
+                {
+                    var product = db.Products.Find(productIds[i]);
+                    vm.OrderDetails.OrderProducts.Add(new OrderProduct
+                    {
+                        OrderId = vm.OrderDetails.Id,
+                        ProductId = product.Id,
+                        Quantity = quantities[i]
+                    });
+                }
                 await db.SaveChangesAsync();
 
                 var response = new

@@ -81,7 +81,7 @@ namespace Stelina.WebUI
 
                 cfg.Cookie.Name = "stelina";
                 cfg.Cookie.HttpOnly = true;
-                cfg.ExpireTimeSpan = new TimeSpan(0, 15, 0);
+                cfg.ExpireTimeSpan = new TimeSpan(0, 45, 0);
             });
 
             services.AddAuthentication();

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stelina.Domain.Models.DataContexts;
 
 namespace Stelina.Domain.Migrations
 {
     [DbContext(typeof(StelinaDbContext))]
-    partial class StelinaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230213075712_Order_PhoneNumberString")]
+    partial class Order_PhoneNumberString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -540,6 +542,9 @@ namespace Stelina.Domain.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
@@ -558,12 +563,9 @@ namespace Stelina.Domain.Migrations
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -874,13 +876,13 @@ namespace Stelina.Domain.Migrations
 
             modelBuilder.Entity("Stelina.Domain.Models.Entities.Order", b =>
                 {
-                    b.HasOne("Stelina.Domain.Models.Entities.Membership.StelinaUser", "User")
+                    b.HasOne("Stelina.Domain.Models.Entities.Membership.StelinaUser", "Customer")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Stelina.Domain.Models.Entities.OrderProduct", b =>
