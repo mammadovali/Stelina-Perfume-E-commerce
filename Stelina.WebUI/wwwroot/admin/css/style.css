@@ -1600,7 +1600,8 @@ a.bg-danger:focus, a.bg-danger:hover {
 .table-responsive {
     display: inline-block;
     width: 100%;
-    overflow-x: auto
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .table.table-xl td, .table.table-xl th {

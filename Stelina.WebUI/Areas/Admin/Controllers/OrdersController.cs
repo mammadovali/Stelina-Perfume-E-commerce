@@ -51,38 +51,11 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             return View(response);
         }
 
-        [Authorize(Policy = "admin.orders.create")]
-        public IActionResult Create()
-        {
-            ViewData["UserId"] = new SelectList(db.Users, "Id", "Name");
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Policy = "admin.orders.create")]
-        public async Task<IActionResult> Create([Bind("Firstname,Lastname,PhoneNumber,TotalAmount,Address,UserId,Id,CreatedDate,DeletedDate")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Add(order);
-                await db.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserId"] = new SelectList(db.Users, "Id", "Name", order.UserId);
-            return View(order);
-        }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.orders.delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id, OrderRemoveCommand command)
+        public async Task<IActionResult> DeleteConfirmed(OrderRemoveCommand command)
         {
-            if (id != command.Id)
-            {
-                return NotFound();
-            }
-
             var response = await mediator.Send(command);
 
             if (response == null)
@@ -127,13 +100,8 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.orders.cancelledordersbacktoindex")]
-        public async Task<IActionResult> CancelledOrdersBackToIndex(int id, CancelledOrderRemoveBackCommand command)
+        public async Task<IActionResult> CancelledOrdersBackToIndex(CancelledOrderRemoveBackCommand command)
         {
-            if (id != command.Id)
-            {
-                return NotFound();
-            }
-
             var response = await mediator.Send(command);
 
             return RedirectToAction(nameof(Index));
@@ -142,13 +110,8 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "admin.orders.deliveredordersbacktoindex")]
-        public async Task<IActionResult> DeliveredOrdersBackToIndex(int id, DeliveredOrderRemoveBackCommand command)
+        public async Task<IActionResult> DeliveredOrdersBackToIndex(DeliveredOrderRemoveBackCommand command)
         {
-            if (id != command.Id)
-            {
-                return NotFound();
-            }
-
             var response = await mediator.Send(command);
 
             return RedirectToAction(nameof(Index));

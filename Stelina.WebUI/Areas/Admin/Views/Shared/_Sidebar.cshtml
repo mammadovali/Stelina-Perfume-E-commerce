@@ -15,7 +15,7 @@
                 </li>
             }
 
-             @if (User.HasAccess("admin.products.index"))
+            @if (User.HasAccess("admin.products.index"))
             {
                 <li>
                     <a asp-controller="products" asp-action="index">
@@ -27,30 +27,34 @@
                 </li>
             }
 
-             <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
-                <a href="javascript:void(0)">
-                    <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                    <span class="pcoded-mtext">Sifariş</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li>
-                        <a asp-controller="orders" asp-action="index">
-                            <span class="pcoded-mtext">Gözləyən sifarişlər</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="orders" asp-action="deliveredorders">
-                            <span class="pcoded-mtext">Tamamlanmış sifarişlər</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="orders" asp-action="cancelledorders">
-                            <span class="pcoded-mtext">Ləğv edilmiş sifarişlər</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            @if (User.HasAccess("admin.orders.index"))
+            {
+                <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
+                    <a href="javascript:void(0)">
+                        <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
+                        <span class="pcoded-mtext">Sifariş</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li>
+                            <a asp-controller="orders" asp-action="index">
+                                <span class="pcoded-mtext">Gözləyən sifarişlər</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="orders" asp-action="deliveredorders">
+                                <span class="pcoded-mtext">Tamamlanmış sifarişlər</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="orders" asp-action="cancelledorders">
+                                <span class="pcoded-mtext">Silinmiş sifarişlər</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+
 
             @if (User.HasAccess("admin.categories.index"))
             {
@@ -64,7 +68,7 @@
                 </li>
             }
 
-             @if (User.HasAccess("admin.brands.index"))
+            @if (User.HasAccess("admin.brands.index"))
             {
                 <li>
                     <a asp-controller="brands" asp-action="index">
@@ -96,6 +100,14 @@
                                 <span class="pcoded-mtext">Silinmiş bloqlar</span>
                             </a>
                         </li>
+                        @if (User.HasAccess("admin.tags.index"))
+                        {
+                            <li>
+                                <a asp-controller="tags" asp-action="index">
+                                    <span class="pcoded-mtext">Taqlar</span>
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </li>
             }
@@ -151,10 +163,9 @@
                 </li>
             }
 
-            <div class="pcoded-navigatio-lavel">Tənzimləmələr</div>
-
             @if (User.HasAccess("admin.users.index"))
             {
+                <div class="pcoded-navigatio-lavel">Tənzimləmələr</div>
                 <li>
                     <a asp-controller="users" asp-action="index">
                         <span class="pcoded-micon">
