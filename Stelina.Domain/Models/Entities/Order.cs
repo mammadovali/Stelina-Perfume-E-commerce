@@ -25,6 +25,8 @@ namespace Stelina.Domain.Models.Entities
 
         public int UserId { get; set; }
 
+        public bool IsDelivered { get; set; } = false;
+
         public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }

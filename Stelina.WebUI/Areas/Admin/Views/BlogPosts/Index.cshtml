@@ -79,7 +79,7 @@
                                 </td>
                                 <td class="operations" style="max-width: 312px;">
 
-                                    @if (item.PublishedDate == null)
+                                    @if (item.PublishedDate == null && User.HasAccess("admin.blogposts.publish"))
                                     {
                                         <a class="btn btn-sm btn-secondary" onclick="publishDate(@item.Id, '@item.Title')">
                                             Publish
@@ -302,7 +302,6 @@
 
 
                 });
-
-        }
+    }
 </script>
 }

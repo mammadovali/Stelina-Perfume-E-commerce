@@ -24154,4 +24154,15 @@ td.operations {
     max-width: 207px;
 }
 
+.order-image-container {
+    width: 70px;
+    height: 70px;
+}
 
+img.order-product-image {
+    width: 100%;
+}
+
+.product-name-center {
+    transform: translate(20px, 20px);
+}

@@ -5,7 +5,6 @@
 }
 
 
-
 <div class="page-header">
     <div class="row align-items-end">
         <div class="col-lg-8">
@@ -22,7 +21,7 @@
                         <a asp-controller="Dashboard" asp-action="index"> <i class="feather icon-home"></i> </a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
-                        <span>Orders</span>
+                        <span>Delivered Orders</span>
                     </li>
                 </ul>
             </div>
@@ -46,12 +45,6 @@
                 Order Status
             </th>
             <th class="operations">
-                @if (User.HasAccess("admin.orders.create"))
-                {
-                    <a asp-action="Create" class="btn btn-sm btn-primary">
-                        <i class="fa fa-pen-to-square"></i>
-                    </a>
-                }
             </th>
         </tr>
     </thead>
@@ -79,14 +72,9 @@
                     }
                 <td class="operations" style="max-width: 191px">
 
-                        @if (User.HasAccess("admin.orders.completeorder"))
+                        @if (User.HasAccess("admin.orders.deliveredordersbacktoindex"))
                         {
-                            @if (item.IsDelivered == false)
-                            {
-                            <a class="btn btn-sm btn-warning" onclick="completeOrder(@item.Id, '@item.Id')">
-                                Complete
-                            </a>
-                            }
+                         <a class="btn btn-sm btn-success" onclick="removeEntityBack(@item.Id, '@item.Id')"><i class="fa-solid fa-rotate-left"></i></a>
                         }
 
                         @if (User.HasAccess("admin.orders.details"))
@@ -95,7 +83,6 @@
                             <i class="fa fa-eye"></i>
                         </a>
                         }
-
 
 
                         @if (User.HasAccess("admin.contactposts.delete"))
@@ -166,47 +153,47 @@
         });
     }
 
-    function completeOrder(id, name) {
-            swal(`${name} nömrəli sifariş tamamlansın?`, {
-                title: "Diqqət!",
-                text: `${name} nömrəli sifariş tamamlansın?`,
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                buttons: ["No", "Yes"]
-            })
-                .then((value) => {
+    function removeEntityBack(id, name) {
+        swal(`${name} adlı sifarişi geri qaytarmaq istəyirsiniz mi?`, {
+            title: "Diqqet!",
+            text: `${name} adlı sifarişi geri qaytarmaq istəyirsiniz mi?`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            buttons: ["No", "Yes"]
+        })
+            .then((value) => {
 
-                    if (value == true) {
+                if (value == true) {
 
-                        let vToken = $('[name=__RequestVerificationToken]').val();
+                    let vToken = $('[name=__RequestVerificationToken]').val();
 
-                        let formData = new FormData();
-                        formData.set('__RequestVerificationToken', vToken);
-                        formData.set('id', id);
+                    let formData = new FormData();
+                    formData.set('__RequestVerificationToken', vToken);
+                    formData.set('id', id);
 
-                        $.ajax({
-                            url: `@Url.Action("CompleteOrder")`,
-                            type: 'POST',
-                            data: formData,
-                            contentType: false,
-                            processData: false,
-                            success: function (response) {
-                                console.log(response)
-                                if (response.error == true) {
-                                    toaster.error(response.message, "Xeta");
-                                    return;
-                                }
-                                location.reload();
-                            },
-                            error: function (errorResponse) {
-                                console.error(errorResponse);
+                    $.ajax({
+                        url: `@Url.Action("DeliveredOrdersBackToIndex")`,
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            console.log(response)
+                            if (response.error == true) {
+                                toaster.error(response.message, "Xeta");
+                                return;
                             }
-                        });
-                    }
+                            location.reload();
+                        },
+                        error: function (errorResponse) {
+                            console.error(errorResponse);
+                        }
+                    });
+                }
 
 
-                });
+            });
     }
 </script>
 }

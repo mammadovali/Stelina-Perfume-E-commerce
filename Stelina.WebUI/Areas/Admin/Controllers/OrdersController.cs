@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Stelina.Domain.Business.OrderModule;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 
@@ -13,149 +16,161 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     public class OrdersController : Controller
     {
-        private readonly StelinaDbContext _context;
+        private readonly StelinaDbContext db;
+        private readonly IMediator mediator;
 
-        public OrdersController(StelinaDbContext context)
+        public OrdersController(StelinaDbContext db, IMediator mediator)
         {
-            _context = context;
+            this.db = db;
+            this.mediator = mediator;
         }
 
-        // GET: Admin/Orders
-        public async Task<IActionResult> Index()
+        [Authorize(Policy = "admin.orders.index")]
+        public async Task<IActionResult> Index(OrderGetAllQuery query)
         {
-            var stelinaDbContext = _context.Orders.Include(o => o.User);
-            return View(await stelinaDbContext.ToListAsync());
-        }
+            var response = await mediator.Send(query);
 
-        // GET: Admin/Orders/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            if (response == null)
             {
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .Include(o => o.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
+            return View(response);
+        }
+
+        [Authorize(Policy = "admin.orders.details")]
+        public async Task<IActionResult> Details(OrderGetSingleQuery query)
+        {
+            var response = await mediator.Send(query);
+
+            if (response == null)
             {
                 return NotFound();
             }
 
-            return View(order);
+            return View(response);
         }
 
-        // GET: Admin/Orders/Create
+        [Authorize(Policy = "admin.orders.create")]
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Name");
+            ViewData["UserId"] = new SelectList(db.Users, "Id", "Name");
             return View();
         }
 
-        // POST: Admin/Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.orders.create")]
         public async Task<IActionResult> Create([Bind("Firstname,Lastname,PhoneNumber,TotalAmount,Address,UserId,Id,CreatedDate,DeletedDate")] Order order)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
+                db.Add(order);
+                await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Name", order.UserId);
+            ViewData["UserId"] = new SelectList(db.Users, "Id", "Name", order.UserId);
             return View(order);
         }
 
-        // GET: Admin/Orders/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Name", order.UserId);
-            return View(order);
-        }
-
-        // POST: Admin/Orders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Firstname,Lastname,PhoneNumber,TotalAmount,Address,UserId,Id,CreatedDate,DeletedDate")] Order order)
-        {
-            if (id != order.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(order);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OrderExists(order.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Name", order.UserId);
-            return View(order);
-        }
-
-        // GET: Admin/Orders/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Orders
-                .Include(o => o.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
-        }
-
-        // POST: Admin/Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [Authorize(Policy = "admin.orders.delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id, OrderRemoveCommand command)
         {
-            var order = await _context.Orders.FindAsync(id);
-            _context.Orders.Remove(order);
-            await _context.SaveChangesAsync();
+            if (id != command.Id)
+            {
+                return NotFound();
+            }
+
+            var response = await mediator.Send(command);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.orders.completeorder")]
+        public async Task<IActionResult> CompleteOrder(OrderCompleteCommand command)
+        {
+            var response = await mediator.Send(command);
+
+            if (response == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [Authorize(Policy = "admin.orders.deliveredorders")]
+        public async Task<IActionResult> DeliveredOrders(OrderGetAllDeliveredQuery query)
+        {
+            var response = await mediator.Send(query);
+            return View(response);
+        }
+
+        [Authorize(Policy = "admin.orders.cancelledorders")]
+        public async Task<IActionResult> CancelledOrders(OrderGetAllCancelledQuery query)
+        {
+            var response = await mediator.Send(query);
+            return View(response);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.orders.cancelledordersbacktoindex")]
+        public async Task<IActionResult> CancelledOrdersBackToIndex(int id, CancelledOrderRemoveBackCommand command)
+        {
+            if (id != command.Id)
+            {
+                return NotFound();
+            }
+
+            var response = await mediator.Send(command);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Policy = "admin.orders.deliveredordersbacktoindex")]
+        public async Task<IActionResult> DeliveredOrdersBackToIndex(int id, DeliveredOrderRemoveBackCommand command)
+        {
+            if (id != command.Id)
+            {
+                return NotFound();
+            }
+
+            var response = await mediator.Send(command);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost, ActionName("Clear")]
+        [Authorize(Policy = "admin.orders.clearcancelledorders")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ClearCancelledOrders(int id, OrderClearCommand command)
+        {
+            if (id != command.Id)
+            {
+                return NotFound();
+            }
+
+            var response = await mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
 
         private bool OrderExists(int id)
         {
-            return _context.Orders.Any(e => e.Id == id);
+            return db.Orders.Any(e => e.Id == id);
         }
     }
 }
