@@ -44,13 +44,16 @@ namespace Stelina.WebUI.Controllers
 
             var products = await db.Products
                 .Include(p => p.Images.Where(i => i.IsMain == true && i.DeletedDate == null))
-                .Where(p => p.DeletedDate == null).ToListAsync();
+                .Where(p => p.DeletedDate == null).OrderByDescending(p => p.CreatedDate).ToListAsync();
+
+            var maxPrice = Math.Ceiling(products.Select(p => p.Price).Max());
 
             var vm = new ProductViewModel()
             {
                 Brands = brands,
                 Categories = categories,
-                Products = products
+                Products = products,
+                MaxPrice = maxPrice
             };
 
             //ViewBag.NameSort = String.IsNullOrWhiteSpace(sortOrder) ? "nameDesc" : "";
@@ -103,7 +106,7 @@ namespace Stelina.WebUI.Controllers
                 query = query.Where(q => q.Price >= model.Prices[0] && q.Price <= model.Prices[1]);
             }
 
-            return PartialView("_ProductContainer", query.ToList());
+            return PartialView("_ProductContainer", query.OrderByDescending(q => q.CreatedDate).ToList());
         }
 
         [AllowAnonymous]
@@ -139,7 +142,7 @@ namespace Stelina.WebUI.Controllers
 
             if (Request.IsAjaxRequest())
             {
-                return PartialView("_SearchResults", products);
+                return PartialView("_SearchResults", products.OrderByDescending(p => p.CreatedDate));
             }
 
 
@@ -158,7 +161,7 @@ namespace Stelina.WebUI.Controllers
             {
                 Brands = brands,
                 Categories = categories,
-                Products = products.ToList(),
+                Products = products.OrderByDescending(p => p.CreatedDate).ToList(),
                 MaxPrice = maxPrice
             };
 

@@ -22,7 +22,7 @@
             </th>
 
             <th class="operations">
-                @if (User.HasAccess("admin.contactdetails.index"))
+                @if (User.HasAccess("admin.contactdetails.index") && Model.Count() < 1)
                 {
                     <a asp-action="Create" class="btn btn-sm btn-primary">
                         <i class="fa fa-pen-to-square"></i>

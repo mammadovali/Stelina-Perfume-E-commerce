@@ -127,6 +127,18 @@
                 </li>
             }
 
+            @if (User.HasAccess("admin.about.index"))
+            {
+                <li>
+                    <a asp-controller="Abouts" asp-action="index">
+                        <span class="pcoded-micon">
+                            <i class="fa fa-address-card"></i>
+                        </span>
+                        <span class="pcoded-mtext">Şirkət haqqında</span>
+                    </a>
+                </li>
+            }
+
             @if (User.HasAccess("admin.contactdetails.index"))
             {
                 <li>

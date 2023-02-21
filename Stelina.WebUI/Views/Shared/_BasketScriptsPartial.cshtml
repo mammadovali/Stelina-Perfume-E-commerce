@@ -131,7 +131,7 @@
             data: elementData,
             contentType: 'application/x-www-form-urlencoded',
             success: function(res){
-                //console.log(res);
+                console.log(res);
 
 
                 if(res.error == false){
@@ -200,7 +200,6 @@
            if(favorites.filter(item => item == productId).length == 0){
                favorites.push(productId);
 
-           
                $.cookie('favorites', favorites.toString(), { path: '/'});
            }
 
@@ -280,9 +279,5 @@
             })
 
         }, 2000);
-
-
-
-        
     })
 </script>

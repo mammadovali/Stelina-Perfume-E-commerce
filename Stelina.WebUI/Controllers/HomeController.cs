@@ -1,5 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Stelina.Domain.AppCode.Extensions;
@@ -33,9 +32,11 @@ namespace Stelina.WebUI.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> AboutAsync()
         {
-            return View();
+            var about = await db.AboutCompany.FirstOrDefaultAsync(cd => cd.DeletedDate == null);
+
+            return View(about);
         }
 
         public IActionResult Faq()

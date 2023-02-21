@@ -18,9 +18,8 @@ namespace Stelina.Domain.Business.BasketModule
         public class SearchProductQuery : IRequest<IEnumerable<Product>>
         {
             public string SearchTerm { get; set; }
-        }
 
-        public class SearchProductQueryHandler : IRequestHandler<SearchProductQuery, IEnumerable<Product>>
+            public class SearchProductQueryHandler : IRequestHandler<SearchProductQuery, IEnumerable<Product>>
         {
             private readonly StelinaDbContext db;
 
@@ -30,24 +29,26 @@ namespace Stelina.Domain.Business.BasketModule
             }
 
 
-        public async Task<IEnumerable<Product>> Handle(SearchProductQuery request, CancellationToken cancellationToken)
-        {
-            var data = await db.Products
-                    .Include(p => p.Images)
-                    .Where(p => p.Name.Contains(request.SearchTerm) && p.DeletedDate == null)
-                    .Select(p => new Product
-                    {
-                        Id = p.Id,
-                        Name = p.Name,
-                        Images = p.Images,
-                        Price = p.Price
+            public async Task<IEnumerable<Product>> Handle(SearchProductQuery request, CancellationToken cancellationToken)
+            {
+                var data = await db.Products
+                        .Include(p => p.Images)
+                        .Where(p => p.Name.Contains(request.SearchTerm) && p.DeletedDate == null)
+                        .Select(p => new Product
+                        {
+                            Id = p.Id,
+                            Name = p.Name,
+                            Images = p.Images,
+                            Price = p.Price
 
-                    })
-                    .ToListAsync();
+                        })
+                        .ToListAsync();
 
-            return data;
+                return data;
+            }
         }
-    }
+        }
+
 
     
 }

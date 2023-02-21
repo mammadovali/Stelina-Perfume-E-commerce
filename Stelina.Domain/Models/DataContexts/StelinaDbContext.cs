@@ -51,6 +51,7 @@ namespace Stelina.Domain.Models.DataContexts
 
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
+        public DbSet<About> AboutCompany { get; set; }
 
 
 
