@@ -13,7 +13,7 @@ namespace Stelina.Domain.Models.Entities
 
         public string StockKeepingUnit { get; set; }
 
-        public decimal Rate { get; set; }
+        public double Rate { get; set; }
 
         public decimal Price { get; set; }
 

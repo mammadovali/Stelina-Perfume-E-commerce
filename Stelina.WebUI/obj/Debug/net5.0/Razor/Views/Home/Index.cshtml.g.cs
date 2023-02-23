@@ -20,77 +20,77 @@ using Stelina.WebUI;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 6 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.ViewModels.ContactPostDetail;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 7 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.Entities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 8 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.AppCode.Infrastructure;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 9 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.AppCode.Extensions;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 10 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.FormModel;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 11 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.ViewModels.LoginRegister;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 12 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.ViewModels.BlogPostItems;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 13 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.ViewModels.ProductViewModel;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 14 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.ViewModels.Wishlist;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
+#line 15 "C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\Views\_ViewImports.cshtml"
 using Stelina.Domain.Models.ViewModels.OrderViewModel;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"328c661ffe7175fdcf3e7c3a5054e76d7736cd14", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ee8cfd134b3d87a906f6544481fcb1d4d362e34c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f0c8a3e698fbc329859027b46d2096a5caaf464f", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -173,7 +173,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           </h3>
                ");
             WriteLiteral("           <div class=\"price\">\r\n                            New Price:\r\n                            <span class=\"number-price\"> $270.00 </span>\r\n                          </div>\r\n                          ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1419144", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1419146", async() => {
                 WriteLiteral("Shop now");
             }
             );
@@ -207,7 +207,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                             <span class=""number-price""> $170.00 </span>
                           </div>
                           ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1421298", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1421300", async() => {
                 WriteLiteral("Shop now");
             }
             );
@@ -239,7 +239,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                             <span class=""number-price""> $250.00 </span>
                           </div>
                           ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1423397", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1423399", async() => {
                 WriteLiteral("Shop now");
             }
             );
@@ -274,7 +274,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           Adipiscing elit curabitur senectus sem
                         </div>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1425496", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1425498", async() => {
                 WriteLiteral("Shop now");
             }
             );
@@ -336,7 +336,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                     <div class=""thumb-inner"">
                       <a href=""#"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1429002", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1429004", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -402,7 +402,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                     <div class=""thumb-inner"">
   ");
             WriteLiteral("                    <a href=\"#\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1432336", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1432338", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -468,7 +468,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                     <div class=""thumb-inner"">
   ");
             WriteLiteral("                    <a href=\"#\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1435670", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1435672", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -534,7 +534,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                     <div class=""thumb-inner"">
   ");
             WriteLiteral("                    <a href=\"#\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1439004", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1439006", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -600,7 +600,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                     <div class=""thumb-inner"">
     ");
             WriteLiteral("                  <a href=\"#\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1442337", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1442339", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -665,7 +665,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                   <div class=""product-thumb"">
                     <div class=""thumb-inner"">");
             WriteLiteral("\r\n                      <a href=\"#\">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1445678", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1445680", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -732,7 +732,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                         <h4 class=""stelina-subtitle"">TOP STAFF PICK</h4>
    ");
             WriteLiteral("                     <h3 class=\"title\">Best Collection</h3>\r\n                        <div class=\"description\">\r\n                          Proin interdum magna primis id consequat\r\n                        </div>\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1449201", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1449203", async() => {
                 WriteLiteral("Shop now");
             }
             );
@@ -768,7 +768,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           Get 25% Off for all items!
                         </span>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1451352", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1451354", async() => {
                 WriteLiteral("Shop now");
             }
             );
@@ -811,7 +811,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                       <span class=""number-price"">$45.00</span>
                     </div>
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1453704", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1453706", async() => {
                 WriteLiteral("Shop now");
             }
             );
@@ -877,7 +877,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                         </div>
                 ");
             WriteLiteral("        <div class=\"product-thumb\">\r\n                          <div class=\"thumb-inner\">\r\n                            <a href=\"#\">\r\n                              ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1457423", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1457425", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -948,7 +948,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1461239", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1461241", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1019,7 +1019,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1465057", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1465059", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1090,7 +1090,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1468870", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1468872", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1161,7 +1161,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1472662", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1472664", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1232,7 +1232,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1476477", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1476479", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1303,7 +1303,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1480295", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1480297", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1374,7 +1374,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1484085", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1484087", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1453,7 +1453,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1488187", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1488189", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1524,7 +1524,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1492000", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1492002", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1595,7 +1595,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1495813", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1495815", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1666,7 +1666,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1499627", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd1499629", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1737,7 +1737,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14103418", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14103420", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1808,7 +1808,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14107237", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14107239", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1879,7 +1879,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14111048", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14111050", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -1950,7 +1950,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14114841", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14114843", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2029,7 +2029,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14118949", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14118951", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2100,7 +2100,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14122763", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14122765", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2171,7 +2171,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14126577", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14126579", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2242,7 +2242,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14130394", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14130396", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2313,7 +2313,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14134188", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14134190", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2384,7 +2384,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14138005", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14138007", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2455,7 +2455,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14141826", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14141828", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2526,7 +2526,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                           <div class=""thumb-inner"">
                             <a href=""#"">
                               ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14145614", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14145616", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2655,7 +2655,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                   <div class=""post-thumb"">
                     <a href=""#"">
                       ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14152063", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14152065", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2731,7 +2731,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                   <div class=""post-thumb"">
                     <a href=""#"">
                       ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14155863", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14155865", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2807,7 +2807,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                   <div class=""post-thumb"">
                     <a href=""#"">
                       ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14159654", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14159656", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -2883,7 +2883,7 @@ using Stelina.Domain.Models.ViewModels.OrderViewModel;
                   <div class=""post-thumb"">
                     <a href=""#"">
                       ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14163450", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "328c661ffe7175fdcf3e7c3a5054e76d7736cd14163452", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

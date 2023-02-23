@@ -10896,6 +10896,8 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Abstractions >= 2.2.0",
+      "Microsoft.AspNetCore.Razor >= 2.2.0",
+      "Microsoft.AspNetCore.Razor.Runtime >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
@@ -10973,6 +10975,14 @@
             "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Mvc.Abstractions": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.Razor": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.Razor.Runtime": {
             "target": "Package",
             "version": "[2.2.0, )"
           },

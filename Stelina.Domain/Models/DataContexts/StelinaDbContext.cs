@@ -53,6 +53,9 @@ namespace Stelina.Domain.Models.DataContexts
 
         public DbSet<About> AboutCompany { get; set; }
 
+        public DbSet<ProductRate> ProductRates { get; set; }
+
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

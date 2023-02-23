@@ -118,10 +118,100 @@
 
 @section addcss{
 <style>
-    .rotate {
-        transform: rotate(-180deg);
-    }
-</style>
+         .rotate {
+             transform: rotate(-180deg);
+         }
+
+
+        .rate {
+            display: flex;
+            justify-content:center;
+        }
+
+            .rate div {
+                color: #f9ba48;
+                margin-right: 1px;
+                list-style: none;
+                font-family: "Font Awesome 5 Free";
+                cursor: pointer;
+            }
+
+                .rate div::before {
+                    content: "\f005";
+                    font-weight: 400;
+                }
+
+            .rate.rate-half1 div:nth-child(1)::before {
+                content: "\f5c0";
+                font-weight: 900;
+            }
+
+            .rate.rate-1 div:nth-child(1)::before,
+            .rate.rate-half2 div:nth-child(1)::before,
+            .rate.rate-3 div:nth-child(1)::before,
+            .rate.rate-3 div:nth-child(2)::before,
+            .rate.rate-half3 div:nth-child(1)::before,
+            .rate.rate-half3 div:nth-child(2)::before,
+            .rate.rate-half4 div:nth-child(1)::before,
+            .rate.rate-half4 div:nth-child(2)::before,
+            .rate.rate-half4 div:nth-child(3)::before,
+            .rate.rate-4 div:nth-child(1)::before,
+            .rate.rate-4 div:nth-child(2)::before,
+            .rate.rate-4 div:nth-child(3)::before,
+            .rate.rate-half5 div:nth-child(1)::before,
+            .rate.rate-half5 div:nth-child(2)::before,
+            .rate.rate-half5 div:nth-child(3)::before,
+            .rate.rate-half5 div:nth-child(4)::before,
+            .rate.rate-5 div:nth-child(1)::before,
+            .rate.rate-5 div:nth-child(2)::before,
+            .rate.rate-5 div:nth-child(3)::before,
+            .rate.rate-5 div:nth-child(4)::before {
+                content: "\f005";
+                font-weight: 900;
+            }
+
+            .rate.rate-half2 div:nth-child(2)::before {
+                content: "\f5c0";
+                font-weight: 900;
+            }
+
+            .rate.rate-2 div:nth-child(1)::before,
+            .rate.rate-2 div:nth-child(2)::before {
+                content: "\f005";
+                font-weight: 900;
+            }
+
+            .rate.rate-half3 div:nth-child(3)::before {
+                content: "\f5c0";
+                font-weight: 900;
+            }
+
+            .rate.rate-3 div:nth-child(3)::before {
+                content: "\f005";
+                font-weight: 900;
+            }
+
+            .rate.rate-half4 div:nth-child(4)::before {
+                content: "\f5c0";
+                font-weight: 900;
+            }
+
+            .rate.rate-4 div:nth-child(4)::before {
+                content: "\f005";
+                font-weight: 900;
+            }
+
+            .rate.rate-half5 div:nth-child(5)::before {
+                content: "\f5c0";
+                font-weight: 900;
+            }
+
+            .rate.rate-5 div:nth-child(5)::before {
+                content: "\f005";
+                font-weight: 900;
+            }
+ </style>
+
 }
 
 

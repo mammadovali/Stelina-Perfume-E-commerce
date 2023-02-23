@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="~/assets/fonts/flaticon/flaticon.css" />
     <link rel="stylesheet" href="~/assets/css/style.css" />
 
-
+    <link rel="stylesheet" href="https://kit.fontawesome.com/cf7085364a.css" crossorigin="anonymous">
     @RenderSection("addcss", required:false)
 
 </head>
@@ -366,7 +366,7 @@
         </div>
     </div>
 
-
+     <script src="https://kit.fontawesome.com/cf7085364a.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/assets/js/jquery-1.12.4.min.js"></script>
     <script src="~/assets/js/jquery.plugin-countdown.min.js"></script>
@@ -436,7 +436,7 @@
                 }
             });
 
-              $("#postComment").add(".add-to-cart").add(".sign-in-shopping-cart").click(function(){
+              $("#postComment").add(".add-to-cart").add(".sign-in-shopping-cart").add("div[data-rate]").click(function(){
                    $("#modalLoginForm").addClass("in")
                    $("#modalLoginForm").css("background", "rgba(0, 0, 0, 0.44)")
                    $(".modal.fade .modal-dialog").css("transform", "translate(0, 10%)")
