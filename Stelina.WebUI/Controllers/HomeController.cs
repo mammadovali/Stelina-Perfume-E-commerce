@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Serilog;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
@@ -19,6 +21,7 @@ namespace Stelina.WebUI.Controllers
         private readonly StelinaDbContext db;
         private readonly CryptyoService cryptyoService;
         private readonly EmailService emailService;
+        private readonly ILogger<HomeController> logger;
 
         public HomeController(StelinaDbContext db, CryptyoService cryptyoService, EmailService emailService)
         {

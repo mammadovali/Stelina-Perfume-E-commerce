@@ -107,6 +107,14 @@
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[5.8.0, )"
             }
           },
           "imports": [

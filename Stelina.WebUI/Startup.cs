@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
+using Stelina.Domain.AppCode.Behaviors;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Providers;
 using Stelina.Domain.AppCode.Services;
@@ -126,6 +127,8 @@ namespace Stelina.WebUI
             var assemblies = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("Stelina."));
 
             services.AddMediatR(assemblies.ToArray());
+
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LogBehavior<,>));
 
             services.AddScoped<IClaimsTransformation, AppClaimProvider>();
         }

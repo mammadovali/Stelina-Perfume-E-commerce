@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using Stelina.Domain.AppCode.Extensions;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,15 @@ namespace Stelina.WebUI
     {
         public static void Main(string[] args)
         {
+            //Read Configuration from appSettings
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+            //Initialize Logger
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(config)
+                .CreateLogger();
+
             ReadAllPolicies();
             CreateHostBuilder(args).Build().Run();
         }
@@ -47,6 +57,7 @@ namespace Stelina.WebUI
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+            .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
