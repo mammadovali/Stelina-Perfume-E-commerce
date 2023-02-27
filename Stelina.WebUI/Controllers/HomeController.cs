@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Services;
+using Stelina.Domain.Business.HomeBackgroundModule;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
 using Stelina.Domain.Models.ViewModels.ContactPostDetail;
@@ -21,18 +23,21 @@ namespace Stelina.WebUI.Controllers
         private readonly StelinaDbContext db;
         private readonly CryptyoService cryptyoService;
         private readonly EmailService emailService;
-        private readonly ILogger<HomeController> logger;
+        private readonly IMediator mediator;
 
-        public HomeController(StelinaDbContext db, CryptyoService cryptyoService, EmailService emailService)
+        public HomeController(StelinaDbContext db, CryptyoService cryptyoService, EmailService emailService, IMediator mediator)
         {
             this.db = db;
             this.cryptyoService = cryptyoService;
             this.emailService = emailService;
+            this.mediator = mediator;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(HomeBackgroundGetAllQuery query)
         {
-            return View();
+            var response = await mediator.Send(query);
+
+            return View(response);
         }
 
         public async Task<IActionResult> AboutAsync()

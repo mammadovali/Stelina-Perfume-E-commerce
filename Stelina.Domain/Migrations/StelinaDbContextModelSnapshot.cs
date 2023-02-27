@@ -357,6 +357,30 @@ namespace Stelina.Domain.Migrations
                     b.ToTable("Faqs");
                 });
 
+            modelBuilder.Entity("Stelina.Domain.Models.Entities.HomeBackground", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HomeBackgrounds");
+                });
+
             modelBuilder.Entity("Stelina.Domain.Models.Entities.Membership.StelinaRole", b =>
                 {
                     b.Property<int>("Id")

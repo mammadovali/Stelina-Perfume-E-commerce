@@ -1,413 +1,69 @@
-﻿  <div class="fullwidth-template">
-        <div class="home-slider-banner">
-          <div class="container" style="padding: 0;">
+﻿@model IEnumerable<HomeBackground>
+
+<div class="fullwidth-template">
+    <div class="home-slider-banner">
+        <div class="container" style="padding: 0;">
             <div class="row10">
-              <div class="col-lg-12 silider-wrapp">
-                <div class="home-slider">
-                  <div
-                    class="slider-owl owl-slick equal-container nav-center"
-                    data-slick='{"autoplay":true, "autoplaySpeed":9000, "arrows":false, "dots":true, "infinite":true, "speed":1000, "rows":1}'
-                    data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":1}}]'
-                  >
-                    <div class="slider-item style7">
-                      <div class="slider-inner equal-element">
-                        <div class="slider-infor">
-                          
-                          <h3 class="title-big">
-                            Spring Summer <br />Collection
-                          </h3>
-                          <a asp-action="index" asp-controller="shop" class="button btn-shop-the-look bgroud-style">Shop now</a>
+                <div class="col-lg-12 silider-wrapp">
+                    <div class="home-slider">
+                        <div class="slider-owl owl-slick equal-container nav-center"
+                             data-slick='{"autoplay":true, "autoplaySpeed":9000, "arrows":false, "dots":true, "infinite":true, "speed":1000, "rows":1}'
+                             data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":1}}]'>
+
+                            @foreach (var item in Model)
+                            {
+                                <div class="slider-item style7">
+                                    <div class="slider-inner equal-element" style="background-image: url('/uploads/images/@item.ImagePath')">
+                                        <div class="slider-infor">
+
+                                            <h3 class="title-big">
+                                                @item.Text
+                                            </h3>
+                                            <a asp-action="index" asp-controller="shop" class="button btn-shop-the-look bgroud-style">Shop now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
                         </div>
-                      </div>
                     </div>
-                    <div class="slider-item style8">
-                      <div class="slider-inner equal-element">
-                        <div class="slider-infor">
-                          <h3 class="title-big">
-                            Up to 25% Off <br />order now
-                          </h3>
-                          <a asp-action="index" asp-controller="shop" class="button btn-shop-product">Shop now</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="slider-item style9">
-                      <div class="slider-inner equal-element">
-                        <div class="slider-infor">
-                          <h3 class="title-big">A range of <br />perfume</h3>
-                          <a asp-action="index" asp-controller="shop" class="button btn-chekout">Shop now</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>@*
-        <div class="stelina-product produc-featured rows-space-65">
-          <div class="container">
-            <h3 class="custommenu-title-blog">Deal of the day</h3>
-            <div
-              class="owl-products owl-slick equal-container nav-center"
-              data-slick='{"autoplay":false, "autoplaySpeed":1000, "arrows":false, "dots":true, "infinite":false, "speed":800, "rows":1}'
-              data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":4}},{"breakpoint":"1200","settings":{"slidesToShow":3}},{"breakpoint":"992","settings":{"slidesToShow":2}},{"breakpoint":"480","settings":{"slidesToShow":1}}]'
-            >
-              <div class="product-item style-5">
-                <div class="product-inner equal-element">
-                  <div class="product-top">
-                    <div class="flash">
-                      <span class="onnew">
-                        <span class="text"> new </span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="product-thumb">
-                    <div class="thumb-inner">
-                      <a href="#">
-                        <img
-                          src="~/assets/images/product-item-17.jpg"
-                          alt="img"
-                        />
-                      </a>
-                      <div class="thumb-group">
-                        <div class="yith-wcwl-add-to-wishlist">
-                          <div class="yith-wcwl-add-button">
-                            <a href="#">Add to Wishlist</a>
-                          </div>
-                        </div>
-                        <a href="#" class="button quick-wiew-button"
-                          >Quick View</a
-                        >
-                        <div class="loop-form-add-to-cart">
-                          <button class="single_add_to_cart_button button">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <h5 class="product-name product_title">
-                      <a href="#">Glorious Eau</a>
-                    </h5>
-                    <div class="group-info">
-                      <div class="stars-rating">
-                        <div class="star-rating">
-                          <span class="star-3"></span>
-                        </div>
-                        <div class="count-star">(3)</div>
-                      </div>
-                      <div class="price">
-                        <del> $65 </del>
-                        <ins> $45 </ins>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item style-5">
-                <div class="product-inner equal-element">
-                  <div class="product-top">
-                    <div class="flash">
-                      <span class="onnew">
-                        <span class="text"> new </span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="product-thumb">
-                    <div class="thumb-inner">
-                      <a href="#">
-                        <img
-                          src="~/assets/images/product-item-21.jpg"
-                          alt="img"
-                        />
-                      </a>
-                      <div class="thumb-group">
-                        <div class="yith-wcwl-add-to-wishlist">
-                          <div class="yith-wcwl-add-button">
-                            <a href="#">Add to Wishlist</a>
-                          </div>
-                        </div>
-                        <a href="#" class="button quick-wiew-button"
-                          >Quick View</a
-                        >
-                        <div class="loop-form-add-to-cart">
-                          <button class="single_add_to_cart_button button">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <h5 class="product-name product_title">
-                      <a href="#">Bibliotheque</a>
-                    </h5>
-                    <div class="group-info">
-                      <div class="stars-rating">
-                        <div class="star-rating">
-                          <span class="star-3"></span>
-                        </div>
-                        <div class="count-star">(3)</div>
-                      </div>
-                      <div class="price">
-                        <del> $65 </del>
-                        <ins> $45 </ins>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item style-5">
-                <div class="product-inner equal-element">
-                  <div class="product-top">
-                    <div class="flash">
-                      <span class="onnew">
-                        <span class="text"> new </span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="product-thumb">
-                    <div class="thumb-inner">
-                      <a href="#">
-                        <img
-                          src="~/assets/images/product-item-20.jpg"
-                          alt="img"
-                        />
-                      </a>
-                      <div class="thumb-group">
-                        <div class="yith-wcwl-add-to-wishlist">
-                          <div class="yith-wcwl-add-button">
-                            <a href="#">Add to Wishlist</a>
-                          </div>
-                        </div>
-                        <a href="#" class="button quick-wiew-button"
-                          >Quick View</a
-                        >
-                        <div class="loop-form-add-to-cart">
-                          <button class="single_add_to_cart_button button">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <h5 class="product-name product_title">
-                      <a href="#">Dunas De Un </a>
-                    </h5>
-                    <div class="group-info">
-                      <div class="stars-rating">
-                        <div class="star-rating">
-                          <span class="star-3"></span>
-                        </div>
-                        <div class="count-star">(3)</div>
-                      </div>
-                      <div class="price">
-                        <del> $65 </del>
-                        <ins> $45 </ins>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item style-5">
-                <div class="product-inner equal-element">
-                  <div class="product-top">
-                    <div class="flash">
-                      <span class="onnew">
-                        <span class="text"> new </span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="product-thumb">
-                    <div class="thumb-inner">
-                      <a href="#">
-                        <img
-                          src="~/assets/images/product-item-22.jpg"
-                          alt="img"
-                        />
-                      </a>
-                      <div class="thumb-group">
-                        <div class="yith-wcwl-add-to-wishlist">
-                          <div class="yith-wcwl-add-button">
-                            <a href="#">Add to Wishlist</a>
-                          </div>
-                        </div>
-                        <a href="#" class="button quick-wiew-button"
-                          >Quick View</a
-                        >
-                        <div class="loop-form-add-to-cart">
-                          <button class="single_add_to_cart_button button">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <h5 class="product-name product_title">
-                      <a href="#">Cuerpo Eau</a>
-                    </h5>
-                    <div class="group-info">
-                      <div class="stars-rating">
-                        <div class="star-rating">
-                          <span class="star-3"></span>
-                        </div>
-                        <div class="count-star">(3)</div>
-                      </div>
-                      <div class="price">
-                        <del> $65 </del>
-                        <ins> $45 </ins>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item style-5">
-                <div class="product-inner equal-element">
-                  <div class="product-top">
-                    <div class="flash">
-                      <span class="onnew">
-                        <span class="text"> new </span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="product-thumb">
-                    <div class="thumb-inner">
-                      <a href="#">
-                        <img
-                          src="~/assets/images/product-item-19.jpg"
-                          alt="img"
-                        />
-                      </a>
-                      <div class="thumb-group">
-                        <div class="yith-wcwl-add-to-wishlist">
-                          <div class="yith-wcwl-add-button">
-                            <a href="#">Add to Wishlist</a>
-                          </div>
-                        </div>
-                        <a href="#" class="button quick-wiew-button"
-                          >Quick View</a
-                        >
-                        <div class="loop-form-add-to-cart">
-                          <button class="single_add_to_cart_button button">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <h5 class="product-name product_title">
-                      <a href="#">Graceful Diamond</a>
-                    </h5>
-                    <div class="group-info">
-                      <div class="stars-rating">
-                        <div class="star-rating">
-                          <span class="star-3"></span>
-                        </div>
-                        <div class="count-star">(3)</div>
-                      </div>
-                      <div class="price">
-                        <del> $65 </del>
-                        <ins> $45 </ins>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="product-item style-5">
-                <div class="product-inner equal-element">
-                  <div class="product-top">
-                    <div class="flash">
-                      <span class="onnew">
-                        <span class="text"> new </span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="product-thumb">
-                    <div class="thumb-inner">
-                      <a href="#">
-                        <img
-                          src="~/assets/images/product-item-18.jpg"
-                          alt="img"
-                        />
-                      </a>
-                      <div class="thumb-group">
-                        <div class="yith-wcwl-add-to-wishlist">
-                          <div class="yith-wcwl-add-button">
-                            <a href="#">Add to Wishlist</a>
-                          </div>
-                        </div>
-                        <a href="#" class="button quick-wiew-button"
-                          >Quick View</a
-                        >
-                        <div class="loop-form-add-to-cart">
-                          <button class="single_add_to_cart_button button">
-                            Add to cart
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-info">
-                    <h5 class="product-name product_title">
-                      <a href="#">Garden A Winter </a>
-                    </h5>
-                    <div class="group-info">
-                      <div class="stars-rating">
-                        <div class="star-rating">
-                          <span class="star-3"></span>
-                        </div>
-                        <div class="count-star">(3)</div>
-                      </div>
-                      <div class="price">
-                        <del> $65 </del>
-                        <ins> $45 </ins>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>*@
-        <div class="stelina-tabs default rows-space-40">
-          <div class="container">
+        </div>
+    </div>
+    <div class="stelina-tabs default rows-space-40">
+        <div class="container">
             <div class="tab-head">
-              <ul class="tab-link">
-                <li class="active">
-                  <a data-toggle="tab" aria-expanded="true" href="#new_arrivals"
-                    >New Arrivals
-                  </a>
-                </li>
-                <li class="">
-                  <a data-toggle="tab" aria-expanded="true" href="#top-rated"
-                    >Top Rated</a
-                  >
-                </li>
-              </ul>
+                <ul class="tab-link">
+                    <li class="active">
+                        <a data-toggle="tab" aria-expanded="true" href="#new_arrivals">
+                            New Arrivals
+                        </a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" aria-expanded="true" href="#top-rated">Top Rated</a>
+                    </li>
+                </ul>
             </div>
             <div class="tab-container">
-              <div id="new_arrivals" class="tab-panel active">
-                   @await Component.InvokeAsync("NewArrivals")
-              </div>
-              <div id="top-rated" class="tab-panel">
-                  @await Component.InvokeAsync("TopRated")
-              </div>
+                <div id="new_arrivals" class="tab-panel active">
+                    @await Component.InvokeAsync("NewArrivals")
+                </div>
+                <div id="top-rated" class="tab-panel">
+                    @await Component.InvokeAsync("TopRated")
+                </div>
             </div>
-          </div>
         </div>
-        <div class="stelina-iconbox-wrapp default">
-            @await Component.InvokeAsync("AboutCompany")
-        </div>
-        <div class="stelina-blog-wraap default">
-          <div class="container">
+    </div>
+    <div class="stelina-iconbox-wrapp default">
+        @await Component.InvokeAsync("AboutCompany")
+    </div>
+    <div class="stelina-blog-wraap default">
+        <div class="container">
             <h3 class="custommenu-title-blog">Our Latest News</h3>
             <div class="stelina-blog default">
-              @await Component.InvokeAsync("RecentPostsHome")
+                @await Component.InvokeAsync("RecentPostsHome")
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>

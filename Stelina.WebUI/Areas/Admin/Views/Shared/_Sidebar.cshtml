@@ -15,6 +15,18 @@
                 </li>
             }
 
+             @if (User.HasAccess("admin.homebackgrounds.index"))
+            {
+                <li>
+                    <a asp-controller="homebackgrounds" asp-action="index">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-home"></i>
+                        </span>
+                        <span class="pcoded-mtext">Ana səhifə</span>
+                    </a>
+                </li>
+            }
+
             @if (User.HasAccess("admin.products.index"))
             {
                 <li>

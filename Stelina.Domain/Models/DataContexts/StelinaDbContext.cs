@@ -55,7 +55,7 @@ namespace Stelina.Domain.Models.DataContexts
 
         public DbSet<ProductRate> ProductRates { get; set; }
 
-
+        public DbSet<HomeBackground> HomeBackgrounds { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
