@@ -2,10 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

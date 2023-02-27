@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BlogPost>
+
+<div class="owl-slick equal-container nav-center"
+     data-slick='{"autoplay":false, "autoplaySpeed":1000, "arrows":false, "dots":true, "infinite":false, "speed":800, "rows":1}'
+     data-responsive='[{"breakpoint":"2000","settings":{"slidesToShow":3}},{"breakpoint":"1200","settings":{"slidesToShow":3}},{"breakpoint":"992","settings":{"slidesToShow":2}},{"breakpoint":"768","settings":{"slidesToShow":2}},{"breakpoint":"481","settings":{"slidesToShow":1}}]'>
+
+    @foreach (var item in Model)
+    {
+        <div class="stelina-blog-item equal-element layout1">
+            <div class="post-thumb">
+                <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">
+                    <img src="~/uploads/images/@item.ImagePath" alt="img" style="min-height: 200px;" />
+                </a>
+            </div>
+            <div class="blog-info">
+                <div class="blog-meta">
+                    <div class="post-date">@item.CreatedDate.ToString("MMM dd")</div>
+                </div>
+                <h2 class="blog-title">
+                    <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">@item.Title </a>
+                </h2>
+                <div class="main-info-post ">
+                    
+                        @Html.Raw(item.Body)
+                    
+                    <a class="readmore" asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">Read more</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

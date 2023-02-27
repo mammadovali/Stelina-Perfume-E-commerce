@@ -94,7 +94,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-4 no-padding">
+                        <div class="col-lg-4 no-padding contact-wrap">
                             <div class="form-contact-information">
                                 <div class="stelina-contact-info">
                                     <h2 class="title">Contact information</h2>
@@ -114,17 +114,7 @@
                                             <span class="text"> @Model.ContactDetails?.SupportEmail </span>
                                         </div>
                                     </div>
-                                    <div class="socials">
-                                        <a href="#" class="social-item" target="_blank">
-                                            <span class="icon fa fa-facebook"> </span>
-                                        </a>
-                                        <a href="#" class="social-item" target="_blank">
-                                            <span class="icon fa fa-twitter-square"> </span>
-                                        </a>
-                                        <a href="#" class="social-item" target="_blank">
-                                            <span class="icon fa fa-instagram"> </span>
-                                        </a>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -142,6 +132,21 @@
     input[Name].novalidated,
     textarea[Name].novalidated {
         border: 1px solid rgb(223, 53,69);
+    }
+
+    .contact-wrap{
+        height:614px;
+        margin: 10px 0px;
+    }
+
+    .form-contact-information{
+        height:100%;
+        border-radius:20px;
+    }
+
+    .form-contact{
+        border-radius:20px;
+
     }
 </style>
 }

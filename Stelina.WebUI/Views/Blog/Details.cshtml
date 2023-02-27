@@ -72,7 +72,11 @@
                                     @Model.BlogPost.Likes.Count Likes
                                 </li>
                                 <li class="post-comments">
-                                    <span><i class="fa fa-comment"></i></span><span class="px-1"></span> @Model.BlogPost.Comments.Count Comments
+                                    <span>
+                                        <i class="fa fa-comment"></i>
+                                    </span>
+                                    <span class="px-1"></span>
+                                    <span class="comment-count">@Model.BlogPost.Comments.Count Comments</span>
                                 </li>
                             </ul>
 
@@ -252,8 +256,9 @@
                         //console.log(res);
                     },
                     error: function(res){
-
+                        
                         if(res.statusText == "parsererror"){
+                            console.log(res);
                             if(toCommentId != undefined){
                                $(res.responseText).insertAfter($(`#c-${toCommentId}`));
 
@@ -266,6 +271,10 @@
                                 $("div.comments-area ul").append($(res.responseText))
                                 $("#comment-text").val("");
                             }
+
+                            var commentCount = $(".comments-area").find("li").length;
+                            $('.comment-count').text(commentCount + " Comments");
+                            $('.count').text(`(${commentCount})`)
                         }
 
                     }

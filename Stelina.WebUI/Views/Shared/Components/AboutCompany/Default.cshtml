@@ -1,0 +1,54 @@
+﻿@model IEnumerable<About>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+       {  
+        <div class="col-md-4 col-sm-4">
+            <div class="stelina-iconbox default">
+                <div class="iconbox-inner">
+                    <div class="icon-item">
+                        <span class="icon flaticon-rocket-ship"></span>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">Free Delivery</h4>
+                        <div class="text">
+                            @item.FreeDeliveryText
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stelina-iconbox default">
+                <div class="iconbox-inner">
+                    <div class="icon-item">
+                        <span class="icon flaticon-return"></span>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">Money Guarantee</h4>
+                        <div class="text">
+                            @item.MoneyGuaranteeText
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stelina-iconbox default">
+                <div class="iconbox-inner">
+                    <div class="icon-item">
+                        <span class="icon flaticon-padlock"></span>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">Online Support 24/7</h4>
+                        <div class="text">
+                            @item.OnlineSupportText
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       }
+    </div>
+</div>

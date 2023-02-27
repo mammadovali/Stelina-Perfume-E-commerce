@@ -436,3 +436,8 @@ C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-comm
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\bin\Debug\net5.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\bin\Debug\net5.0\Serilog.Sinks.MSSqlServer.dll
 C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\bin\Debug\net5.0\Serilog.Sinks.PeriodicBatching.dll
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Chat\Index.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\RecentPostsHome\Default.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\NewArrivals\Default.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\TopRated\Default.cshtml.g.cs
+C:\Users\Əli\Desktop\Stelina e-commerce\Stelina Solution\Stelina-Perfume-E-commerce\Stelina.WebUI\obj\Debug\net5.0\Razor\Views\Shared\Components\AboutCompany\Default.cshtml.g.cs

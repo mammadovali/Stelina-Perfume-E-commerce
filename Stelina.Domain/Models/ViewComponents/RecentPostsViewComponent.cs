@@ -16,7 +16,7 @@ namespace Stelina.WebUI.Models.AppCode.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var query = new BlogPostRecentQuery() { Size = 3 };
+            var query = new BlogPostRecentQuery() { Size = 4 };
 
             var posts = await mediator.Send(query);
 
