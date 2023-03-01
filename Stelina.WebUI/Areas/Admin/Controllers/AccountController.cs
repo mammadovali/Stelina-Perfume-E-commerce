@@ -116,7 +116,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             {
                 return Redirect(callbackUrl);
             }
-            return RedirectToAction("Index", "Dashboard");
+            return RedirectToAction("Index", "HomeBackgrounds");
 
 
         end:

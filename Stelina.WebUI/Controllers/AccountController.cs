@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Services;
+using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities.Membership;
 using Stelina.Domain.Models.FormModel;
 using Stelina.Domain.Models.ViewModels.LoginRegister;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Stelina.WebUI.Controllers
@@ -46,11 +48,11 @@ namespace Stelina.WebUI.Controllers
                     return Json(new
                     {
                         error = true,
-                        message = "İstifadəçi adınız və ya şifrəniz yanlışdır"
+                        message = "Username or password is not correct!"
                     });
                 }
 
-                ViewBag.Message = "İstifadəçi adınız və ya şifrəniz yanlışdır";
+                ViewBag.Message = "Username or password is not correct!";
                 goto end;
             }
 
@@ -70,18 +72,18 @@ namespace Stelina.WebUI.Controllers
                     return Json(new
                     {
                         error = true,
-                        message = "İstifadəçi adınız və ya şifrəniz yanlışdır"
+                        message = "Username or password is not correct!"
                     });
                 }
 
-                ViewBag.Message = "İstifadəçi adınız və ya şifrəniz yanlışdır";
+                ViewBag.Message = "Username or password is not correct!";
                 goto end;
             }
 
 
             if (foundedUser.EmailConfirmed == false)
             {
-                ViewBag.Message = "Zəhmət olmasa emailinizə gələn təsdiq linkindən hesabınızı doğrulayın";
+                ViewBag.Message = "Please verify your account with link sent to your email address";
                 goto end;
             }
 
@@ -96,11 +98,11 @@ namespace Stelina.WebUI.Controllers
                     return Json(new
                     {
                         error = true,
-                        message = "İstifadəçi adınız və ya şifrəniz yanlışdır"
+                        message = "Username or password is not correct!"
                     });
                 }
 
-                ViewBag.Message = "İstifadəçi adınız və ya şifrəniz yanlışdır";
+                ViewBag.Message = "Username or password is not correct!";
                 goto end;
             }
 
@@ -215,7 +217,122 @@ namespace Stelina.WebUI.Controllers
             return RedirectToAction("Index", "home");
         }
 
-        
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordFormModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Email == null)
+                {
+                    ViewBag.Message = "Enter a valid email";
+
+                    return View();
+                }
+
+                var user = await userManager.FindByEmailAsync(model.Email);
+
+                if (user == null)
+                {
+                    ViewBag.Message = "Email is incorrect or has not been registered yet";
+
+                    return View();
+                }
+
+                var isConfirmed = await userManager.IsEmailConfirmedAsync(user);
+
+                if (!isConfirmed)
+                {
+                    ViewBag.Message = "Please confirm your email address first";
+
+                    return View();
+                }
+
+                var token = await userManager.GeneratePasswordResetTokenAsync(user);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token, email = user.Email }, protocol: HttpContext.Request.Scheme);
+                await emailService.SendEmailAsync(model.Email, "Reset Password",
+                    $"<p style = 'font-size: 24px; font-weight: bold;'>Please reset your password by clicking <a href='{callbackUrl}'>here</a></p>");
+
+                return RedirectToAction("ForgotPasswordConfirmation");
+            }
+
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPasswordConfirmation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPassword(string token = null, string email = null)
+        {
+            if (token == null || email == null)
+            {
+                return BadRequest("A code and email must be supplied for password reset.");
+            }
+
+            var model = new ResetPasswordFormModel { Token = token, Email = email };
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(ResetPasswordFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                ViewBag.Message = "User not found";
+
+                return View(model);
+            }
+
+            var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
+
+            if (result.Succeeded)
+            {
+                await signInManager.RefreshSignInAsync(user);
+
+                await emailService.SendEmailAsync(model.Email, "Password Reset Successful",
+                       "<p style = 'color: green; font-weight: bold; font-size: 24px;' > Your password has been changed successfully.</p>");
+
+                return RedirectToAction("ResetPasswordConfirmation");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
+        }
+
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
 
         public async Task CreateRole()
         {

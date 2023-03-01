@@ -54,6 +54,21 @@
                                     <span> @User.GetPrincipalName() </span>
                                 </a>
                                 <ul class="stelina-submenu">
+                                     <li class="switcher-option">
+                                        <a asp-action="signin" asp-controller="account">
+                                            <span> Log in with another account </span>
+                                        </a>
+                                    </li>
+                                     <li class="switcher-option">
+                                        <a asp-action="register" asp-controller="account">
+                                            <span> Register </span>
+                                        </a>
+                                    </li>
+                                     <li class="switcher-option">
+                                        <a asp-action="forgotpassword" asp-controller="account">
+                                            <span> Change password </span>
+                                        </a>
+                                    </li>
                                     <li class="switcher-option">
                                         <a asp-action="logout" asp-controller="account">
                                             <span> Log out </span>
@@ -411,7 +426,11 @@
                 }
             });
 
-              $("#postComment").add(".add-to-cart").add(".sign-in-shopping-cart").add("div[data-rate]").click(function(){
+              $("#postComment")
+              .add(".add-to-cart")
+              .add(".sign-in-shopping-cart")
+              .add("div[data-rate]")
+              .add(".single_add_to_cart_button").click(function(){
                    $("#modalLoginForm").addClass("in")
                    $("#modalLoginForm").css("background", "rgba(0, 0, 0, 0.44)")
                    $(".modal.fade .modal-dialog").css("transform", "translate(0, 10%)")

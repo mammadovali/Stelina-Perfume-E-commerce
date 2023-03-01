@@ -11,7 +11,7 @@
                 <div class="breadcrumb-trail breadcrumbs">
                     <ul class="trail-items breadcrumb">
                         <li class="trail-item trail-begin">
-                            <a href="index.html">Home</a>
+                            <a asp-action="index" asp-controller="home">Home</a>
                         </li>
                         <li class="trail-item trail-end active">Sign in to your account</li>
                     </ul>
@@ -70,7 +70,7 @@
                                                 <input type="checkbox" id="cb1" />
                                                 <label for="cb1" class="label-text">Remember me</label>
                                             </span>
-                                            <a href="#" class="forgot-pw">Forgot password?</a>
+                                            <a asp-action="forgotpassword" class="forgot-pw">Forgot password?</a>
                                         </p>
                                         <p class="form-row">
                                             <input type="submit"
@@ -89,5 +89,6 @@
         </div>
     </div>
 </div>
+
 
 
