@@ -666,4 +666,9 @@ jQuery(document).ready(function ($) {
     stelina_countdown();
     stelina_init_menu_toggle();
     stelina_custom_scrollbar_header_nav();
-}); 
+});
+
+
+$(window).on('load', function () {
+    $('#preloader').fadeOut('slow');
+});

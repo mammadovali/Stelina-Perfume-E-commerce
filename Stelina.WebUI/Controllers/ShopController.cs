@@ -31,7 +31,7 @@ namespace Stelina.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index()
         {
             var brands = await db.Brands.Where(b => b.DeletedDate == null).ToListAsync();
 
@@ -44,7 +44,7 @@ namespace Stelina.WebUI.Controllers
 
             var products = await db.Products
                 .Include(p => p.Images.Where(i => i.IsMain == true && i.DeletedDate == null))
-                .Where(p => p.DeletedDate == null).OrderByDescending(p => p.CreatedDate).ToListAsync();
+                .Where(p => p.DeletedDate == null).OrderBy(p => p.Name).ToListAsync();
 
             var maxPrice = Math.Ceiling(products.Select(p => p.Price).Max());
 
@@ -56,29 +56,46 @@ namespace Stelina.WebUI.Controllers
                 MaxPrice = maxPrice
             };
 
-            //ViewBag.NameSort = String.IsNullOrWhiteSpace(sortOrder) ? "nameDesc" : "";
-            //ViewBag.PriceSort = sortOrder == "Price" ? "sortDesc" : "price";
-
-
-
-            //switch (sortOrder)
-            //{
-            //    case "nameDesc":
-            //        products = products.OrderByDescending(p => p.Name);
-            //        break;
-            //    case "price":
-            //        products = products.OrderBy(p => p.Price);
-            //        break;
-            //    case "priceDescending":
-            //        products = products.OrderByDescending(p => p.Price);
-            //        break;
-            //    default:
-            //        products = products.OrderBy(p => p.Name);
-            //        break;
-            //}
-
             return View(vm);
         }
+
+        [AllowAnonymous]
+        public IActionResult SortBy(string sortOrder)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["PriceSortParm"] = sortOrder == "priceAsc" ? "priceDesc" : "priceAsc";
+            ViewData["NameSortParm"] = sortOrder == "nameAsc" ? "nameDesc" : "nameAsc";
+
+
+            var products = db.Products
+                .Include(p => p.Images.Where(pi => pi.IsMain == true))
+                .Where(p => p.DeletedDate == null)
+                .AsQueryable();
+
+
+
+            switch (sortOrder)
+            {
+                case "priceDesc":
+                    products = products.OrderByDescending(p => p.Price);
+                    break;
+                case "priceAsc":
+                    products = products.OrderBy(p => p.Price);
+                    break;
+                case "nameDesc":
+                    products = products.OrderByDescending(p => p.Name);
+                    break;
+                case "nameAsc":
+                    products = products.OrderBy(p => p.Name);
+                    break;
+                default:
+                    products = products.OrderBy(p => p.Name);
+                    break;
+            }
+
+            return PartialView("_ProductContainer", products.ToList());
+        }
+
 
         [HttpPost]
         [AllowAnonymous]
@@ -106,7 +123,7 @@ namespace Stelina.WebUI.Controllers
                 query = query.Where(q => q.Price >= model.Prices[0] && q.Price <= model.Prices[1]);
             }
 
-            return PartialView("_ProductContainer", query.OrderByDescending(q => q.CreatedDate).ToList());
+            return PartialView("_ProductContainer", query.OrderByDescending(q => q.Name).ToList());
         }
 
         [AllowAnonymous]

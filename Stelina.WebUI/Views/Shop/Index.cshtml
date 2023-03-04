@@ -92,20 +92,17 @@
                 <div class="site-main">
                     <h3 class="custom_blog_title">Products</h3>
                     <div class="shop-top-control">
-                        <form class="filter-choice select-form">
+                        <form class="filter-choice select-form sorting-dropdown">
                             <span class="title">Sort by</span>
-                            <select title="sort-by"
-                                    data-placeholder="Price: Low to High"
-                                    class="chosen-select">
-                                <option value="1">Alphabetically, A-Z</option>
-                                <option value="2">Alphabetically, Z-A</option>
-                                <option value="3">Price: low to high</option>
-                                <option value="4">Price: high to low</option>
-                                <option value="5">Average rating</option>
+                            <select title="sort-by" class="chosen-selected">
+                                <option value="nameAsc">Alphabetically, A-Z</option>
+                                <option value="nameDesc">Alphabetically, Z-A</option>
+                                <option value="priceAsc">Price: low to high</option>
+                                <option value="priceDesc">Price: high to low</option>
                             </select>
                         </form>
                     </div>
-                    <ul class="row list-products auto-clear equal-container product-grid">
+                    <ul class="row list-products auto-clear equal-container product-grid" style="display: flex; flex-wrap: wrap;justify-content: start;">
 
                         <partial name="_ProductContainer" model="@Model.Products" />
 
@@ -118,16 +115,60 @@
 
 @section addcss{
 <style>
-         .rotate {
-             transform: rotate(-180deg);
-         }
- </style>
+    .rotate {
+        transform: rotate(-180deg);
+    }
+
+    .chosen-selected {
+        border: none;
+    }
+
+
+    .chosen-selected {
+        background-color: white;
+        color: black;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        transition: all 0.2s linear;
+    }
+
+    .chosen-selected:hover {
+        background-color: #ab8e66;
+        color: white;
+    }
+    
+    .chosen-selected::before {
+        content: "\25BC";
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: black;
+
+    }
+    
+    .chosen-selected:hover::before {
+        color: white;
+    }
+
+    
+     .chosen-selected option {
+       opacity: 0;
+       transition: opacity 0.5s ease-in-out;
+     }
+     
+     .chosen-selected:hover option {
+       opacity: 1;
+     }
+
+</style>
 
 }
 
 
 @section addjs{
-  <script class="removable">
+<script class="removable">
 
     $(document).ready(function(){
 
@@ -168,7 +209,7 @@
         });
 
 
-        $('.slider-range-price').each(function () {
+          $('.slider-range-price').each(function () {
             var min = $(this).data('min');
             var max = $(this).data('max');
             var unit = $(this).data('unit');
@@ -187,7 +228,8 @@
                     setFilter();
                 }
             });
-        });
+          });
+
 
         function setFilter(){
 
@@ -255,8 +297,27 @@
           }, 2000);
         }
 
+
+        $(".chosen-selected").on('change', function() {
+             var sortOrder = $(".chosen-selected option:selected").val();
+
+             //console.log(sortOrder);
+
+             $.ajax({
+                type: "GET",
+                url: "/Shop/SortBy",
+                data: { sortOrder: sortOrder },
+                success: function (res) {
+                  //console.log(res)
+                  $("ul.list-products").html(res);
+                },
+                error: function (res) {
+                  console.warn(res)
+                }
+             });
+        });
     });
 
 
-  </script>
+</script>
 }

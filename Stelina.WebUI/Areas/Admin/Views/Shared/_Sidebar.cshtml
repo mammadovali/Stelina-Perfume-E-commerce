@@ -5,14 +5,14 @@
 
             @if (User.HasAccess("admin.dashboard.index"))
             {
-                <li>
+               @* <li>
                     <a asp-controller="dashboard" asp-action="index">
                         <span class="pcoded-micon">
                             <i class="feather icon-home"></i>
                         </span>
                         <span class="pcoded-mtext">Ana səhifə</span>
                     </a>
-                </li>
+                </li>*@
             }
 
              @if (User.HasAccess("admin.homebackgrounds.index"))

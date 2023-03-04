@@ -217,7 +217,6 @@ namespace Stelina.WebUI.Controllers
             return RedirectToAction("Index", "home");
         }
 
-        [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
@@ -267,14 +266,14 @@ namespace Stelina.WebUI.Controllers
             return View(model);
         }
 
-        [HttpGet]
+
         [AllowAnonymous]
         public IActionResult ForgotPasswordConfirmation()
         {
             return View();
         }
 
-        [HttpGet]
+
         [AllowAnonymous]
         public IActionResult ResetPassword(string token = null, string email = null)
         {
@@ -305,6 +304,16 @@ namespace Stelina.WebUI.Controllers
                 return View(model);
             }
 
+            if (model.Password == null)
+                goto end;
+
+            if (model.Password != model.ConfirmPassword)
+            {
+                ViewBag.Message = "Passwords do not match!";
+
+                return View(model);
+            }
+
             var result = await userManager.ResetPasswordAsync(user, model.Token, model.Password);
 
             if (result.Succeeded)
@@ -322,9 +331,10 @@ namespace Stelina.WebUI.Controllers
                 ModelState.AddModelError(string.Empty, error.Description);
             }
 
+        end:
+            ViewBag.Message = "Please enter a password";
             return View(model);
         }
-
 
 
         [HttpGet]

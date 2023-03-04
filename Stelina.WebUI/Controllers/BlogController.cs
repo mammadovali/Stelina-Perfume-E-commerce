@@ -54,11 +54,6 @@ namespace Stelina.WebUI.Controllers
                 BlogPostLikes = blogPostLikes
             };
 
-            if (blogPost == null)
-            {
-                return NotFound();
-            }
-
             return View(vm);
         }
 

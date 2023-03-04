@@ -66,7 +66,7 @@ namespace Stelina.WebUI
                 cfg.Password.RequireNonAlphanumeric = false;
                 cfg.Password.RequiredUniqueChars = 1; //123
                 cfg.Lockout.DefaultLockoutTimeSpan = new TimeSpan(0, 1, 0);
-                cfg.Lockout.MaxFailedAccessAttempts = 3;
+                cfg.Lockout.MaxFailedAccessAttempts = 30;
                 cfg.Password.RequiredLength = 3;
 
                 cfg.User.RequireUniqueEmail = true;
