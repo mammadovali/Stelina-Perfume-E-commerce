@@ -1,6 +1,6 @@
-﻿<nav class="pcoded-navbar">
+﻿<nav class="pcoded-navbar" style="background-color: #263544;">
     <div class="pcoded-inner-navbar main-menu">
-        <div class="pcoded-navigatio-lavel">İdarəetmə</div>
+        <div class="pcoded-navigatio-lavel">Management</div>
         <ul class="pcoded-item pcoded-left-item">
 
             @if (User.HasAccess("admin.dashboard.index"))
@@ -22,7 +22,7 @@
                         <span class="pcoded-micon">
                             <i class="feather icon-home"></i>
                         </span>
-                        <span class="pcoded-mtext">Ana səhifə</span>
+                        <span class="pcoded-mtext">Home page</span>
                     </a>
                 </li>
             }
@@ -34,7 +34,7 @@
                         <span class="pcoded-micon">
                             <i class="fa fa-basket-shopping"></i>
                         </span>
-                        <span class="pcoded-mtext">Məhsullar</span>
+                        <span class="pcoded-mtext">Products</span>
                     </a>
                 </li>
             }
@@ -44,23 +44,23 @@
                 <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-credit-card"></i></span>
-                        <span class="pcoded-mtext">Sifariş</span>
+                        <span class="pcoded-mtext">Orders</span>
                         <span class="pcoded-mcaret"></span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li>
                             <a asp-controller="orders" asp-action="index">
-                                <span class="pcoded-mtext">Gözləyən sifarişlər</span>
+                                <span class="pcoded-mtext">Pending orders</span>
                             </a>
                         </li>
                         <li>
                             <a asp-controller="orders" asp-action="deliveredorders">
-                                <span class="pcoded-mtext">Tamamlanmış sifarişlər</span>
+                                <span class="pcoded-mtext">Completed orders</span>
                             </a>
                         </li>
                         <li>
                             <a asp-controller="orders" asp-action="cancelledorders">
-                                <span class="pcoded-mtext">Silinmiş sifarişlər</span>
+                                <span class="pcoded-mtext">Deleted orders</span>
                             </a>
                         </li>
                     </ul>
@@ -75,7 +75,7 @@
                         <span class="pcoded-micon">
                             <i class="fa fa-sitemap"></i>
                         </span>
-                        <span class="pcoded-mtext">Kateqoriyalar</span>
+                        <span class="pcoded-mtext">Categories</span>
                     </a>
                 </li>
             }
@@ -87,7 +87,7 @@
                         <span class="pcoded-micon">
                             <i class="fa-sharp fa-solid fa-bookmark"></i>
                         </span>
-                        <span class="pcoded-mtext">Brendlər</span>
+                        <span class="pcoded-mtext">Brands</span>
                     </a>
                 </li>
             }
@@ -98,25 +98,25 @@
                 <li class="pcoded-hasmenu" dropdown-icon="style1" subitem-icon="style1">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-inbox"></i></span>
-                        <span class="pcoded-mtext">Paylaşımlar</span>
+                        <span class="pcoded-mtext">Blog posts</span>
                         <span class="pcoded-mcaret"></span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li>
                             <a asp-controller="blogposts" asp-action="index">
-                                <span class="pcoded-mtext">Bloqlar</span>
+                                <span class="pcoded-mtext">Bloqs</span>
                             </a>
                         </li>
                         <li>
                             <a asp-controller="blogposts" asp-action="deletedposts">
-                                <span class="pcoded-mtext">Silinmiş bloqlar</span>
+                                <span class="pcoded-mtext">Deleted blogs</span>
                             </a>
                         </li>
                         @if (User.HasAccess("admin.tags.index"))
                         {
                             <li>
                                 <a asp-controller="tags" asp-action="index">
-                                    <span class="pcoded-mtext">Taqlar</span>
+                                    <span class="pcoded-mtext">Tags</span>
                                 </a>
                             </li>
                         }
@@ -134,7 +134,7 @@
                         <span class="pcoded-micon">
                             <i class="feather icon-mail"></i>
                         </span>
-                        <span class="pcoded-mtext">Gələn mesajlar</span>
+                        <span class="pcoded-mtext">Messages</span>
                     </a>
                 </li>
             }
@@ -146,7 +146,7 @@
                         <span class="pcoded-micon">
                             <i class="fa fa-address-card"></i>
                         </span>
-                        <span class="pcoded-mtext">Şirkət haqqında</span>
+                        <span class="pcoded-mtext">About</span>
                     </a>
                 </li>
             }
@@ -158,7 +158,7 @@
                         <span class="pcoded-micon">
                             <i class="fa-regular fa-address-book"></i>
                         </span>
-                        <span class="pcoded-mtext">Adminlə əlaqə</span>
+                        <span class="pcoded-mtext">Contact with admin</span>
                     </a>
                 </li>
             }
@@ -170,7 +170,7 @@
                         <span class="pcoded-micon">
                             <i class="fa-solid fa-question"></i>
                         </span>
-                        <span class="pcoded-mtext">Tez-tez soruşulan suallar</span>
+                        <span class="pcoded-mtext">FAQs</span>
                     </a>
                 </li>
             }
@@ -182,20 +182,20 @@
                         <span class="pcoded-micon">
                             <i class="fa fa-bell"></i>
                         </span>
-                        <span class="pcoded-mtext">Abunəliklər</span>
+                        <span class="pcoded-mtext">Subscriptions</span>
                     </a>
                 </li>
             }
 
             @if (User.HasAccess("admin.users.index"))
             {
-                <div class="pcoded-navigatio-lavel">Tənzimləmələr</div>
+                <div class="pcoded-navigatio-lavel">Settings</div>
                 <li>
                     <a asp-controller="users" asp-action="index">
                         <span class="pcoded-micon">
                             <i class="fa-solid fa-users"></i>
                         </span>
-                        <span class="pcoded-mtext">İstifadəçilər</span>
+                        <span class="pcoded-mtext">Users</span>
                     </a>
                 </li>
             }

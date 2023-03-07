@@ -62,16 +62,10 @@ namespace Stelina.WebUI.Controllers
         [AllowAnonymous]
         public IActionResult SortBy(string sortOrder)
         {
-            ViewData["CurrentSort"] = sortOrder;
-            ViewData["PriceSortParm"] = sortOrder == "priceAsc" ? "priceDesc" : "priceAsc";
-            ViewData["NameSortParm"] = sortOrder == "nameAsc" ? "nameDesc" : "nameAsc";
-
-
             var products = db.Products
                 .Include(p => p.Images.Where(pi => pi.IsMain == true))
                 .Where(p => p.DeletedDate == null)
                 .AsQueryable();
-
 
 
             switch (sortOrder)
@@ -87,6 +81,12 @@ namespace Stelina.WebUI.Controllers
                     break;
                 case "nameAsc":
                     products = products.OrderBy(p => p.Name);
+                    break;
+                case "rateDesc":
+                    products = products.OrderByDescending(p => p.Rate);
+                    break;
+                case "createdDateDesc":
+                    products = products.OrderByDescending(p => p.CreatedDate);
                     break;
                 default:
                     products = products.OrderBy(p => p.Name);

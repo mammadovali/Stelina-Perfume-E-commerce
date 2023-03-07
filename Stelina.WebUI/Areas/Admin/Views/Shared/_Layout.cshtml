@@ -66,6 +66,10 @@
             border: none;
             outline: 0;
         }
+
+        #mCSB_1_container_wrapper{
+            background-color: #263544;
+        }
     </style>
 
     @RenderSection("addcss", required: false)
@@ -121,8 +125,8 @@
                         <a class="mobile-menu" id="mobile-collapse" href="#!">
                             <i class="feather icon-menu"></i>
                         </a>
-                        <a asp-action="index" asp-controller="Dashboard">
-                            <img class="img-fluid" src="~/admin/images/logo.png" alt="Theme-Logo" />
+                        <a asp-action="index" asp-controller="homebackgrounds">
+                            <img class="img-fluid" src="https://demo.dashboardpack.com/admindek-html/files/assets/images/logo.png" />
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>
@@ -131,22 +135,13 @@
 
                     <div class="navbar-container">
                         <ul class="nav-left">
-                            <li class="header-search">
-                                <div class="main-search morphsearch-search">
-                                    <div class="input-group">
-                                        <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
-                                        <input type="text" class="form-control">
-                                        <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
-                                    </div>
-                                </div>
-                            </li>
                             <li>
                                 <a href="#!" onclick="javascript:toggleFullScreen()">
                                     <i class="feather icon-maximize full-screen"></i>
                                 </a>
                             </li>
                         </ul>
-                        <ul class="nav-right">
+                        <ul class="nav-right">@*
                             <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
@@ -214,7 +209,7 @@
                                         <span class="badge bg-c-green">3</span>
                                     </div>
                                 </div>
-                            </li>
+                            </li>*@
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
@@ -223,7 +218,7 @@
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu"
                                         data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <li>
+                                        @*<li>
                                             <a href="#!">
                                                 <i class="feather icon-settings"></i> Settings
                                             </a>
@@ -242,7 +237,7 @@
                                             <a href="default/auth-lock-screen.html">
                                                 <i class="feather icon-lock"></i> Lock Screen
                                             </a>
-                                        </li>
+                                        </li>*@
                                         <li>
                                             <a asp-action="logout" asp-controller="account">
                                                 <i class="feather icon-log-out"></i> Logout

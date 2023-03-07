@@ -10065,3 +10065,9 @@ input[type=number] {
     background: #fff url(../images/loader.gif) no-repeat center center;
     transition: 0.7s;
 }
+
+.error-404.not-found{
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}

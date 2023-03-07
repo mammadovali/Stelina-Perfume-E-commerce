@@ -6655,99 +6655,99 @@ table thead .border-bottom-info th, table tbody .border-bottom-info th, table tb
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(1) > a > .pcoded-micon {
-    background-color: #2196F3
+    color: #2196F3
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(2) > a > .pcoded-micon {
-    background-color: #FF7588
+    color: #FF7588
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(3) > a > .pcoded-micon {
-    background-color: #16D39A
+    color: #16D39A
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(4) > a > .pcoded-micon {
-    background-color: #FFB64D
+    color: #FFB64D
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(5) > a > .pcoded-micon {
-    background-color: #ab7967
+    color: #ab7967
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(6) > a > .pcoded-micon {
-    background-color: #39ADB5
+    color: #39ADB5
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(7) > a > .pcoded-micon {
-    background-color: #7C4DFF
+    color: #7C4DFF
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(8) > a > .pcoded-micon {
-    background-color: #FF5370
+    color: #FF5370
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(9) > a > .pcoded-micon {
-    background-color: #2196F3
+    color: #2196F3
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(10) > a > .pcoded-micon {
-    background-color: #FF7588
+    color: #FF7588
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(11) > a > .pcoded-micon {
-    background-color: #16D39A
+    color: #16D39A
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(12) > a > .pcoded-micon {
-    background-color: #FFB64D
+    color: #FFB64D
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(13) > a > .pcoded-micon {
-    background-color: #ab7967
+    color: #ab7967
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(14) > a > .pcoded-micon {
-    background-color: #39ADB5
+    color: #39ADB5
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(15) > a > .pcoded-micon {
-    background-color: #7C4DFF
+    color: #7C4DFF
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(16) > a > .pcoded-micon {
-    background-color: #FF5370
+    color: #FF5370
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(17) > a > .pcoded-micon {
-    background-color: #2196F3
+    color: #2196F3
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(18) > a > .pcoded-micon {
-    background-color: #FF7588
+    color: #FF7588
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(19) > a > .pcoded-micon {
-    background-color: #16D39A
+    color: #16D39A
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(20) > a > .pcoded-micon {
-    background-color: #FFB64D
+    color: #FFB64D
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(21) > a > .pcoded-micon {
-    background-color: #ab7967
+    color: #ab7967
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(22) > a > .pcoded-micon {
-    background-color: #39ADB5
+    color: #39ADB5
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(23) > a > .pcoded-micon {
-    background-color: #7C4DFF
+    color: #7C4DFF
 }
 
 .pcoded .pcoded-item.pcoded-left-item > li:nth-child(24) > a > .pcoded-micon {
-    background-color: #FF5370
+    color: #FF5370
 }
 
 .pcoded[nav-type="st1"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon i, .pcoded[nav-type="st3"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon i {
@@ -7334,13 +7334,13 @@ table thead .border-bottom-info th, table tbody .border-bottom-info th, table tb
         color: #FF5370
     }
 
-.pcoded[nav-type="st6"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon {
+/*.pcoded[nav-type="st6"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon {
     background-color: transparent
-}
+}*/
 
-    .pcoded[nav-type="st6"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon i {
+    /*.pcoded[nav-type="st6"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon i {
         color: #c3c3c3
-    }
+    }*/
 
 .pcoded[nav-type="st6"] .pcoded-navbar[navbar-theme="themelight1"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon {
     background-color: transparent
@@ -8276,7 +8276,8 @@ table thead .border-bottom-info th, table tbody .border-bottom-info th, table tb
     opacity: 1;
     visibility: visible;
     transform: rotateX(0deg);
-    -webkit-transform: rotateX(0deg)
+    -webkit-transform: rotateX(0deg) ;
+    background-color: rgba(29,37,49,.5);
 }
 
 .pcoded[theme-layout="vertical"] .pcoded-navbar .pcoded-item[item-border="true"][item-border-style="dashed"] li > a {
@@ -10396,8 +10397,8 @@ table thead .border-bottom-info th, table tbody .border-bottom-info th, table tb
     }
 
     .pcoded .pcoded-navbar[navbar-theme="theme1"] .pcoded-item > li.pcoded-trigger > a {
-        background: #404E67;
-        border-bottom-color: #404E67
+        background: rgba(29,37,49,.5);
+        border-bottom-color: rgba(29,37,49,.5)
     }
 
     .pcoded .pcoded-navbar[navbar-theme="theme1"] .pcoded-item > li.pcoded-trigger.active > a {
@@ -10571,7 +10572,7 @@ table thead .border-bottom-info th, table tbody .border-bottom-info th, table tb
 }
 
 .pcoded .pcoded-header .navbar-logo[logo-theme="theme1"] {
-    background-color: #404E67
+    background-color: #263544
 }
 
 .pcoded .pcoded-header .navbar-logo[logo-theme="theme2"] {
@@ -10588,10 +10589,6 @@ table thead .border-bottom-info th, table tbody .border-bottom-info th, table tb
 
 .pcoded .pcoded-header .navbar-logo[logo-theme="theme5"] {
     background-color: #2196F3
-}
-
-.pcoded .pcoded-header .navbar-logo[logo-theme="theme1"] {
-    background-color: #404E67
 }
 
 .pcoded[sidebar-img="true"] .pcoded-navbar {
@@ -24115,6 +24112,44 @@ td.operations {
     padding: 0 5px;
 }
 
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(1) > a > .pcoded-micon i {
+    color: #2196F3;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(2) > a > .pcoded-micon i {
+    color: #FF7588;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(3) > a > .pcoded-micon i {
+    color: #16D39A;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(4) > a > .pcoded-micon i {
+    color: #FFB64D;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(5) > a > .pcoded-micon i {
+    color: #ab7967;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(6) > a > .pcoded-micon i {
+    color: #39ADB5;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(2) > a > .pcoded-micon i {
+    color: #FF7588;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(3) > a > .pcoded-micon i {
+    color: #16D39A;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(4) > a > .pcoded-micon i {
+    color: #FFB64D;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(5) > a > .pcoded-micon i {
+    color: #ab7967;
+}
+.pcoded[nav-type="st5"] .pcoded-item.pcoded-left-item > li:nth-child(7) > a > .pcoded-micon i {
+    color: #7C4DFF;
+}
+
+/*.pcoded[nav-type="st6"] .pcoded-item.pcoded-left-item > li > a > .pcoded-micon i {
+    color: #c6ca1ab8;
+}*/
+
 .overflow {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -24166,4 +24201,28 @@ img.order-product-image {
 
 .product-name-center {
     transform: translate(20px, 20px);
+}
+
+.pcoded-main-container {
+    color: #f2f7fb;
+}
+
+.page-header-breadcrumb .breadcrumb-title .breadcrumb-item span{
+    color: black;
+}
+
+.col-sm-2.col-form-label{
+    color: black;
+}
+
+label.form-label{
+    color: black;
+}
+
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred * {
+    color: black;
+}
+
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred :focus *{
+    color: black;
 }

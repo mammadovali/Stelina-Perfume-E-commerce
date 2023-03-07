@@ -235,13 +235,13 @@ $("#styleSelector").append(
     '<div class="form-radio" id="menu-effect">' +
     '<div class="radio radio-inverse radio-inline" data-toggle="tooltip" title="simple icon">' +
     "<label>" +
-    '<input type="radio" name="radio" value="st6" onclick="handlemenutype(this.value)" checked="true">' +
+    '<input type="radio" name="radio" value="st5" onclick="handlemenutype(this.value)">' +
     '<i class="helper"></i><span class="micon st6"><i class="feather icon-command"></i></span>' +
     "</label>" +
     "</div>" +
     '<div class="radio  radio-primary radio-inline" data-toggle="tooltip" title="color icon">' +
     "<label>" +
-    '<input type="radio" name="radio" value="st5" onclick="handlemenutype(this.value)">' +
+    '<input type="radio" name="radio" value="st6" onclick="handlemenutype(this.value)" checked>' +
     '<i class="helper"></i><span class="micon st5"><i class="feather icon-command"></i></span>' +
     "</label>" +
     "</div>" +

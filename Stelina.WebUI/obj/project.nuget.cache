@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Cih9doM9c2QUXl0+r3e5hHpcwRziU9t3FbGAvnx51SRlIj7S0FKJ2P4qeoPzbXoZpJA2sLijRXotcwCmmnHzCA==",
+  "dgSpecHash": "pxZlL946kN2mh1+8gYD1ObOEALZoMFtNTfPebn6M2jVU/Gb1L0ZxFQ30dSL77DRT7LZLcJ3wHNoBNJPr5KIDZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Əli\\Desktop\\Stelina e-commerce\\Stelina Solution\\Stelina-Perfume-E-commerce\\Stelina.WebUI\\Stelina.WebUI.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\Əli\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Əli\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
     "C:\\Users\\Əli\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\Əli\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\5.0.17\\microsoft.aspnetcore.authentication.google.5.0.17.nupkg.sha512",
     "C:\\Users\\Əli\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\Əli\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\Əli\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\2.2.0\\microsoft.aspnetcore.connections.abstractions.2.2.0.nupkg.sha512",

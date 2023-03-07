@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,12 +14,14 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Stelina.Domain.AppCode.Behaviors;
 using Stelina.Domain.AppCode.Extensions;
+using Stelina.Domain.AppCode.Infrastructure;
 using Stelina.Domain.AppCode.Providers;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
 using Stelina.Domain.Models.Entities.Membership;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Stelina.WebUI
 {
@@ -46,7 +49,7 @@ namespace Stelina.WebUI
                     cfg.ModelBinderProviders.Insert(0, new BooleanBinderProvider());
                 }
             ).AddNewtonsoftJson(cfg => cfg.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
-           
+
 
             services.AddDbContext<StelinaDbContext>(cfg =>
             {
@@ -78,7 +81,7 @@ namespace Stelina.WebUI
             services.ConfigureApplicationCookie(cfg =>
             {
                 cfg.LoginPath = "/signin.html";
-                cfg.AccessDeniedPath = "/notfound.html";
+                cfg.AccessDeniedPath = "/notfound";
 
                 cfg.Cookie.Name = "stelina";
                 cfg.Cookie.HttpOnly = true;
@@ -86,9 +89,9 @@ namespace Stelina.WebUI
             });
 
             services.AddAuthentication();
+
             services.AddAuthorization(cfg =>
             {
-
                 foreach (var policyName in Extension.policies)
                 {
                     cfg.AddPolicy(policyName, p =>
@@ -154,11 +157,29 @@ namespace Stelina.WebUI
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.StartsWithSegments("/admin", StringComparison.OrdinalIgnoreCase) && !context.User.Identity.IsAuthenticated)
+                {
+                    context.Response.Redirect("/notfound");
+                    return;
+                }
+                if (context.Request.Path.StartsWithSegments("/admin", StringComparison.OrdinalIgnoreCase) && context.User.IsInRole("User"))
+                {
+                    context.Response.Redirect("/notfound");
+                    return;
+                }
+
+                await next();
+            });
+
             app.UseEndpoints(cfg =>
             {
+                cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=account}/{action=signin}/{id?}");  // for admin panel
+
                 cfg.MapControllerRoute(
                 name: "default-accessdenied",
-                pattern: "accessdenied.html",
+                pattern: "notfound",
                 defaults: new
                 {
                     area = "",
@@ -166,7 +187,6 @@ namespace Stelina.WebUI
                     action = "accessdenied"
                 });
 
-                cfg.MapAreaControllerRoute("defaultAdmin", "admin", "admin/{controller=account}/{action=signin}/{id?}");  // for admin panel
                 cfg.MapControllerRoute("default", "{controller=home}/{action=index}/{id?}");
 
             });

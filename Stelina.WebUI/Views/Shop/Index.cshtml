@@ -97,6 +97,8 @@
                             <select title="sort-by" class="chosen-selected">
                                 <option value="nameAsc">Alphabetically, A-Z</option>
                                 <option value="nameDesc">Alphabetically, Z-A</option>
+                                <option value="rateDesc">Rate: high to low</option>
+                                <option value="createdDateDesc">Latest to oldest</option>
                                 <option value="priceAsc">Price: low to high</option>
                                 <option value="priceDesc">Price: high to low</option>
                             </select>
@@ -300,8 +302,6 @@
 
         $(".chosen-selected").on('change', function() {
              var sortOrder = $(".chosen-selected option:selected").val();
-
-             //console.log(sortOrder);
 
              $.ajax({
                 type: "GET",

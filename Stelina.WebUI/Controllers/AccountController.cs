@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Stelina.Domain.AppCode.Extensions;
 using Stelina.Domain.AppCode.Services;
 using Stelina.Domain.Models.DataContexts;
@@ -8,6 +9,7 @@ using Stelina.Domain.Models.Entities.Membership;
 using Stelina.Domain.Models.FormModel;
 using Stelina.Domain.Models.ViewModels.LoginRegister;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Stelina.WebUI.Controllers
@@ -19,7 +21,9 @@ namespace Stelina.WebUI.Controllers
         private readonly EmailService emailService;
         private readonly RoleManager<StelinaRole> roleManager;
 
-        public AccountController(SignInManager<StelinaUser> signInManager, UserManager<StelinaUser> userManager, EmailService emailService, RoleManager<StelinaRole> roleManager)
+        public AccountController(SignInManager<StelinaUser> signInManager, UserManager<StelinaUser> userManager,
+            EmailService emailService,
+            RoleManager<StelinaRole> roleManager)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
@@ -340,6 +344,13 @@ namespace Stelina.WebUI.Controllers
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ResetPasswordConfirmation()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [Route("/notfound")]
+        public IActionResult AccessDenied()
         {
             return View();
         }

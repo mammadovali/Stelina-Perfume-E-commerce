@@ -20,16 +20,15 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             this.userManager = userManager;
         }
 
-
-        [Authorize(Policy = "admin.account.signin")]
         [AllowAnonymous]
+        [Authorize(Policy = "admin.account.signin")]
         public IActionResult Signin()
         {
             return View();
         }
 
-        [AllowAnonymous]
         [HttpPost]
+        [AllowAnonymous]
         [Authorize(Policy = "admin.account.signin")]
         public async Task<IActionResult> Signin(LoginFormModel user)
         {
