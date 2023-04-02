@@ -143,12 +143,12 @@
 
                     $(".shopcart-icon").append(`<span class='count count-cart'>${res.value.basketInfo.count}</span>`)
 
-                    if(res.value?.basketInfo.count == null){
-                        $('.count-cart').text("");
-                    }
-                    else{
-                        $('.count-cart').text(res.value.basketInfo.count);
-                    }
+                    //if(res.value?.basketInfo.count == null){
+                    //    $('.count-cart').text("");
+                    //}
+                    //else{
+                    //    $('.count-cart').text(res.value.basketInfo.count);
+                    //}
 
                     if(res.value?.basketInfo.total == null){
                         $('.total-price').add(".Price-amount").text("");

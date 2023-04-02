@@ -179,13 +179,13 @@
 
                     if (response.error == true) {
 
-                        toastr.error(response.message, "Xəta");
+                        toastr.error(response.message, "Error");
                         showError(response.state);
 
                         return;
                     }
 
-                    toastr.success(response.message, "Uğur!");
+                    toastr.success(response.message, "Success!");
 
                     ev.currentTarget.reset();
                 },

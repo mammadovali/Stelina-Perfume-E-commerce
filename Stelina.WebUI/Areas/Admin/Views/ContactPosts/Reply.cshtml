@@ -127,14 +127,14 @@
                 contentType: false,
                 success: function(response) {
                     if (response.error == true) {
-                        toastr.error(response.message, "Uğursuz!");
+                        toastr.error(response.message, "Unsuccesfull");
                     } else {
-                        toastr.success(response.message, "Uğurlu!");
+                        toastr.success(response.message, "Success!");
                     }
                     e.currentTarget.reset();
                 },
                 error: function(response) {
-                    toastr.error(response.message, "Ugursuz!")
+                    toastr.error(response.message, "Unsuccesfull")
                 }
             })
         })

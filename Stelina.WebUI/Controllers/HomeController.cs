@@ -75,7 +75,7 @@ namespace Stelina.WebUI.Controllers
                 var response = new
                 {
                     error = false,
-                    message = "Müraciətiniz qeydə alındı, tezliklə geri dönüş edəcəyik"
+                    message = "Your request accepted, we will reply soon."
                 };
 
                 return Json(response);
@@ -84,7 +84,7 @@ namespace Stelina.WebUI.Controllers
             var responseError = new
             {
                 error = true,
-                message = "Məlumatlar uyğun deyil, zəhmət olmasa yənidən yoxlayın",
+                message = "Information is not correct, please try again",
                 state = ModelState.GetError()
             };
             return Json(responseError);
@@ -100,7 +100,7 @@ namespace Stelina.WebUI.Controllers
                 return Json(new
                 {
                     error = true,
-                    message = "Boş göndərilə bilməz"
+                    message = "Email cannot be empty"
                 });
             }
 
@@ -109,7 +109,7 @@ namespace Stelina.WebUI.Controllers
                 return Json(new
                 {
                     error = true,
-                    message = "Məlumat düzgün göndərilməyib"
+                    message = "Email is not avaiblable or correct, please try a valid one."
                 });
             }
 
@@ -131,7 +131,7 @@ namespace Stelina.WebUI.Controllers
                 return Json(new
                 {
                     error = false,
-                    message = "Siz artıq abunə olmusunuz"
+                    message = "You have already subscribed"
                 });
             }
 
@@ -150,15 +150,14 @@ namespace Stelina.WebUI.Controllers
             token = cryptyoService.Encrypt(token, true);
 
 
-            string message = $"Zəhmət olmasa <a href='https://{Request.Host}/approve-subscribe?token={token}'>link</a> vasitəsilə abunəliyinizi təsdiq edin";
-
+            string message = $"<p style='font-size: 16px;'>Please verify your subscription via this <a href='https://{Request.Host}/approve-subscribe?token={token}'>link</a></p>";
 
             await emailService.SendEmailAsync(model.Email, "Subscribe Approve Message", message);
 
             return Json(new
             {
                 error = false,
-                message = "E-mailinizə təsdiq mesajı göndərildi"
+                message = "We sent a confirmation message to your email. Please verify your subscription."
             });
 
         }
@@ -183,13 +182,13 @@ namespace Stelina.WebUI.Controllers
 
                 if (entity == null)
                 {
-                    ViewBag.Message = Tuple.Create(true, "Token xətası");
+                    ViewBag.Message = Tuple.Create(true, "Token error");
                     goto end;
                 }
 
                 if (entity.IsApproved)
                 {
-                    ViewBag.Message = Tuple.Create(true, "Sizin müraciətiniz artıq təsdiq edilib"); 
+                    ViewBag.Message = Tuple.Create(true, "Your request already accepted"); 
 
                     goto end;
                 }
@@ -199,18 +198,16 @@ namespace Stelina.WebUI.Controllers
                 db.SaveChanges();
 
 
-                ViewBag.Message = Tuple.Create(false, "Sizin abunəliyiniz təsdiq edildi");
+                ViewBag.Message = Tuple.Create(false, "Your subscription was confirmed");
 
             }
             else
             {
-                ViewBag.Message = Tuple.Create(true, "Token xətası");
+                ViewBag.Message = Tuple.Create(true, "Token error");
             }
 
         end:
             return View();
-
-
         }
 
 

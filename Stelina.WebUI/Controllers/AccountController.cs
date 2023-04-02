@@ -161,15 +161,16 @@ namespace Stelina.WebUI.Controllers
                     var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     string path = $"{Request.Scheme}://{Request.Host}/registration-confirm.html?email={user.Email}&token={token}";
 
-                    var emailResponse = await emailService.SendEmailAsync(user.Email, "Registration for Stelina e-commerce Perfume website", $"Zəhmət olmasa abunəliyinizi <a href='{path}'>link</a> vasitəsilə təsdiq edin");
+                    var emailResponse = await emailService.SendEmailAsync(user.Email, "Registration for Stelina e-commerce Perfume",  $"Please verify your account via this <a href='{path}'>link</a>");
+
 
                     if (emailResponse)
                     {
-                        ViewBag.Message = "Qeydiyyat uğurla tamamlandı";
+                        ViewBag.Message = "Registration succesfully completed";
                     }
                     else
                     {
-                        ViewBag.Message = " E-mail' göndərərkən xəta baş verdi, zəhmət olmasa yenidən cəhd edin";
+                        ViewBag.Message = "An error occurred while sending email, please try again";
                     }
 
                     await userManager.AddToRoleAsync(user, "User");
@@ -204,11 +205,11 @@ namespace Stelina.WebUI.Controllers
 
             if (!result.Succeeded)
             {
-                ViewBag.Message = "Xətalı token";
+                ViewBag.Message = "Invalid token";
                 goto end;
             }
 
-            ViewBag.Message = "Hesabınız təsdiqləndi";
+            ViewBag.Message = "Your account was confirmed";
         end:
             return RedirectToAction(nameof(Signin));
         }

@@ -106,7 +106,7 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
                 return Json(new
                 {
                     error = true,
-                    message = "Xəta baş verdi"
+                    message = "Error occured"
                 });
             }
 
@@ -115,12 +115,12 @@ namespace Stelina.WebUI.Areas.Admin.Controllers
             entity.EmailSubject = model.EmailSubject;
             await db.SaveChangesAsync();
 
-            await emailService.SendEmailAsync(model.Email, "Response from Stelina online service", model.Answer);
+            await emailService.SendEmailAsync(model.Email, "Response from Rosselina online service", model.Answer);
 
             return Json(new
             {
                 error = false,
-                message = "Cavabınız uğurla göndərildi"
+                message = "Your response successfully sent"
             });
         }
 

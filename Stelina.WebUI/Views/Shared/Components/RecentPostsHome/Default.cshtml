@@ -6,27 +6,27 @@
 
     @foreach (var item in Model)
     {
-        <div class="stelina-blog-item equal-element layout1">
-            <div class="post-thumb">
-                <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">
-                    <img src="~/uploads/images/@item.ImagePath" alt="img" style="min-height: 200px;" />
-                </a>
-            </div>
-            <div class="blog-info">
-                <div class="blog-meta">
-                    <div class="post-date">@item.CreatedDate.ToString("MMM dd")</div>
+            <div class="stelina-blog-item equal-element layout1">
+                <div class="post-thumb">
+                    <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">
+                        <img src="~/uploads/images/@item.ImagePath" alt="img" style="min-height: 200px;" />
+                    </a>
                 </div>
-                <h2 class="blog-title">
-                    <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">@item.Title </a>
-                </h2>
-                <div class="main-info-post ">
-                    
-                        @Html.Raw(item.Body)
-                    
-                    <a class="readmore" asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">Read more</a>
+                <div class="blog-info">
+                    <div class="blog-meta">
+                        <div class="post-date">@item.CreatedDate.ToString("MMM dd")</div>
+                    </div>
+                    <h2 class="blog-title">
+                        <a asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">@item.Title </a>
+                    </h2>
+                    <div class="main-info-post" style="height: 7rem; overflow: hidden;">
+
+                    @Html.Raw(item.Body)
+
+                    </div>
+                     <a class="readmore" asp-controller="blog" asp-action="details" asp-route-id="@item.Id" asp-route-slug="@item.Slug">Read more</a>
                 </div>
             </div>
-        </div>
     }
 
 </div>
